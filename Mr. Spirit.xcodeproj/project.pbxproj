@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C33365CA262B46A06B03A38 /* Pods_Mr__Spirit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDBF313A6D6483C6C75FC349 /* Pods_Mr__Spirit.framework */; };
 		5914FC271CA48B2100A0EEA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC261CA48B2100A0EEA6 /* AppDelegate.swift */; };
 		5914FC291CA48B2100A0EEA6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC281CA48B2100A0EEA6 /* ViewController.swift */; };
 		5914FC2C1CA48B2100A0EEA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5914FC2A1CA48B2100A0EEA6 /* Main.storyboard */; };
@@ -14,6 +15,14 @@
 		5914FC311CA48B2100A0EEA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5914FC2F1CA48B2100A0EEA6 /* LaunchScreen.storyboard */; };
 		5914FC3C1CA48B2100A0EEA6 /* Mr__SpiritTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC3B1CA48B2100A0EEA6 /* Mr__SpiritTests.swift */; };
 		5914FC471CA48B2100A0EEA6 /* Mr__SpiritUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC461CA48B2100A0EEA6 /* Mr__SpiritUITests.swift */; };
+		5914FC561CA4921500A0EEA6 /* CandidatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC551CA4921500A0EEA6 /* CandidatesViewController.swift */; };
+		5914FC581CA4921D00A0EEA6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC571CA4921D00A0EEA6 /* ProfileViewController.swift */; };
+		5914FC5A1CA4922400A0EEA6 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC591CA4922400A0EEA6 /* AboutUsViewController.swift */; };
+		5914FC5D1CA4922F00A0EEA6 /* TwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC5C1CA4922F00A0EEA6 /* TwitterViewController.swift */; };
+		5914FC5F1CA4923A00A0EEA6 /* DonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC5E1CA4923A00A0EEA6 /* DonateViewController.swift */; };
+		5914FC611CA4925300A0EEA6 /* NewTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC601CA4925300A0EEA6 /* NewTweetViewController.swift */; };
+		5914FC631CA4928000A0EEA6 /* CandidateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC621CA4928000A0EEA6 /* CandidateCell.swift */; };
+		5914FC651CA4929700A0EEA6 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC641CA4929700A0EEA6 /* TweetCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		291255C6031328825F247290 /* Pods-Mr. Spirit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mr. Spirit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mr. Spirit/Pods-Mr. Spirit.debug.xcconfig"; sourceTree = "<group>"; };
+		42CF190BF5634E9DA6BBD878 /* Pods-Mr. Spirit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mr. Spirit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mr. Spirit/Pods-Mr. Spirit.release.xcconfig"; sourceTree = "<group>"; };
 		5914FC231CA48B2100A0EEA6 /* Mr. Spirit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mr. Spirit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5914FC261CA48B2100A0EEA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5914FC281CA48B2100A0EEA6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +58,15 @@
 		5914FC421CA48B2100A0EEA6 /* Mr. SpiritUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mr. SpiritUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5914FC461CA48B2100A0EEA6 /* Mr__SpiritUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mr__SpiritUITests.swift; sourceTree = "<group>"; };
 		5914FC481CA48B2100A0EEA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5914FC551CA4921500A0EEA6 /* CandidatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidatesViewController.swift; sourceTree = "<group>"; };
+		5914FC571CA4921D00A0EEA6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		5914FC591CA4922400A0EEA6 /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
+		5914FC5C1CA4922F00A0EEA6 /* TwitterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterViewController.swift; sourceTree = "<group>"; };
+		5914FC5E1CA4923A00A0EEA6 /* DonateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonateViewController.swift; sourceTree = "<group>"; };
+		5914FC601CA4925300A0EEA6 /* NewTweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTweetViewController.swift; sourceTree = "<group>"; };
+		5914FC621CA4928000A0EEA6 /* CandidateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateCell.swift; sourceTree = "<group>"; };
+		5914FC641CA4929700A0EEA6 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
+		DDBF313A6D6483C6C75FC349 /* Pods_Mr__Spirit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mr__Spirit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C33365CA262B46A06B03A38 /* Pods_Mr__Spirit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +102,8 @@
 				5914FC3A1CA48B2100A0EEA6 /* Mr. SpiritTests */,
 				5914FC451CA48B2100A0EEA6 /* Mr. SpiritUITests */,
 				5914FC241CA48B2100A0EEA6 /* Products */,
+				7797DE44DA6972CBB21B46BF /* Pods */,
+				FB3C08D7D2A8A9016F075526 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +120,7 @@
 		5914FC251CA48B2100A0EEA6 /* Mr. Spirit */ = {
 			isa = PBXGroup;
 			children = (
+				5914FC541CA4920B00A0EEA6 /* View Controllers */,
 				5914FC261CA48B2100A0EEA6 /* AppDelegate.swift */,
 				5914FC281CA48B2100A0EEA6 /* ViewController.swift */,
 				5914FC2A1CA48B2100A0EEA6 /* Main.storyboard */,
@@ -125,6 +149,54 @@
 			path = "Mr. SpiritUITests";
 			sourceTree = "<group>";
 		};
+		5914FC541CA4920B00A0EEA6 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5914FC671CA492B100A0EEA6 /* Candidate */,
+				5914FC661CA4929B00A0EEA6 /* Twitter */,
+				5914FC571CA4921D00A0EEA6 /* ProfileViewController.swift */,
+				5914FC591CA4922400A0EEA6 /* AboutUsViewController.swift */,
+				5914FC5E1CA4923A00A0EEA6 /* DonateViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		5914FC661CA4929B00A0EEA6 /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				5914FC5C1CA4922F00A0EEA6 /* TwitterViewController.swift */,
+				5914FC601CA4925300A0EEA6 /* NewTweetViewController.swift */,
+				5914FC641CA4929700A0EEA6 /* TweetCell.swift */,
+			);
+			name = Twitter;
+			sourceTree = "<group>";
+		};
+		5914FC671CA492B100A0EEA6 /* Candidate */ = {
+			isa = PBXGroup;
+			children = (
+				5914FC551CA4921500A0EEA6 /* CandidatesViewController.swift */,
+				5914FC621CA4928000A0EEA6 /* CandidateCell.swift */,
+			);
+			name = Candidate;
+			sourceTree = "<group>";
+		};
+		7797DE44DA6972CBB21B46BF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				291255C6031328825F247290 /* Pods-Mr. Spirit.debug.xcconfig */,
+				42CF190BF5634E9DA6BBD878 /* Pods-Mr. Spirit.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FB3C08D7D2A8A9016F075526 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DDBF313A6D6483C6C75FC349 /* Pods_Mr__Spirit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +204,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5914FC4B1CA48B2100A0EEA6 /* Build configuration list for PBXNativeTarget "Mr. Spirit" */;
 			buildPhases = (
+				B1A13AD9F376503B3CB1A106 /* Check Pods Manifest.lock */,
 				5914FC1F1CA48B2100A0EEA6 /* Sources */,
 				5914FC201CA48B2100A0EEA6 /* Frameworks */,
 				5914FC211CA48B2100A0EEA6 /* Resources */,
+				BABB741098138F94BBBF3E7D /* Embed Pods Frameworks */,
+				CA3C011C773E648747CB3632 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,12 +329,68 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B1A13AD9F376503B3CB1A106 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BABB741098138F94BBBF3E7D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mr. Spirit/Pods-Mr. Spirit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA3C011C773E648747CB3632 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mr. Spirit/Pods-Mr. Spirit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5914FC1F1CA48B2100A0EEA6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5914FC5D1CA4922F00A0EEA6 /* TwitterViewController.swift in Sources */,
+				5914FC611CA4925300A0EEA6 /* NewTweetViewController.swift in Sources */,
+				5914FC5F1CA4923A00A0EEA6 /* DonateViewController.swift in Sources */,
+				5914FC5A1CA4922400A0EEA6 /* AboutUsViewController.swift in Sources */,
 				5914FC291CA48B2100A0EEA6 /* ViewController.swift in Sources */,
+				5914FC561CA4921500A0EEA6 /* CandidatesViewController.swift in Sources */,
+				5914FC631CA4928000A0EEA6 /* CandidateCell.swift in Sources */,
+				5914FC651CA4929700A0EEA6 /* TweetCell.swift in Sources */,
+				5914FC581CA4921D00A0EEA6 /* ProfileViewController.swift in Sources */,
 				5914FC271CA48B2100A0EEA6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,6 +531,7 @@
 		};
 		5914FC4C1CA48B2100A0EEA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 291255C6031328825F247290 /* Pods-Mr. Spirit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Mr. Spirit/Info.plist";
@@ -411,6 +543,7 @@
 		};
 		5914FC4D1CA48B2100A0EEA6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42CF190BF5634E9DA6BBD878 /* Pods-Mr. Spirit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Mr. Spirit/Info.plist";
@@ -487,6 +620,7 @@
 				5914FC4D1CA48B2100A0EEA6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5914FC4E1CA48B2100A0EEA6 /* Build configuration list for PBXNativeTarget "Mr. SpiritTests" */ = {
 			isa = XCConfigurationList;
@@ -495,6 +629,7 @@
 				5914FC501CA48B2100A0EEA6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5914FC511CA48B2100A0EEA6 /* Build configuration list for PBXNativeTarget "Mr. SpiritUITests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +638,7 @@
 				5914FC531CA48B2100A0EEA6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

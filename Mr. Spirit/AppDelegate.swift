@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftHEXColors
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        UINavigationBar.appearance().barTintColor = UIColor(hexString: "#000000")
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor(hexString: "CECEAD")!]
+        
+        UITabBar.appearance().barTintColor = UIColor(hexString: "#000000")
+        UITabBar.appearance().tintColor = UIColor(hexString: "#CECEAD")
+
+        
         return true
     }
 
