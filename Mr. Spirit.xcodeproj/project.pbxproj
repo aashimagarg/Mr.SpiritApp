@@ -1,0 +1,510 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5914FC271CA48B2100A0EEA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC261CA48B2100A0EEA6 /* AppDelegate.swift */; };
+		5914FC291CA48B2100A0EEA6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC281CA48B2100A0EEA6 /* ViewController.swift */; };
+		5914FC2C1CA48B2100A0EEA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5914FC2A1CA48B2100A0EEA6 /* Main.storyboard */; };
+		5914FC2E1CA48B2100A0EEA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5914FC2D1CA48B2100A0EEA6 /* Assets.xcassets */; };
+		5914FC311CA48B2100A0EEA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5914FC2F1CA48B2100A0EEA6 /* LaunchScreen.storyboard */; };
+		5914FC3C1CA48B2100A0EEA6 /* Mr__SpiritTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC3B1CA48B2100A0EEA6 /* Mr__SpiritTests.swift */; };
+		5914FC471CA48B2100A0EEA6 /* Mr__SpiritUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC461CA48B2100A0EEA6 /* Mr__SpiritUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5914FC381CA48B2100A0EEA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5914FC1B1CA48B2100A0EEA6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5914FC221CA48B2100A0EEA6;
+			remoteInfo = "Mr. Spirit";
+		};
+		5914FC431CA48B2100A0EEA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5914FC1B1CA48B2100A0EEA6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5914FC221CA48B2100A0EEA6;
+			remoteInfo = "Mr. Spirit";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5914FC231CA48B2100A0EEA6 /* Mr. Spirit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mr. Spirit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5914FC261CA48B2100A0EEA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5914FC281CA48B2100A0EEA6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5914FC2B1CA48B2100A0EEA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5914FC2D1CA48B2100A0EEA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5914FC301CA48B2100A0EEA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5914FC321CA48B2100A0EEA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5914FC371CA48B2100A0EEA6 /* Mr. SpiritTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mr. SpiritTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5914FC3B1CA48B2100A0EEA6 /* Mr__SpiritTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mr__SpiritTests.swift; sourceTree = "<group>"; };
+		5914FC3D1CA48B2100A0EEA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5914FC421CA48B2100A0EEA6 /* Mr. SpiritUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mr. SpiritUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5914FC461CA48B2100A0EEA6 /* Mr__SpiritUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mr__SpiritUITests.swift; sourceTree = "<group>"; };
+		5914FC481CA48B2100A0EEA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5914FC201CA48B2100A0EEA6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5914FC341CA48B2100A0EEA6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5914FC3F1CA48B2100A0EEA6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5914FC1A1CA48B2100A0EEA6 = {
+			isa = PBXGroup;
+			children = (
+				5914FC251CA48B2100A0EEA6 /* Mr. Spirit */,
+				5914FC3A1CA48B2100A0EEA6 /* Mr. SpiritTests */,
+				5914FC451CA48B2100A0EEA6 /* Mr. SpiritUITests */,
+				5914FC241CA48B2100A0EEA6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5914FC241CA48B2100A0EEA6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5914FC231CA48B2100A0EEA6 /* Mr. Spirit.app */,
+				5914FC371CA48B2100A0EEA6 /* Mr. SpiritTests.xctest */,
+				5914FC421CA48B2100A0EEA6 /* Mr. SpiritUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5914FC251CA48B2100A0EEA6 /* Mr. Spirit */ = {
+			isa = PBXGroup;
+			children = (
+				5914FC261CA48B2100A0EEA6 /* AppDelegate.swift */,
+				5914FC281CA48B2100A0EEA6 /* ViewController.swift */,
+				5914FC2A1CA48B2100A0EEA6 /* Main.storyboard */,
+				5914FC2D1CA48B2100A0EEA6 /* Assets.xcassets */,
+				5914FC2F1CA48B2100A0EEA6 /* LaunchScreen.storyboard */,
+				5914FC321CA48B2100A0EEA6 /* Info.plist */,
+			);
+			path = "Mr. Spirit";
+			sourceTree = "<group>";
+		};
+		5914FC3A1CA48B2100A0EEA6 /* Mr. SpiritTests */ = {
+			isa = PBXGroup;
+			children = (
+				5914FC3B1CA48B2100A0EEA6 /* Mr__SpiritTests.swift */,
+				5914FC3D1CA48B2100A0EEA6 /* Info.plist */,
+			);
+			path = "Mr. SpiritTests";
+			sourceTree = "<group>";
+		};
+		5914FC451CA48B2100A0EEA6 /* Mr. SpiritUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5914FC461CA48B2100A0EEA6 /* Mr__SpiritUITests.swift */,
+				5914FC481CA48B2100A0EEA6 /* Info.plist */,
+			);
+			path = "Mr. SpiritUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5914FC221CA48B2100A0EEA6 /* Mr. Spirit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5914FC4B1CA48B2100A0EEA6 /* Build configuration list for PBXNativeTarget "Mr. Spirit" */;
+			buildPhases = (
+				5914FC1F1CA48B2100A0EEA6 /* Sources */,
+				5914FC201CA48B2100A0EEA6 /* Frameworks */,
+				5914FC211CA48B2100A0EEA6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Mr. Spirit";
+			productName = "Mr. Spirit";
+			productReference = 5914FC231CA48B2100A0EEA6 /* Mr. Spirit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5914FC361CA48B2100A0EEA6 /* Mr. SpiritTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5914FC4E1CA48B2100A0EEA6 /* Build configuration list for PBXNativeTarget "Mr. SpiritTests" */;
+			buildPhases = (
+				5914FC331CA48B2100A0EEA6 /* Sources */,
+				5914FC341CA48B2100A0EEA6 /* Frameworks */,
+				5914FC351CA48B2100A0EEA6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5914FC391CA48B2100A0EEA6 /* PBXTargetDependency */,
+			);
+			name = "Mr. SpiritTests";
+			productName = "Mr. SpiritTests";
+			productReference = 5914FC371CA48B2100A0EEA6 /* Mr. SpiritTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5914FC411CA48B2100A0EEA6 /* Mr. SpiritUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5914FC511CA48B2100A0EEA6 /* Build configuration list for PBXNativeTarget "Mr. SpiritUITests" */;
+			buildPhases = (
+				5914FC3E1CA48B2100A0EEA6 /* Sources */,
+				5914FC3F1CA48B2100A0EEA6 /* Frameworks */,
+				5914FC401CA48B2100A0EEA6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5914FC441CA48B2100A0EEA6 /* PBXTargetDependency */,
+			);
+			name = "Mr. SpiritUITests";
+			productName = "Mr. SpiritUITests";
+			productReference = 5914FC421CA48B2100A0EEA6 /* Mr. SpiritUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5914FC1B1CA48B2100A0EEA6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Aashima Garg";
+				TargetAttributes = {
+					5914FC221CA48B2100A0EEA6 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = J29EQ9363G;
+					};
+					5914FC361CA48B2100A0EEA6 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = J29EQ9363G;
+						TestTargetID = 5914FC221CA48B2100A0EEA6;
+					};
+					5914FC411CA48B2100A0EEA6 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = J29EQ9363G;
+						TestTargetID = 5914FC221CA48B2100A0EEA6;
+					};
+				};
+			};
+			buildConfigurationList = 5914FC1E1CA48B2100A0EEA6 /* Build configuration list for PBXProject "Mr. Spirit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5914FC1A1CA48B2100A0EEA6;
+			productRefGroup = 5914FC241CA48B2100A0EEA6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5914FC221CA48B2100A0EEA6 /* Mr. Spirit */,
+				5914FC361CA48B2100A0EEA6 /* Mr. SpiritTests */,
+				5914FC411CA48B2100A0EEA6 /* Mr. SpiritUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5914FC211CA48B2100A0EEA6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5914FC311CA48B2100A0EEA6 /* LaunchScreen.storyboard in Resources */,
+				5914FC2E1CA48B2100A0EEA6 /* Assets.xcassets in Resources */,
+				5914FC2C1CA48B2100A0EEA6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5914FC351CA48B2100A0EEA6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5914FC401CA48B2100A0EEA6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5914FC1F1CA48B2100A0EEA6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5914FC291CA48B2100A0EEA6 /* ViewController.swift in Sources */,
+				5914FC271CA48B2100A0EEA6 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5914FC331CA48B2100A0EEA6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5914FC3C1CA48B2100A0EEA6 /* Mr__SpiritTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5914FC3E1CA48B2100A0EEA6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5914FC471CA48B2100A0EEA6 /* Mr__SpiritUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5914FC391CA48B2100A0EEA6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5914FC221CA48B2100A0EEA6 /* Mr. Spirit */;
+			targetProxy = 5914FC381CA48B2100A0EEA6 /* PBXContainerItemProxy */;
+		};
+		5914FC441CA48B2100A0EEA6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5914FC221CA48B2100A0EEA6 /* Mr. Spirit */;
+			targetProxy = 5914FC431CA48B2100A0EEA6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5914FC2A1CA48B2100A0EEA6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5914FC2B1CA48B2100A0EEA6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5914FC2F1CA48B2100A0EEA6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5914FC301CA48B2100A0EEA6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5914FC491CA48B2100A0EEA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5914FC4A1CA48B2100A0EEA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5914FC4C1CA48B2100A0EEA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Mr. Spirit/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.Mr--Spirit";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5914FC4D1CA48B2100A0EEA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Mr. Spirit/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.Mr--Spirit";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		5914FC4F1CA48B2100A0EEA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Mr. SpiritTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.Mr--SpiritTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mr. Spirit.app/Mr. Spirit";
+			};
+			name = Debug;
+		};
+		5914FC501CA48B2100A0EEA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Mr. SpiritTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.Mr--SpiritTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mr. Spirit.app/Mr. Spirit";
+			};
+			name = Release;
+		};
+		5914FC521CA48B2100A0EEA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Mr. SpiritUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.Mr--SpiritUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Mr. Spirit";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		5914FC531CA48B2100A0EEA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Mr. SpiritUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.Mr--SpiritUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Mr. Spirit";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5914FC1E1CA48B2100A0EEA6 /* Build configuration list for PBXProject "Mr. Spirit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5914FC491CA48B2100A0EEA6 /* Debug */,
+				5914FC4A1CA48B2100A0EEA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5914FC4B1CA48B2100A0EEA6 /* Build configuration list for PBXNativeTarget "Mr. Spirit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5914FC4C1CA48B2100A0EEA6 /* Debug */,
+				5914FC4D1CA48B2100A0EEA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5914FC4E1CA48B2100A0EEA6 /* Build configuration list for PBXNativeTarget "Mr. SpiritTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5914FC4F1CA48B2100A0EEA6 /* Debug */,
+				5914FC501CA48B2100A0EEA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5914FC511CA48B2100A0EEA6 /* Build configuration list for PBXNativeTarget "Mr. SpiritUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5914FC521CA48B2100A0EEA6 /* Debug */,
+				5914FC531CA48B2100A0EEA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5914FC1B1CA48B2100A0EEA6 /* Project object */;
+}
