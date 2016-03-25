@@ -23,6 +23,7 @@
 		5914FC611CA4925300A0EEA6 /* NewTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC601CA4925300A0EEA6 /* NewTweetViewController.swift */; };
 		5914FC631CA4928000A0EEA6 /* CandidateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC621CA4928000A0EEA6 /* CandidateCell.swift */; };
 		5914FC651CA4929700A0EEA6 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC641CA4929700A0EEA6 /* TweetCell.swift */; };
+		D307548B1CA4F6250089DA44 /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D307548A1CA4F6250089DA44 /* Candidate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		5914FC601CA4925300A0EEA6 /* NewTweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTweetViewController.swift; sourceTree = "<group>"; };
 		5914FC621CA4928000A0EEA6 /* CandidateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateCell.swift; sourceTree = "<group>"; };
 		5914FC641CA4929700A0EEA6 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
+		D307548A1CA4F6250089DA44 /* Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
 		DDBF313A6D6483C6C75FC349 /* Pods_Mr__Spirit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mr__Spirit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -174,6 +176,7 @@
 		5914FC671CA492B100A0EEA6 /* Candidate */ = {
 			isa = PBXGroup;
 			children = (
+				D307548A1CA4F6250089DA44 /* Candidate.swift */,
 				5914FC551CA4921500A0EEA6 /* CandidatesViewController.swift */,
 				5914FC621CA4928000A0EEA6 /* CandidateCell.swift */,
 			);
@@ -391,6 +394,7 @@
 				5914FC631CA4928000A0EEA6 /* CandidateCell.swift in Sources */,
 				5914FC651CA4929700A0EEA6 /* TweetCell.swift in Sources */,
 				5914FC581CA4921D00A0EEA6 /* ProfileViewController.swift in Sources */,
+				D307548B1CA4F6250089DA44 /* Candidate.swift in Sources */,
 				5914FC271CA48B2100A0EEA6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,6 +10,7 @@ import UIKit
 
 class CandidateCell: UITableViewCell {
 
+    // MARK: Properties
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var orgLabel: UILabel!
     @IBOutlet weak var headshotImage: UIImageView!
