@@ -13,9 +13,12 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var modelImage: UIImageView!
     @IBOutlet weak var bioText: UILabel!
     @IBOutlet weak var voteButton: UIButton!
+    @IBOutlet weak var donateButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        voteButton.layer.cornerRadius = 5.0;
+        donateButton.layer.cornerRadius = 5.0;
         getCandidateInfo()
 
         // Do any additional setup after loading the view.

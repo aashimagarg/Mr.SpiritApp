@@ -211,6 +211,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="bioText" destination="a85-Rb-lvs" id="yzu-hx-H0J"/>
+                        <outlet property="donateButton" destination="rAp-9j-7wn" id="3a9-yY-9MJ"/>
                         <outlet property="modelImage" destination="MVQ-p9-CgO" id="d8I-6M-uzj"/>
                         <outlet property="voteButton" destination="KHu-Ns-ZL0" id="j03-Cy-GiM"/>
                     </connections>
