@@ -16,6 +16,8 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
     let cellId:String = "CandidateCell"
     
     var candidates = [Candidate]()
+    var candidateNames = ["Ryan Howell", "Erik Solórzano", "Patrick Golden", "Steven Aviles", "Marc Castaneda", "Elias Hinojosa", "Alec Garcia", "Andy Wallace", "Jonathan Stevenson", "Caleb Young"]
+    var candidateOrgs = ["Camp Texas","Texas THON", "Texas Blazers", "Camp Kesem", "Camp Kesem", "Pi Kappa Phi", "Alpha Sigma Pi", "Delta Sigma Pi", "Beta Upsilon Chi", "Student African American Brotherhood"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +40,13 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         
         // SAMPLE CANDIDATE
         let photo1 = UIImage(named: "Bowtie Icon")!
-        let candidate1 = Candidate(name: "John Doe", organization:"Texas 4000", bio:"This is a bio", votes: 0, headshot: photo1, detailPhoto: photo1)
+        for index in 0...9 {
+            let candidate1 = Candidate(name: candidateNames[index], organization:candidateOrgs[index], bio:"This is a bio", votes: 0, headshot: photo1, detailPhoto: photo1)
+            candidates+=[candidate1]
+        }
         
-        candidates+=[candidate1]
+    
+        
     }
 
     override func didReceiveMemoryWarning() {

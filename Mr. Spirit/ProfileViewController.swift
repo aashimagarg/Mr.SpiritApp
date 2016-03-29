@@ -11,11 +11,17 @@ import UIKit
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var modelImage: UIImageView!
+    @IBOutlet weak var voteButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    @IBAction func voteBttnClicked(sender: AnyObject) {
+        voteButton.setTitle("Voted", forState: .Normal)
+        // TO DO: 
+        // Allocate vote to correct person
     }
 
     override func didReceiveMemoryWarning() {
