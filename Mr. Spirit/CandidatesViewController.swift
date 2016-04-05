@@ -39,7 +39,7 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         
         
         // SAMPLE CANDIDATE
-        let photo1 = UIImage(named: "Bowtie Icon")!
+        let photo1 = UIImage(named: "default")!
         for index in 0...9 {
             let candidate1 = Candidate(name: candidateNames[index], organization:candidateOrgs[index], bio:"This is a bio", votes: 0, headshot: photo1, detailPhoto: photo1)
             candidates+=[candidate1]
