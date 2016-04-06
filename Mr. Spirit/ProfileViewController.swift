@@ -36,7 +36,7 @@ class ProfileViewController: UIViewController {
         modelImage.image = image
         
         // Get candidate bio
-        bioText.text = "Hi my name is John. This is my bio"
+//        bioText.text = "Hi my name is John. This is my bio"
     }
 
     override func didReceiveMemoryWarning() {

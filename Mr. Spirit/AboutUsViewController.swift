@@ -17,6 +17,8 @@ class AboutUsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         let image = UIImage(named: "grouppic")!
+        aboutUsImage.layer.cornerRadius = 10.0
+        aboutUsImage.clipsToBounds = true
         aboutUsImage.image = image
         aboutUsText.text = "\tLorem ipsum dolor sit amet, eu nibh semper albucius eam, eos stet ancillae in. Id nec munere definiebas, possit definiebas eu cum, sint audiam elaboraret mel ex. Moderatius percipitur inciderint mea cu. Cum vidit iracundia no, natum voluptatibus his ne. Per ignota placerat cu, ei cibo philosophia eam. \n\tSimul menandri vim ut, ut mel antiopam oportere hendrerit. Lorem mediocrem voluptatibus pri at. Ea voluptua conclusionemque vim, ei sit saepe civibus, est electram adolescens ne."
     }

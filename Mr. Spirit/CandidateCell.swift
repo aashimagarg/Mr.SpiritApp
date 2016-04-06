@@ -24,6 +24,8 @@ class CandidateCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        headshotImage.layer.cornerRadius = headshotImage.frame.size.width / 2
+        headshotImage.clipsToBounds = true
     }
 
 }

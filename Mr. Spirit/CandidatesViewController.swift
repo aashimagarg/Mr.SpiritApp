@@ -26,23 +26,22 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         tableView.delegate = self
         tableView.dataSource = self
         
-        
         self.view.addSubview(self.tableView)
+
+
+
+
+
         // Load candidate data
-        loadCandidates()
+         loadCandidates()
     }
     
     func loadCandidates(){
-        ///////////
-        // TO-DO//
-        /////////
-        
-        
-        // SAMPLE CANDIDATE
+        // Load Candidates
         let photo1 = UIImage(named: "default")!
         for index in 0...9 {
-            let candidate1 = Candidate(name: candidateNames[index], organization:candidateOrgs[index], bio:"This is a bio", votes: 0, headshot: photo1, detailPhoto: photo1)
-            candidates+=[candidate1]
+            let candidate = Candidate(name: candidateNames[index], organization:candidateOrgs[index], bio:"This is a bio", votes: 0, headshot: photo1, detailPhoto: photo1)
+            candidates+=[candidate]
         }
         
     
@@ -67,12 +66,11 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
   
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(self.cellId, forIndexPath: indexPath) as! CandidateCell
-//        print(cell.nameLabel)
-        
+
         // Fetch candidates
         let candidate = candidates[indexPath.row]
         
-        cell.nameLabel.text = candidate.name
+        cell.nameLabel.text = candidate.name.uppercaseString
         cell.orgLabel.text = candidate.organization
         cell.headshotImage.image = candidate.headshot
 
@@ -81,14 +79,15 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
     
 
 
-    /*
+  
     // MARK: - Navigation
-
+/*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
+        let profileVC:ProfileViewController = segue.destinationViewController as! ProfileViewController
         // Pass the selected object to the new view controller.
     }
-    */
+*/
 
 }
