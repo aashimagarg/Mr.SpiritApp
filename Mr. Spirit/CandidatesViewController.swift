@@ -73,6 +73,10 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         cell.nameLabel.text = candidate.name.uppercaseString
         cell.orgLabel.text = candidate.organization
         cell.headshotImage.image = candidate.headshot
+        
+//        let destinationVC = ProfileViewController()
+//        destinationVC.candidate = candidate
+//        destinationVC.performSegueWithIdentifier("profileSegue", sender: self)
 
         return cell
     }
@@ -81,13 +85,24 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
 
   
     // MARK: - Navigation
-/*
+
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
-        let profileVC:ProfileViewController = segue.destinationViewController as! ProfileViewController
-        // Pass the selected object to the new view controller.
+        // Do something for the ShowDetail segue
+        if segue.identifier == "profileSegue" {
+            
+            let indexPath:NSIndexPath? = self.tableView!.indexPathForSelectedRow
+            
+            // Get the destination view controller
+            let detailVC:ProfileViewController = segue.destinationViewController as! ProfileViewController
+            
+            // Pass in the selected object to the new view controller
+            let cand:Candidate = candidates[indexPath!.row]
+            detailVC.candidate = cand
+//            detailVC.suit = card.suit
+
+        }
     }
-*/
 
 }

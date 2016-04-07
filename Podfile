@@ -7,7 +7,8 @@ target 'Mr. Spirit' do
 pod 'AFNetworking'
 pod 'MBProgressHUD'
 pod 'SwiftHEXColors'
-pod ‘Braintree’
+pod 'Braintree'
+pod 'Firebase', '>=2.5.1'
 
 end
 

@@ -8,14 +8,15 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class Candidate {
-    var name:String
-    var organization:String
-    var bio:String
-    var votes:Int
-    var headshot:UIImage
-    var detailPhoto:UIImage
+    var name:String=""
+    var organization:String=""
+    var bio:String=""
+    var votes:Int = 0
+    var headshot:UIImage=UIImage(named:"Bowtie Icon")!
+    var detailPhoto:UIImage=UIImage(named:"Bowtie Icon")!
     
     // MARK: Initialization
     
@@ -27,5 +28,8 @@ class Candidate {
         self.votes = votes
         self.headshot = headshot
         self.detailPhoto = detailPhoto
+    }
+    convenience init() {
+        self.init(name: "", organization:"", bio:"", votes:0, headshot:UIImage(named:"Bowtie Icon")!, detailPhoto: UIImage(named:"Bowtie Icon")!)
     }
 }

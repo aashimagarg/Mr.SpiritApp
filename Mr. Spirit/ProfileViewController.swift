@@ -14,6 +14,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var bioText: UILabel!
     @IBOutlet weak var voteButton: UIButton!
     @IBOutlet weak var donateButton: UIButton!
+    var candidate:Candidate? = Candidate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,7 @@ class ProfileViewController: UIViewController {
         modelImage.image = image
         
         // Get candidate bio
-//        bioText.text = "Hi my name is John. This is my bio"
+        bioText.text = candidate!.name
     }
 
     override func didReceiveMemoryWarning() {

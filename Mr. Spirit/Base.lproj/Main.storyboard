@@ -50,7 +50,7 @@
                                             <outlet property="headshotImage" destination="usi-Om-vNR" id="UJl-20-CQ9"/>
                                             <outlet property="nameLabel" destination="6nM-pz-WEQ" id="6uu-O1-cje"/>
                                             <outlet property="orgLabel" destination="c2a-aH-1ID" id="yLR-JP-U6M"/>
-                                            <segue destination="7QI-Tj-egF" kind="show" id="afX-VX-83Z"/>
+                                            <segue destination="7QI-Tj-egF" kind="show" identifier="profileSegue" id="afX-VX-83Z"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

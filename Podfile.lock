@@ -32,18 +32,21 @@ PODS:
   - Braintree/UI (4.2.3):
     - Braintree/Card
     - Braintree/Core
+  - Firebase (2.5.1)
   - MBProgressHUD (0.9.2)
   - SwiftHEXColors (1.0.2)
 
 DEPENDENCIES:
   - AFNetworking
   - Braintree
+  - Firebase (>= 2.5.1)
   - MBProgressHUD
   - SwiftHEXColors
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   Braintree: 05791bdc6d43c3faf2f802dd2d687e9f619f7f57
+  Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   SwiftHEXColors: 1238ce6ee5c698ef9caf00fad72876602ecd9df6
 
