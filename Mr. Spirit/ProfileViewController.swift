@@ -16,7 +16,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var voteButton: UIButton!
     @IBOutlet weak var donateButton: UIButton!
     var candidate:Candidate? = Candidate()
-    let ref = Firebase(url:"httvar//mrspirit2016.firebaseio.com/candidates")
+    var ref = Firebase(url:"httvar//mrspirit2016.firebaseio.com/candidates/")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,18 +27,17 @@ class ProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func voteBttnClicked(sender: AnyObject) {
-        // Candidate data reference
-        let candidateRef = self.ref.childByAppendingPath(candidate!.name)
-       
         voteButton.setTitle("Voted", forState: .Normal)
-        candidate!.votes = candidate!.votes + 1
-        let votes = ["votes":candidate!.votes]
-        candidateRef.updateChildValues(votes)
+        // TO DO:
+        // Change color of button if voted
         
-    
-        // TO DO: 
-        // Change color button if voted
-        // Allocate vote to correct person
+        // Update vote count
+        candidate!.votes += 1
+        let votesDict = ["votes":self.candidate!.votes]
+        ref.updateChildValues(votesDict)
+        
+        // Disable any more voting
+
     }
     
     func getCandidateInfo(){
@@ -48,6 +47,15 @@ class ProfileViewController: UIViewController {
         
         // Get candidate bio
         bioText.text = candidate!.name
+        
+        // Votes
+        ref = ref.childByAppendingPath(candidate!.name)
+        ref.observeEventType(.Value, withBlock: { snapshot in
+            let votes = (snapshot.value.objectForKey("votes") as? Int)!
+            self.candidate!.votes = votes
+            }, withCancelBlock: { error in
+                print(error.description)
+        })
     }
 
     override func didReceiveMemoryWarning() {

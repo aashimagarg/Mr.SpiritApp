@@ -11,6 +11,7 @@ import UIKit
 import Firebase
 
 class Candidate {
+    var candidateRef:Firebase!
     var name:String=""
     var organization:String=""
     var bio:String=""
@@ -28,6 +29,8 @@ class Candidate {
         self.votes = votes
         self.headshot = headshot
         self.detailPhoto = detailPhoto
+        
+//        self.candidateRef = self.candidateRef.childByAppendingPath(name)
     }
     convenience init() {
         self.init(name: "", organization:"", bio:"", votes:0, headshot:UIImage(named:"Bowtie Icon")!, detailPhoto: UIImage(named:"Bowtie Icon")!)
@@ -39,5 +42,9 @@ class Candidate {
             "bio": bio,
             "votes":votes
         ]
+    }
+    
+    func saveData(name:String, dict:AnyObject, ref:Firebase) {
+        self.candidateRef = ref.childByAppendingPath(self.name)
     }
 }

@@ -20,7 +20,7 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
     
     
     
-    var candidates = [Candidate]()
+    var candidatesList = [Candidate]()
     var candidateNames = ["Ryan Howell", "Erik Solórzano", "Patrick Golden", "Steven Aviles", "Marc Castaneda", "Elias Hinojosa", "Alec Garcia", "Andy Wallace", "Jonathan Stevenson", "Caleb Young"]
     var candidateOrgs = ["Camp Texas","Texas THON", "Texas Blazers", "Camp Kesem", "Camp Kesem", "Pi Kappa Phi", "Alpha Sigma Pi", "Delta Sigma Pi", "Beta Upsilon Chi", "Student African American Brotherhood"]
     
@@ -42,14 +42,19 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         // Load Candidates
         var candidate = Candidate()
         var candidateDict:AnyObject
-        
+        var votes:Int = 0
         let photo1 = UIImage(named: "default")!
+        // Get the data on a post that has changed
+        ref.observeEventType(.ChildChanged, withBlock: { snapshot in
+            votes = (snapshot.value.objectForKey("votes") as? Int)!
+        })
         for index in 0...9 {
-            candidate = Candidate(name: candidateNames[index], organization:candidateOrgs[index], bio:"This is a bio", votes: 0, headshot: photo1, detailPhoto: photo1)
-            candidates+=[candidate]
+            candidate = Candidate(name: candidateNames[index], organization:candidateOrgs[index], bio:"Hi, my name is\(candidateNames[index])", votes: votes, headshot: photo1, detailPhoto: photo1)
+            candidatesList+=[candidate]
             candidateDict = candidate.toDict()
-            let candidatesRef = self.ref.childByAppendingPath(candidate.name)
-            candidatesRef.setValue(candidateDict)
+            candidate.saveData(candidate.name, dict: candidateDict, ref: ref)
+//            let candidatesRef = self.ref.childByAppendingPath(candidate.name)
+//            candidatesRef.setValue(candidateDict)
         }
         
     
@@ -67,7 +72,7 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return candidates.count
+        return candidatesList.count
         
     }
     
@@ -76,16 +81,12 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         let cell = tableView.dequeueReusableCellWithIdentifier(self.cellId, forIndexPath: indexPath) as! CandidateCell
 
         // Fetch candidates
-        let candidate = candidates[indexPath.row]
-        
+        let candidate = candidatesList[indexPath.row]
+        // Configure cell
         cell.nameLabel.text = candidate.name.uppercaseString
         cell.orgLabel.text = candidate.organization
         cell.headshotImage.image = candidate.headshot
         
-//        let destinationVC = ProfileViewController()
-//        destinationVC.candidate = candidate
-//        destinationVC.performSegueWithIdentifier("profileSegue", sender: self)
-
         return cell
     }
     
@@ -106,10 +107,8 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
             let detailVC:ProfileViewController = segue.destinationViewController as! ProfileViewController
             
             // Pass in the selected object to the new view controller
-            let cand:Candidate = candidates[indexPath!.row]
+            let cand:Candidate = candidatesList[indexPath!.row]
             detailVC.candidate = cand
-//            detailVC.candidateRef = self.ref.childByAppendingPath(cand.name)
-//            detailVC.suit = card.suit
 
         }
     }
