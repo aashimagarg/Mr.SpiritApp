@@ -8,11 +8,13 @@
 
 import UIKit
 import SwiftHEXColors
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let FirebaseURL = Firebase(url:"https://mrspirit2016.firebaseio.com/")
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

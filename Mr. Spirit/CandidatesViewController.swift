@@ -8,12 +8,17 @@
 
 import UIKit
 import Foundation
+import Firebase
 
 class CandidatesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-//    var tableView:UITableView = UITableView()
     let cellId:String = "CandidateCell"
+    
+    // Load database
+    var ref = Firebase(url:"httvar//mrspirit2016.firebaseio.com/candidates")
+    
+    
     
     var candidates = [Candidate]()
     var candidateNames = ["Ryan Howell", "Erik Solórzano", "Patrick Golden", "Steven Aviles", "Marc Castaneda", "Elias Hinojosa", "Alec Garcia", "Andy Wallace", "Jonathan Stevenson", "Caleb Young"]
@@ -29,19 +34,22 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         self.view.addSubview(self.tableView)
 
 
-
-
-
         // Load candidate data
          loadCandidates()
     }
     
     func loadCandidates(){
         // Load Candidates
+        var candidate = Candidate()
+        var candidateDict:AnyObject
+        
         let photo1 = UIImage(named: "default")!
         for index in 0...9 {
-            let candidate = Candidate(name: candidateNames[index], organization:candidateOrgs[index], bio:"This is a bio", votes: 0, headshot: photo1, detailPhoto: photo1)
+            candidate = Candidate(name: candidateNames[index], organization:candidateOrgs[index], bio:"This is a bio", votes: 0, headshot: photo1, detailPhoto: photo1)
             candidates+=[candidate]
+            candidateDict = candidate.toDict()
+            let candidatesRef = self.ref.childByAppendingPath(candidate.name)
+            candidatesRef.setValue(candidateDict)
         }
         
     
@@ -100,6 +108,7 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
             // Pass in the selected object to the new view controller
             let cand:Candidate = candidates[indexPath!.row]
             detailVC.candidate = cand
+//            detailVC.candidateRef = self.ref.childByAppendingPath(cand.name)
 //            detailVC.suit = card.suit
 
         }

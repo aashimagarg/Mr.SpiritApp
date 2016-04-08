@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ProfileViewController: UIViewController {
 
@@ -15,6 +16,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var voteButton: UIButton!
     @IBOutlet weak var donateButton: UIButton!
     var candidate:Candidate? = Candidate()
+    let ref = Firebase(url:"httvar//mrspirit2016.firebaseio.com/candidates")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +27,15 @@ class ProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func voteBttnClicked(sender: AnyObject) {
+        // Candidate data reference
+        let candidateRef = self.ref.childByAppendingPath(candidate!.name)
+       
         voteButton.setTitle("Voted", forState: .Normal)
+        candidate!.votes = candidate!.votes + 1
+        let votes = ["votes":candidate!.votes]
+        candidateRef.updateChildValues(votes)
+        
+    
         // TO DO: 
         // Change color button if voted
         // Allocate vote to correct person

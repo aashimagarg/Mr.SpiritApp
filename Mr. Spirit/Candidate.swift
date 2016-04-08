@@ -32,4 +32,12 @@ class Candidate {
     convenience init() {
         self.init(name: "", organization:"", bio:"", votes:0, headshot:UIImage(named:"Bowtie Icon")!, detailPhoto: UIImage(named:"Bowtie Icon")!)
     }
+    func toDict()-> AnyObject {
+        return [
+            "name": name,
+            "organization": organization,
+            "bio": bio,
+            "votes":votes
+        ]
+    }
 }
