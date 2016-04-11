@@ -16,7 +16,7 @@ class Candidate {
     var organization:String=""
     var bio:String=""
     var votes:Int = 0
-    var headshot:UIImage=UIImage(named:"Bowtie Icon")!
+    var headshot:UIImage=UIImage(named:"WillFerrel")!
     var detailPhoto:UIImage=UIImage(named:"Bowtie Icon")!
     
     // MARK: Initialization
@@ -29,12 +29,13 @@ class Candidate {
         self.votes = votes
         self.headshot = headshot
         self.detailPhoto = detailPhoto
-        
-//        self.candidateRef = self.candidateRef.childByAppendingPath(name)
     }
+    
     convenience init() {
-        self.init(name: "", organization:"", bio:"", votes:0, headshot:UIImage(named:"Bowtie Icon")!, detailPhoto: UIImage(named:"Bowtie Icon")!)
+        self.init(name: "<NoName>", organization:"", bio:"", votes:0, headshot:UIImage(named:"Bowtie Icon")!, detailPhoto: UIImage(named:"Bowtie Icon")!)
     }
+    
+    // Formats candidate data as dictionary for DB use
     func toDict()-> AnyObject {
         return [
             "name": name,

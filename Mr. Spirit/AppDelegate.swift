@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UITabBar.appearance().barTintColor = UIColor(hexString: "#FBF9F9")
         UITabBar.appearance().tintColor = UIColor(hexString: "#FF9600")
-
         
         return true
     }

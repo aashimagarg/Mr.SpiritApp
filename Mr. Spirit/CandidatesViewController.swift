@@ -18,46 +18,45 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
     // Load database
     var ref = Firebase(url:"httvar//mrspirit2016.firebaseio.com/candidates")
     
-    
-    
     var candidatesList = [Candidate]()
     var candidateNames = ["Ryan Howell", "Erik Solórzano", "Patrick Golden", "Steven Aviles", "Marc Castaneda", "Elias Hinojosa", "Alec Garcia", "Andy Wallace", "Jonathan Stevenson", "Caleb Young"]
     var candidateOrgs = ["Camp Texas","Texas THON", "Texas Blazers", "Camp Kesem", "Camp Kesem", "Pi Kappa Phi", "Alpha Sigma Pi", "Delta Sigma Pi", "Beta Upsilon Chi", "Student African American Brotherhood"]
+    // Need array of bios, photos
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Load candidate data
+        loadCandidates()
 
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
         
         self.view.addSubview(self.tableView)
-
-
-        // Load candidate data
-         loadCandidates()
     }
     
     func loadCandidates(){
-        // Load Candidates
         var candidate = Candidate()
         var candidateDict:AnyObject
         var votes:Int = 0
         let photo1 = UIImage(named: "default")!
-        // Get the data on a post that has changed
+        
+        // Get number of current votes
         ref.observeEventType(.ChildChanged, withBlock: { snapshot in
             votes = (snapshot.value.objectForKey("votes") as? Int)!
         })
+        
         for index in 0...9 {
-            candidate = Candidate(name: candidateNames[index], organization:candidateOrgs[index], bio:"Hi, my name is\(candidateNames[index])", votes: votes, headshot: photo1, detailPhoto: photo1)
+            candidate = Candidate(name: candidateNames[index], organization:candidateOrgs[index], bio:"Hi, my name is \(candidateNames[index])", votes: votes, headshot: UIImage(named: "WillFerrel")!, detailPhoto: photo1)
+           
+            // Add to candidate list
             candidatesList+=[candidate]
+            
+            // Save to database
             candidateDict = candidate.toDict()
             candidate.saveData(candidate.name, dict: candidateDict, ref: ref)
-//            let candidatesRef = self.ref.childByAppendingPath(candidate.name)
-//            candidatesRef.setValue(candidateDict)
         }
-        
-    
         
     }
 
@@ -76,16 +75,17 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
-  
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(self.cellId, forIndexPath: indexPath) as! CandidateCell
-
-        // Fetch candidates
         let candidate = candidatesList[indexPath.row]
+        
         // Configure cell
         cell.nameLabel.text = candidate.name.uppercaseString
         cell.orgLabel.text = candidate.organization
         cell.headshotImage.image = candidate.headshot
+        
+        
         
         return cell
     }
@@ -97,18 +97,16 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Do something for the ShowDetail segue
         if segue.identifier == "profileSegue" {
-            
             let indexPath:NSIndexPath? = self.tableView!.indexPathForSelectedRow
             
             // Get the destination view controller
             let detailVC:ProfileViewController = segue.destinationViewController as! ProfileViewController
             
+            self.tableView.deselectRowAtIndexPath(indexPath!, animated: false)
             // Pass in the selected object to the new view controller
-            let cand:Candidate = candidatesList[indexPath!.row]
-            detailVC.candidate = cand
+            let candidate:Candidate = candidatesList[indexPath!.row]
+            detailVC.candidate = candidate
 
         }
     }

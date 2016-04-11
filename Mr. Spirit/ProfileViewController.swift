@@ -22,31 +22,41 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         voteButton.layer.cornerRadius = 5.0;
         donateButton.layer.cornerRadius = 5.0;
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if (defaults.boolForKey("hasVoted")) {
+            voteButton.setTitle("Voted", forState: .Normal)
+            voteButton.backgroundColor = UIColor(hexString: "#9E9EA5")
+            voteButton.enabled = false
+        }
+        
         getCandidateInfo()
 
         // Do any additional setup after loading the view.
     }
     @IBAction func voteBttnClicked(sender: AnyObject) {
-        voteButton.setTitle("Voted", forState: .Normal)
-        // TO DO:
-        // Change color of button if voted
-        
         // Update vote count
         candidate!.votes += 1
         let votesDict = ["votes":self.candidate!.votes]
         ref.updateChildValues(votesDict)
         
-        // Disable any more voting
+        // Update button
+        voteButton.setTitle("Voted", forState: .Normal)
+        voteButton.backgroundColor = UIColor(hexString: "#9E9EA5")
+        voteButton.enabled = false
+        
+        //TO-DO: disable all others voting
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setBool(true, forKey: "hasVoted")
 
     }
     
     func getCandidateInfo(){
         // Get candidate image
-        let image = UIImage(named:"Bowtie Icon")
-        modelImage.image = image
+        modelImage.image = self.candidate?.detailPhoto
         
         // Get candidate bio
-        bioText.text = candidate!.name
+        bioText.text = self.candidate!.bio
         
         // Votes
         ref = ref.childByAppendingPath(candidate!.name)
