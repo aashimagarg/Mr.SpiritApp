@@ -110,6 +110,7 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
         dropInViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: UIBarButtonSystemItem.Cancel,
             target: self, action: #selector(ProfileViewController.userDidCancelPayment))
+        dropInViewController.navigationItem.leftBarButtonItem?.tintColor = UIColor(hexString: "FFFFFF")
         let navigationController = UINavigationController(rootViewController: dropInViewController)
         presentViewController(navigationController, animated: true, completion: nil)
     }
@@ -141,6 +142,8 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
     
     func getCandidateInfo(){
         // Get candidate image
+        modelImage.layer.cornerRadius = 10.0
+        modelImage.clipsToBounds = true
         modelImage.image = self.candidate?.headshot
         
         // Get candidate bio

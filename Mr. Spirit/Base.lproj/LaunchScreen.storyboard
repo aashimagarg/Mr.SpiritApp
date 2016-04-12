@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="12800305_469229739954020_4638983927112012847_n" translatesAutoresizingMaskIntoConstraints="NO" id="jjR-YZ-gYw">
-                                <rect key="frame" x="14" y="123" width="347" height="276"/>
+                                <rect key="frame" x="14" y="196" width="347" height="276"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
