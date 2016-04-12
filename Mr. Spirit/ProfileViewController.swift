@@ -8,8 +8,10 @@
 
 import UIKit
 import Firebase
+import Braintree
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
+    var braintreeClient: BTAPIClient?
 
     @IBOutlet weak var modelImage: UIImageView!
     @IBOutlet weak var bioText: UILabel!
@@ -18,8 +20,14 @@ class ProfileViewController: UIViewController {
     var candidate:Candidate? = Candidate()
     var ref = Firebase(url:"httvar//mrspirit2016.firebaseio.com/candidates/")
     
+    @IBAction func donateButtonClicked(sender: AnyObject) {
+        if (braintreeClient != nil){
+            tappedMyPayButton()
+        }
+        // TODO: else (UIAlertView) "Please check your internet connection and try again"
+    }
     override func viewDidLoad() {
-        super.viewDidLoad()
+        
         voteButton.layer.cornerRadius = 5.0;
         donateButton.layer.cornerRadius = 5.0;
         
@@ -33,6 +41,34 @@ class ProfileViewController: UIViewController {
         getCandidateInfo()
 
         // Do any additional setup after loading the view.
+        
+        let clientTokenURL = NSURL(string: "https://gatnaofft8.execute-api.us-east-1.amazonaws.com/sandbox/token")!
+        let clientTokenRequest = NSMutableURLRequest(URL: clientTokenURL)
+        clientTokenRequest.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        NSURLSession.sharedSession().dataTaskWithRequest(clientTokenRequest) { (data, response, error) -> Void in
+            print(error)
+
+            // Handle reiturned JSON
+            var clientToken:String?
+            getData: do {
+                if (data == nil){
+                    break getData
+                }
+                let jsonData = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
+                let jsonDataDict = jsonData as? [String:String]
+                clientToken = jsonDataDict!["client_token"]
+            } catch let error as NSError {
+                print(error)
+            }
+            
+            if clientToken != nil {
+                self.braintreeClient = BTAPIClient(authorization: clientToken!)
+            }
+        }.resume()
+        
+        super.viewDidLoad()
+
     }
     @IBAction func voteBttnClicked(sender: AnyObject) {
         // Update vote count
@@ -50,6 +86,56 @@ class ProfileViewController: UIViewController {
         defaults.setBool(true, forKey: "hasVoted")
 
     }
+    
+    func dropInViewController(viewController: BTDropInViewController, didSucceedWithTokenization paymentMethod: BTPaymentMethodNonce) {
+        // send payment
+        postNonceToServer(paymentMethod.nonce)
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func dropInViewControllerDidCancel(viewController: BTDropInViewController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func tappedMyPayButton(){
+        let dropInViewController = BTDropInViewController(APIClient: braintreeClient!)
+        dropInViewController.delegate = self
+        
+        // This is where you might want to customize your view controller (see below)
+        
+        // The way you present your BTDropInViewController instance is up to you.
+        // In this example, we wrap it in a new, modally-presented navigation controller:
+        dropInViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: UIBarButtonSystemItem.Cancel,
+            target: self, action: #selector(ProfileViewController.userDidCancelPayment))
+        let navigationController = UINavigationController(rootViewController: dropInViewController)
+        presentViewController(navigationController, animated: true, completion: nil)
+    }
+    
+    func userDidCancelPayment(){
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func postNonceToServer(paymentMethodNonce: String) {
+        let paymentURL = NSURL(string: "https://gatnaofft8.execute-api.us-east-1.amazonaws.com/sandbox/checkout")
+        let request = NSMutableURLRequest(URL: paymentURL!)
+        
+        // Dictionary of things to pass in body
+        let body_dict: [String: String] = ["nonce": paymentMethodNonce, "amount": "11.11"]
+        do {
+            let jsonData = try NSJSONSerialization.dataWithJSONObject(body_dict, options: NSJSONWritingOptions.PrettyPrinted)
+            request.HTTPBody = jsonData
+            request.HTTPMethod = "POST"
+        } catch let error as NSError {
+            print(error)
+        }
+        
+        NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
+            // TODO: Handle success or failure
+            print(response)
+            }.resume()
+    }
+
     
     func getCandidateInfo(){
         // Get candidate image
