@@ -19,7 +19,6 @@
 		5914FC581CA4921D00A0EEA6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC571CA4921D00A0EEA6 /* ProfileViewController.swift */; };
 		5914FC5A1CA4922400A0EEA6 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC591CA4922400A0EEA6 /* AboutUsViewController.swift */; };
 		5914FC5D1CA4922F00A0EEA6 /* TwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC5C1CA4922F00A0EEA6 /* TwitterViewController.swift */; };
-		5914FC5F1CA4923A00A0EEA6 /* DonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC5E1CA4923A00A0EEA6 /* DonateViewController.swift */; };
 		5914FC611CA4925300A0EEA6 /* NewTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC601CA4925300A0EEA6 /* NewTweetViewController.swift */; };
 		5914FC631CA4928000A0EEA6 /* CandidateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC621CA4928000A0EEA6 /* CandidateCell.swift */; };
 		5914FC651CA4929700A0EEA6 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC641CA4929700A0EEA6 /* TweetCell.swift */; };
@@ -64,7 +63,6 @@
 		5914FC571CA4921D00A0EEA6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		5914FC591CA4922400A0EEA6 /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		5914FC5C1CA4922F00A0EEA6 /* TwitterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterViewController.swift; sourceTree = "<group>"; };
-		5914FC5E1CA4923A00A0EEA6 /* DonateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonateViewController.swift; sourceTree = "<group>"; };
 		5914FC601CA4925300A0EEA6 /* NewTweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTweetViewController.swift; sourceTree = "<group>"; };
 		5914FC621CA4928000A0EEA6 /* CandidateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateCell.swift; sourceTree = "<group>"; };
 		5914FC641CA4929700A0EEA6 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
@@ -161,7 +159,6 @@
 				5914FC661CA4929B00A0EEA6 /* Twitter */,
 				5914FC571CA4921D00A0EEA6 /* ProfileViewController.swift */,
 				5914FC591CA4922400A0EEA6 /* AboutUsViewController.swift */,
-				5914FC5E1CA4923A00A0EEA6 /* DonateViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -275,7 +272,7 @@
 				TargetAttributes = {
 					5914FC221CA48B2100A0EEA6 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = J29EQ9363G;
+						DevelopmentTeam = 9ZE33R343G;
 					};
 					5914FC361CA48B2100A0EEA6 = {
 						CreatedOnToolsVersion = 7.2;
@@ -391,7 +388,6 @@
 			files = (
 				5914FC5D1CA4922F00A0EEA6 /* TwitterViewController.swift in Sources */,
 				5914FC611CA4925300A0EEA6 /* NewTweetViewController.swift in Sources */,
-				5914FC5F1CA4923A00A0EEA6 /* DonateViewController.swift in Sources */,
 				5914FC5A1CA4922400A0EEA6 /* AboutUsViewController.swift in Sources */,
 				5914FC291CA48B2100A0EEA6 /* ViewController.swift in Sources */,
 				5914FC561CA4921500A0EEA6 /* CandidatesViewController.swift in Sources */,
@@ -542,10 +538,13 @@
 			baseConfigurationReference = 291255C6031328825F247290 /* Pods-Mr. Spirit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Mr. Spirit/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.Mr--Spirit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -554,10 +553,13 @@
 			baseConfigurationReference = 42CF190BF5634E9DA6BBD878 /* Pods-Mr. Spirit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Mr. Spirit/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.Mr--Spirit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

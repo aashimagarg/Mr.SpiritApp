@@ -28,6 +28,8 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
     }
     override func viewDidLoad() {
         
+        super.viewDidLoad()
+        
         voteButton.layer.cornerRadius = 5.0;
         donateButton.layer.cornerRadius = 5.0;
         
@@ -67,7 +69,7 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
             }
         }.resume()
         
-        super.viewDidLoad()
+        
 
     }
     @IBAction func voteBttnClicked(sender: AnyObject) {
@@ -139,7 +141,7 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
     
     func getCandidateInfo(){
         // Get candidate image
-        modelImage.image = self.candidate?.detailPhoto
+        modelImage.image = self.candidate?.headshot
         
         // Get candidate bio
         bioText.text = self.candidate!.bio
