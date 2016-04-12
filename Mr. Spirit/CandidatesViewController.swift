@@ -19,7 +19,7 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
     var ref = Firebase(url:"httvar//mrspirit2016.firebaseio.com/candidates")
     
     var candidatesList = [Candidate]()
-    var candidateNames = ["Ryan Howell", "Erik Solórzano", "Patrick Golden", "Steven Aviles", "Marc Castaneda", "Elias Hinojosa", "Alec Garcia", "Andy Wallace", "Jonathan Stevenson", "Caleb Young"]
+    var candidateNames = ["Ryan Howell", "Erik Solorzano", "Patrick Golden", "Steven Aviles", "Marc Castaneda", "Elias Hinojosa", "Alec Garcia", "Andy Wallace", "Jonathan Stevenson", "Caleb Young"]
     var candidateOrgs = ["Camp Texas","Texas THON", "Texas Blazers", "Camp Kesem", "Camp Kesem", "Pi Kappa Phi", "Alpha Sigma Pi", "Delta Sigma Pi", "Beta Upsilon Chi", "Student African American Brotherhood"]
     // Need array of bios, photos
     

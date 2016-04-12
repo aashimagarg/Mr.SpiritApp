@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C33365CA262B46A06B03A38 /* Pods_Mr__Spirit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDBF313A6D6483C6C75FC349 /* Pods_Mr__Spirit.framework */; };
+		0C33365CA262B46A06B03A38 /* Pods_Mr__Spirit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDBF313A6D6483C6C75FC349 /* Pods_Mr__Spirit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		5914FC271CA48B2100A0EEA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC261CA48B2100A0EEA6 /* AppDelegate.swift */; };
 		5914FC291CA48B2100A0EEA6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC281CA48B2100A0EEA6 /* ViewController.swift */; };
 		5914FC2C1CA48B2100A0EEA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5914FC2A1CA48B2100A0EEA6 /* Main.storyboard */; };
@@ -24,6 +24,7 @@
 		5914FC631CA4928000A0EEA6 /* CandidateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC621CA4928000A0EEA6 /* CandidateCell.swift */; };
 		5914FC651CA4929700A0EEA6 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC641CA4929700A0EEA6 /* TweetCell.swift */; };
 		D307548B1CA4F6250089DA44 /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D307548A1CA4F6250089DA44 /* Candidate.swift */; };
+		D3D16EF71CBD489B0042F916 /* Braintree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D16EF61CBD489B0042F916 /* Braintree.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		5914FC621CA4928000A0EEA6 /* CandidateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateCell.swift; sourceTree = "<group>"; };
 		5914FC641CA4929700A0EEA6 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		D307548A1CA4F6250089DA44 /* Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
+		D3D16EF61CBD489B0042F916 /* Braintree.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Braintree.framework; path = "../../Library/Developer/Xcode/DerivedData/Mr._Spirit-afzmbjamaawjknbtrjukfosutvam/Build/Products/Debug-iphonesimulator/Braintree.framework"; sourceTree = "<group>"; };
 		DDBF313A6D6483C6C75FC349 /* Pods_Mr__Spirit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mr__Spirit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -76,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3D16EF71CBD489B0042F916 /* Braintree.framework in Frameworks */,
 				0C33365CA262B46A06B03A38 /* Pods_Mr__Spirit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,6 +198,7 @@
 		FB3C08D7D2A8A9016F075526 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D3D16EF61CBD489B0042F916 /* Braintree.framework */,
 				DDBF313A6D6483C6C75FC349 /* Pods_Mr__Spirit.framework */,
 			);
 			name = Frameworks;

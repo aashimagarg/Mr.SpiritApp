@@ -9,6 +9,7 @@
 import UIKit
 import SwiftHEXColors
 import Firebase
+import Braintree
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,7 +26,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().barTintColor = UIColor(hexString: "#FBF9F9")
         UITabBar.appearance().tintColor = UIColor(hexString: "#FF9600")
         
+        BTAppSwitch.setReturnURLScheme("com.codepath.Mr--Spirit.payments")
+        
         return true
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        if url.scheme.localizedCaseInsensitiveCompare("com.codepath.Mr--Spirit.payments") == .OrderedSame {
+            return BTAppSwitch.handleOpenURL(url, sourceApplication:sourceApplication)
+        }
+        return false
     }
 
     func applicationWillResignActive(application: UIApplication) {
