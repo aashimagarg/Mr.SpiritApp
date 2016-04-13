@@ -155,7 +155,7 @@
                         <viewControllerLayoutGuide type="bottom" id="jq1-GV-O1C"/>
                     </layoutGuides>
                     <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="flT-kT-rp0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0yj-2x-PTX">
@@ -224,48 +224,33 @@
                                     <constraint firstItem="cOi-OP-fbw" firstAttribute="top" secondItem="blD-As-Vws" secondAttribute="bottom" constant="15" id="5Cf-xm-7hm"/>
                                     <constraint firstItem="vRp-ah-LkU" firstAttribute="leading" secondItem="0yj-2x-PTX" secondAttribute="leading" constant="12" id="626-Ir-zlU"/>
                                     <constraint firstItem="nt0-qQ-tvP" firstAttribute="top" secondItem="0yj-2x-PTX" secondAttribute="top" id="6Sq-bQ-vmL"/>
-                                    <constraint firstAttribute="bottom" secondItem="gwB-98-HSd" secondAttribute="bottom" constant="321" id="77G-5i-ttx"/>
+                                    <constraint firstAttribute="bottom" secondItem="cOi-OP-fbw" secondAttribute="bottom" id="9RR-EH-Wfu"/>
                                     <constraint firstAttribute="trailing" secondItem="cOi-OP-fbw" secondAttribute="trailing" constant="35" id="BGH-ZW-OIx"/>
                                     <constraint firstItem="blD-As-Vws" firstAttribute="top" secondItem="vRp-ah-LkU" secondAttribute="bottom" constant="40" id="Cti-WT-5WB"/>
                                     <constraint firstItem="gwB-98-HSd" firstAttribute="top" secondItem="xyl-R8-cZC" secondAttribute="bottom" constant="15" id="Dxp-hR-vt3"/>
-                                    <constraint firstItem="rMu-D7-PbW" firstAttribute="leading" secondItem="xyl-R8-cZC" secondAttribute="leading" id="IMq-ib-aif"/>
-                                    <constraint firstItem="rMu-D7-PbW" firstAttribute="trailing" secondItem="xyl-R8-cZC" secondAttribute="trailing" id="IbK-Am-hGI"/>
                                     <constraint firstItem="rMu-D7-PbW" firstAttribute="top" secondItem="gwB-98-HSd" secondAttribute="bottom" constant="40" id="OOx-dR-a4D"/>
                                     <constraint firstItem="blD-As-Vws" firstAttribute="leading" secondItem="0yj-2x-PTX" secondAttribute="leading" constant="10" id="Ozk-jl-qK9"/>
                                     <constraint firstItem="vRp-ah-LkU" firstAttribute="top" secondItem="rMu-D7-PbW" secondAttribute="bottom" constant="15" id="S5S-PU-Pqd"/>
                                     <constraint firstItem="nt0-qQ-tvP" firstAttribute="leading" secondItem="0yj-2x-PTX" secondAttribute="leading" id="Spw-lH-m1G"/>
-                                    <constraint firstItem="gwB-98-HSd" firstAttribute="leading" secondItem="xyl-R8-cZC" secondAttribute="leading" id="ZAf-m2-WWR"/>
                                     <constraint firstAttribute="height" constant="667" id="ZUY-Gk-e4J"/>
                                     <constraint firstAttribute="trailing" secondItem="rMu-D7-PbW" secondAttribute="trailing" constant="12" id="cUc-IH-QTA"/>
                                     <constraint firstAttribute="trailing" secondItem="nt0-qQ-tvP" secondAttribute="trailing" id="dhR-8G-HAJ"/>
                                     <constraint firstAttribute="trailing" secondItem="blD-As-Vws" secondAttribute="trailing" constant="10" id="eKe-Dq-hVd"/>
                                     <constraint firstItem="gwB-98-HSd" firstAttribute="leading" secondItem="0yj-2x-PTX" secondAttribute="leading" constant="12" id="tq0-up-EzX"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="ZAf-m2-WWR"/>
-                                        <exclude reference="IMq-ib-aif"/>
-                                        <exclude reference="IbK-Am-hGI"/>
-                                    </mask>
-                                </variation>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="0yj-2x-PTX" secondAttribute="bottom" id="NZp-Oo-UYm"/>
                             <constraint firstItem="0yj-2x-PTX" firstAttribute="top" secondItem="flT-kT-rp0" secondAttribute="top" id="RYD-1b-9H7"/>
                             <constraint firstItem="0yj-2x-PTX" firstAttribute="leading" secondItem="flT-kT-rp0" secondAttribute="leading" id="hvA-MY-0Ur"/>
+                            <constraint firstItem="0yj-2x-PTX" firstAttribute="bottom" secondItem="flT-kT-rp0" secondAttribute="bottomMargin" id="nUT-DY-d0g"/>
                             <constraint firstAttribute="trailing" secondItem="0yj-2x-PTX" secondAttribute="trailing" id="q8A-wx-klI"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="NZp-Oo-UYm"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="aS5-7g-85e"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="1300"/>
+                    <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="aboutUsImage" destination="nt0-qQ-tvP" id="W5f-6B-Jx5"/>
                         <outlet property="aboutUsText" destination="gwB-98-HSd" id="v1c-dr-ZZ2"/>

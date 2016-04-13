@@ -20,13 +20,7 @@ class AboutUsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        infoView.addSubview(scrollView)
-        print(infoView.frame.size.height)
-        print(scrollView.frame.size.height)
-        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: (infoView.frame.origin.y + infoView.frame.size.height)*2)
-//
-//        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: hostImage1.frame.size.height + hostImage1.frame.origin.y)
-
+        
         // Do any additional setup after loading the view.
         let image = UIImage(named: "group")!
 //        aboutUsImage.layer.cornerRadius = 10.0
