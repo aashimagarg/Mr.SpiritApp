@@ -11,6 +11,7 @@ import UIKit
 class AboutUsViewController: UIViewController {
     @IBOutlet weak var aboutUsImage: UIImageView!
     @IBOutlet weak var aboutUsText: UILabel!
+    @IBOutlet weak var philanthropyText: UILabel!
     
     @IBOutlet weak var scrollView: UIScrollView!
 //    @IBOutlet weak var infoView: UIView!
@@ -21,10 +22,11 @@ class AboutUsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         let image = UIImage(named: "group")!
-        aboutUsImage.layer.cornerRadius = 10.0
-        aboutUsImage.clipsToBounds = true
+//        aboutUsImage.layer.cornerRadius = 10.0
+//        aboutUsImage.clipsToBounds = true
         aboutUsImage.image = image
-        aboutUsText.text = "The Mr. Spirit Pageant Show began as an initiative to raise money for Texas Spirits’ two philanthropies: Make-A-Wish Foundation and Saint Louise House. This April, Texas Spirits is hosting its third annual Mr. Spirit, showcasing ten contestants from all over the UT Community!"
+        aboutUsText.text = "Texas Spirits is an honorary spirit, service, and social organization at the University of Texas at Austin. The Mr. Spirit Pageant Show began three years ago as an initiative to raise money for Texas Spirits’ two philanthropies: Make-A-Wish Foundation and Saint Louise House."
+        philanthropyText.text = "The Make-A-Wish Foundation grants wishes to children with life-threatening medical conditions. Since its founding in 1980, the Make-A-Wish foundation has granted over 180,000 wishes and currently grants a wish every 40 minutes.\n\nSaint Louise House provides housing and services to homeless women and children in Austin, in an effort to help families stay together and encourage self-sufficiency. Saint Louise House has housed 130 families since 2012."
     }
 
     override func didReceiveMemoryWarning() {

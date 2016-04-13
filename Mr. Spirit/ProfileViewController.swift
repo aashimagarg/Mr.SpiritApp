@@ -31,8 +31,8 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
         
         super.viewDidLoad()
         
-        voteButton.layer.cornerRadius = 5.0;
-        donateButton.layer.cornerRadius = 5.0;
+//        voteButton.layer.cornerRadius = 5.0;
+//        donateButton.layer.cornerRadius = 5.0;
         
         let defaults = NSUserDefaults.standardUserDefaults()
         if (defaults.boolForKey("hasVoted")) {
@@ -155,12 +155,12 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
     
     func getCandidateInfo(){
         // Get candidate image
-        modelImage.layer.cornerRadius = 10.0
-        modelImage.clipsToBounds = true
+//        modelImage.layer.cornerRadius = 10.0
+//        modelImage.clipsToBounds = true
         modelImage.image = self.candidate?.detailPhoto
         
         // Get candidate bio
-        bioHeader.text = "About \(candidate!.getFirstName())"
+        bioHeader.text = self.candidate!.name
         bioText.text = self.candidate!.bio
         
         

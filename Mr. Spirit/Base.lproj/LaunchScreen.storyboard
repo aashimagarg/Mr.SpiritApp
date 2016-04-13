@@ -17,11 +17,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="12800305_469229739954020_4638983927112012847_n" translatesAutoresizingMaskIntoConstraints="NO" id="jjR-YZ-gYw">
-                                <rect key="frame" x="14" y="196" width="347" height="276"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mr.Spirit_Launch Screen" translatesAutoresizingMaskIntoConstraints="NO" id="Z9L-G9-2CX">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97254901960784312" green="0.65098039215686276" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Z9L-G9-2CX" secondAttribute="bottom" id="4bc-UZ-RCi"/>
+                            <constraint firstAttribute="trailing" secondItem="Z9L-G9-2CX" secondAttribute="trailing" id="Hsj-Jf-r1o"/>
+                            <constraint firstItem="Z9L-G9-2CX" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="PIV-tK-DBv"/>
+                            <constraint firstItem="Z9L-G9-2CX" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="jYD-BM-aGz"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Z9L-G9-2CX" secondAttribute="bottom" id="jkN-NM-aH6"/>
+                            <constraint firstItem="Z9L-G9-2CX" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="kuk-wX-4Ua"/>
+                            <constraint firstAttribute="trailing" secondItem="Z9L-G9-2CX" secondAttribute="trailing" id="r4g-BZ-ila"/>
+                            <constraint firstItem="Z9L-G9-2CX" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="vnC-I7-3IS"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="PIV-tK-DBv"/>
+                                <exclude reference="jYD-BM-aGz"/>
+                                <exclude reference="r4g-BZ-ila"/>
+                                <exclude reference="4bc-UZ-RCi"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
@@ -31,6 +49,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="12800305_469229739954020_4638983927112012847_n" width="375" height="290"/>
+        <image name="Mr.Spirit_Launch Screen" width="750" height="1334"/>
     </resources>
 </document>

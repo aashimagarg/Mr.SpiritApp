@@ -40,6 +40,7 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         var candidate = Candidate()
         var candidateDict:AnyObject
         var votes:Int = 0
+        let bioText = "Texas Spirits is an honorary spirit, service, and social organization at the University of Texas at Austin that strives to serve the University and the Austin community through its commitment to school spirit and philanthropic efforts. The Mr. Spirit Pageant Show began as an initiative to raise money for Texas Spirits’ two philanthropies: Make-A-Wish Foundation and Saint Louise House. This April, Texas Spirits is hosting its third annual Mr. Spirit, showcasing ten contestants from all over the UT Community! The Make-A-Wish Foundation is a nonprofit organization that serves to grant “wishes” to children with life-threatening medical conditions. Since its founding in 1980, the Make-A-Wish foundation has granted"
         // Get number of current votes
         ref.observeEventType(.ChildChanged, withBlock: { snapshot in
             votes = (snapshot.value.objectForKey("votes") as? Int)!
@@ -48,7 +49,7 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         for index in 0...8 {
             let detailPic = UIImage(named: candidateNames[index])!
             let pic = UIImage(named: "sq-\(candidateNames[index])")!
-            candidate = Candidate(name: candidateNames[index], organization:candidateOrgs[index], bio:"Hi, my name is \(candidateNames[index])", votes: votes, headshot: pic, detailPhoto: detailPic)
+            candidate = Candidate(name: candidateNames[index], organization:candidateOrgs[index], bio:bioText, votes: votes, headshot: pic, detailPhoto: detailPic)
            
             // Add to candidate list
             candidatesList+=[candidate]
@@ -81,7 +82,7 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         let candidate = candidatesList[indexPath.row]
         
         // Configure cell
-        cell.nameLabel.text = candidate.name.uppercaseString
+        cell.nameLabel.text = candidate.name
         cell.orgLabel.text = candidate.organization
         cell.headshotImage.image = candidate.headshot
         

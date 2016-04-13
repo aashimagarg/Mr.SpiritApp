@@ -20,11 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        UINavigationBar.appearance().barTintColor = UIColor(hexString: "#FF9600")
+        UINavigationBar.appearance().barTintColor = UIColor(hexString: "#f9A643")
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor(hexString: "FFFFFF")!]
         
         UITabBar.appearance().barTintColor = UIColor(hexString: "#FBF9F9")
-        UITabBar.appearance().tintColor = UIColor(hexString: "#FF9600")
+        UITabBar.appearance().tintColor = UIColor(hexString: "#f9A643")
         
         BTAppSwitch.setReturnURLScheme("com.codepath.Mr--Spirit.payments")
         
