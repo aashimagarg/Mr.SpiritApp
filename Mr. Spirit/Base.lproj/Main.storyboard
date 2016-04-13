@@ -154,8 +154,8 @@
                         <viewControllerLayoutGuide type="top" id="PPj-wz-h8b"/>
                         <viewControllerLayoutGuide type="bottom" id="jq1-GV-O1C"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="flT-kT-rp0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="flT-kT-rp0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0yj-2x-PTX">
@@ -235,6 +235,7 @@
                                     <constraint firstItem="vRp-ah-LkU" firstAttribute="top" secondItem="rMu-D7-PbW" secondAttribute="bottom" constant="15" id="S5S-PU-Pqd"/>
                                     <constraint firstItem="nt0-qQ-tvP" firstAttribute="leading" secondItem="0yj-2x-PTX" secondAttribute="leading" id="Spw-lH-m1G"/>
                                     <constraint firstItem="gwB-98-HSd" firstAttribute="leading" secondItem="xyl-R8-cZC" secondAttribute="leading" id="ZAf-m2-WWR"/>
+                                    <constraint firstAttribute="height" constant="667" id="ZUY-Gk-e4J"/>
                                     <constraint firstAttribute="trailing" secondItem="rMu-D7-PbW" secondAttribute="trailing" constant="12" id="cUc-IH-QTA"/>
                                     <constraint firstAttribute="trailing" secondItem="nt0-qQ-tvP" secondAttribute="trailing" id="dhR-8G-HAJ"/>
                                     <constraint firstAttribute="trailing" secondItem="blD-As-Vws" secondAttribute="trailing" constant="10" id="eKe-Dq-hVd"/>
@@ -251,32 +252,32 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="jq1-GV-O1C" firstAttribute="top" secondItem="0yj-2x-PTX" secondAttribute="bottom" constant="-49" id="4Nw-hz-Bbo"/>
-                            <constraint firstAttribute="bottom" secondItem="0yj-2x-PTX" secondAttribute="bottom" id="LMD-bR-Myc"/>
+                            <constraint firstAttribute="bottom" secondItem="0yj-2x-PTX" secondAttribute="bottom" id="NZp-Oo-UYm"/>
                             <constraint firstItem="0yj-2x-PTX" firstAttribute="top" secondItem="flT-kT-rp0" secondAttribute="top" id="RYD-1b-9H7"/>
                             <constraint firstItem="0yj-2x-PTX" firstAttribute="leading" secondItem="flT-kT-rp0" secondAttribute="leading" id="hvA-MY-0Ur"/>
-                            <constraint firstItem="0yj-2x-PTX" firstAttribute="bottom" secondItem="jq1-GV-O1C" secondAttribute="top" id="prz-ch-6eE"/>
                             <constraint firstAttribute="trailing" secondItem="0yj-2x-PTX" secondAttribute="trailing" id="q8A-wx-klI"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="prz-ch-6eE"/>
-                                <exclude reference="4Nw-hz-Bbo"/>
+                                <exclude reference="NZp-Oo-UYm"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="aS5-7g-85e"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="1300"/>
                     <connections>
                         <outlet property="aboutUsImage" destination="nt0-qQ-tvP" id="W5f-6B-Jx5"/>
                         <outlet property="aboutUsText" destination="gwB-98-HSd" id="v1c-dr-ZZ2"/>
+                        <outlet property="hostImage1" destination="cOi-OP-fbw" id="s0b-w1-HeD"/>
+                        <outlet property="infoView" destination="flT-kT-rp0" id="Ljq-3H-y2i"/>
                         <outlet property="philanthropyText" destination="vRp-ah-LkU" id="67X-Cu-hgI"/>
                         <outlet property="scrollView" destination="0yj-2x-PTX" id="fVL-93-r9z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B7m-qM-roG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2175.5" y="1833.5"/>
+            <point key="canvasLocation" x="2175.5" y="1833"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="ht2-KY-mbm">

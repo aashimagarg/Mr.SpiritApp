@@ -161,7 +161,13 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
         
         // Get candidate bio
         bioHeader.text = self.candidate!.name
-        bioText.text = self.candidate!.bio
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.Justified
+        let attributedString = NSAttributedString(string: self.candidate!.bio, attributes: [NSParagraphStyleAttributeName: paragraphStyle, NSBaselineOffsetAttributeName: NSNumber(float: 0)])
+        bioText.attributedText = attributedString
+        
+//        bioText.text = self.candidate!.bio
         
         
     }
