@@ -12,8 +12,12 @@ class AboutUsViewController: UIViewController {
     @IBOutlet weak var aboutUsImage: UIImageView!
     @IBOutlet weak var aboutUsText: UILabel!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+//    @IBOutlet weak var infoView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+//        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: infoView.frame.origin.y + infoView.frame.size.height)
 
         // Do any additional setup after loading the view.
         let image = UIImage(named: "group")!
