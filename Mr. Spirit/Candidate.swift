@@ -45,6 +45,10 @@ class Candidate {
         ]
     }
     
+    func getFirstName() -> String {
+        return name.componentsSeparatedByString(" ").first!
+    }
+    
     func saveData(name:String, dict:AnyObject, ref:Firebase) {
         self.candidateRef = ref.childByAppendingPath(self.name)
     }

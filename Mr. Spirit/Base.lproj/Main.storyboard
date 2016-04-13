@@ -166,7 +166,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Pageant" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyl-R8-cZC">
                                 <rect key="frame" x="37" y="337" width="106" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -224,12 +224,13 @@
                                     <action selector="voteBttnClicked:" destination="7QI-Tj-egF" eventType="touchUpInside" id="07V-wC-nnQ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="15" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a85-Rb-lvs">
-                                <rect key="frame" x="48" y="396" width="223" height="115"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MVQ-p9-CgO">
+                                <rect key="frame" x="37" y="89" width="300" height="238"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="cAj-Vp-IDj"/>
+                                    <constraint firstAttribute="height" constant="200" id="dAR-Bs-Nhg"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAp-9j-7wn">
                                 <rect key="frame" x="209" y="343" width="108" height="34"/>
                                 <color key="backgroundColor" red="0.39938344828562794" green="0.85354630235602091" blue="0.42436194655127379" alpha="1" colorSpace="calibratedRGB"/>
@@ -245,19 +246,27 @@
                                     <action selector="donateButtonClicked:" destination="7QI-Tj-egF" eventType="touchUpInside" id="owE-B7-Fo4"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MVQ-p9-CgO">
-                                <rect key="frame" x="37" y="89" width="300" height="238"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JMo-jO-Py7">
+                                <rect key="frame" x="48" y="411" width="81" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="15" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a85-Rb-lvs">
+                                <rect key="frame" x="48" y="445" width="223" height="115"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="cAj-Vp-IDj"/>
-                                    <constraint firstAttribute="height" constant="200" id="dAR-Bs-Nhg"/>
+                                    <constraint firstAttribute="width" constant="300" id="R1E-es-sVn"/>
                                 </constraints>
-                            </imageView>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="rAp-9j-7wn" secondAttribute="trailing" constant="38" id="3wW-PH-llZ"/>
-                            <constraint firstItem="a85-Rb-lvs" firstAttribute="top" secondItem="rAp-9j-7wn" secondAttribute="bottom" constant="25" id="8pQ-WR-4E0"/>
+                            <constraint firstItem="a85-Rb-lvs" firstAttribute="top" secondItem="JMo-jO-Py7" secondAttribute="bottom" constant="7" id="74b-48-AXU"/>
                             <constraint firstItem="MVQ-p9-CgO" firstAttribute="top" secondItem="kED-B3-Uao" secondAttribute="bottom" constant="35" id="Rkv-FP-L5H"/>
                             <constraint firstItem="KHu-Ns-ZL0" firstAttribute="top" secondItem="MVQ-p9-CgO" secondAttribute="bottom" constant="16" id="YDS-nf-kJr"/>
                             <constraint firstItem="KHu-Ns-ZL0" firstAttribute="leading" secondItem="Wg7-W2-xV2" secondAttribute="leadingMargin" constant="38" id="kZB-gK-8I3"/>
@@ -266,6 +275,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="bioHeader" destination="JMo-jO-Py7" id="CAs-BO-PkS"/>
                         <outlet property="bioText" destination="a85-Rb-lvs" id="yzu-hx-H0J"/>
                         <outlet property="donateButton" destination="rAp-9j-7wn" id="3a9-yY-9MJ"/>
                         <outlet property="modelImage" destination="MVQ-p9-CgO" id="d8I-6M-uzj"/>
@@ -274,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yle-PM-yZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2000" y="310"/>
+            <point key="canvasLocation" x="1999.5" y="309.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="S9a-LP-93s">

@@ -13,6 +13,7 @@ import Braintree
 class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
     var braintreeClient: BTAPIClient?
 
+    @IBOutlet weak var bioHeader: UILabel!
     @IBOutlet weak var modelImage: UIImageView!
     @IBOutlet weak var bioText: UILabel!
     @IBOutlet weak var voteButton: UIButton!
@@ -159,6 +160,7 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
         modelImage.image = self.candidate?.detailPhoto
         
         // Get candidate bio
+        bioHeader.text = "About \(candidate!.getFirstName())"
         bioText.text = self.candidate!.bio
         
         
