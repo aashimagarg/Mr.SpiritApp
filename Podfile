@@ -9,6 +9,7 @@ pod 'MBProgressHUD'
 pod 'SwiftHEXColors'
 pod 'Braintree'
 pod 'Firebase', '>=2.5.1'
+pod ‘BDBOAuth1Manager’
 
 end
 

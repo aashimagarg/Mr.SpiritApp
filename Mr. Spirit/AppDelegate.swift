@@ -10,6 +10,7 @@ import UIKit
 import SwiftHEXColors
 import Firebase
 import Braintree
+import BDBOAuth1Manager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -35,6 +36,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if url.scheme.localizedCaseInsensitiveCompare("com.codepath.Mr--Spirit.payments") == .OrderedSame {
             return BTAppSwitch.handleOpenURL(url, sourceApplication:sourceApplication)
         }
+        
+        
+        print(url.description)
+        
+        let requestToken = BDBOAuth1Credential(queryString: url.query)
+        
+        let twitterClient = BDBOAuth1SessionManager(baseURL: NSURL(string: "https://api.twitter.com"), consumerKey: "NeIGiqZAMIBB7jbFtt3cEZFPS", consumerSecret: "WLBuJPNXbjUvrBJOepNelGDvYoQn8Dni1jLWIcwajuYreq2lbT")
+        
+        twitterClient.fetchAccessTokenWithPath("oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential!) -> Void in
+            print("access token received")
+            
+            //fetching relevant tweets (#MrSpirit2016)
+            let params = ["result_type" : "recent" , "count" : "100"]
+            
+            twitterClient.GET("1.1/search/tweets.json?f=tweets&q=%23MrSpirit2016&src=typd", parameters: params, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
+                let tweets = response as! NSDictionary
+                
+                print(tweets)
+                
+                /* for tweet in tweets {
+                 print(\(tweet["text"]))
+                 } */
+                
+                }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
+                    print("error: \(error.localizedDescription)")
+            })
+        }) { (error: NSError!) -> Void in
+            print("error: \(error.localizedDescription)")
+        }
+        
         return false
     }
 

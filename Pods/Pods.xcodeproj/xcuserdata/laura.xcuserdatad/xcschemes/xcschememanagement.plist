@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>BDBOAuth1Manager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Braintree-Braintree-Drop-In-Localization.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,17 +62,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>445B3D47256376A8FB06D383FDBEA0C4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>718D302F2AF22AAB733FDC961931108D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7C0D0E571F9D909F359ABC789BBEC17A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>80CCBE8E94F5E38114BD49CAB181DB22</key>
+		<key>A225984AD6AB285A981903776ECCD867</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -83,6 +88,11 @@
 			<true/>
 		</dict>
 		<key>E97BDDCCFF16A910C000E8B1D89C9277</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FF5165D28501B44E068B1676E81983BD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
