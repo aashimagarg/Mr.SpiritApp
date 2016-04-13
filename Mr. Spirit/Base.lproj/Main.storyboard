@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--The Candidates-->
@@ -24,26 +25,37 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CandidateCell" rowHeight="108" id="KFs-bq-NDg" customClass="CandidateCell" customModule="Mr__Spirit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="375" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KFs-bq-NDg" id="ipX-Lv-Sr5">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KFs-bq-NDg" id="ipX-Lv-Sr5">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6nM-pz-WEQ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6nM-pz-WEQ">
                                                     <rect key="frame" x="102" y="20" width="210" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2a-aH-1ID">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2a-aH-1ID">
                                                     <rect key="frame" x="102" y="43" width="188" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.5607843137254902" green="0.55686274509803924" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="150" verticalHuggingPriority="150" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="usi-Om-vNR">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="150" verticalHuggingPriority="150" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="usi-Om-vNR">
                                                     <rect key="frame" x="8" y="8" width="80" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="80" id="NwD-za-kcl"/>
+                                                        <constraint firstAttribute="width" constant="80" id="jtg-mP-dcf"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="usi-Om-vNR" firstAttribute="leading" secondItem="ipX-Lv-Sr5" secondAttribute="leadingMargin" constant="10" id="EMZ-Hb-zp3"/>
+                                                <constraint firstItem="c2a-aH-1ID" firstAttribute="leading" secondItem="usi-Om-vNR" secondAttribute="trailing" constant="10" id="ZoT-ju-Cx7"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="usi-Om-vNR" secondAttribute="bottom" constant="11" id="arf-Lz-4M8"/>
+                                                <constraint firstItem="usi-Om-vNR" firstAttribute="top" secondItem="ipX-Lv-Sr5" secondAttribute="topMargin" constant="5" id="svC-YC-Xcu"/>
+                                                <constraint firstItem="6nM-pz-WEQ" firstAttribute="leading" secondItem="usi-Om-vNR" secondAttribute="trailing" constant="10" id="w2I-V2-eQ1"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>

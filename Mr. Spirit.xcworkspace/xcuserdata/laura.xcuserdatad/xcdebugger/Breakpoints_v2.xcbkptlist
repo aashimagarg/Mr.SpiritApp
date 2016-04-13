@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mr. Spirit/ProfileViewController.swift"
-            timestampString = "482177153.408662"
+            timestampString = "482219572.29343"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "ProfileViewController"
             landmarkType = "3">
          </BreakpointContent>

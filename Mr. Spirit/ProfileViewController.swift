@@ -74,6 +74,7 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
     }
     @IBAction func voteBttnClicked(sender: AnyObject) {
         // Update vote count
+        getVoteCount()
         candidate!.votes += 1
         let votesDict = ["votes":self.candidate!.votes]
         ref.updateChildValues(votesDict)
@@ -87,6 +88,17 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setBool(true, forKey: "hasVoted")
 
+    }
+    
+    func getVoteCount(){
+        // Votes
+        ref = ref.childByAppendingPath(candidate!.name)
+        ref.observeEventType(.Value, withBlock: { snapshot in
+            let votes = (snapshot.value.objectForKey("votes") as? Int)!
+            self.candidate!.votes = votes
+            }, withCancelBlock: { error in
+                print(error.description)
+        })
     }
     
     func dropInViewController(viewController: BTDropInViewController, didSucceedWithTokenization paymentMethod: BTPaymentMethodNonce) {
@@ -144,19 +156,12 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
         // Get candidate image
         modelImage.layer.cornerRadius = 10.0
         modelImage.clipsToBounds = true
-        modelImage.image = self.candidate?.headshot
+        modelImage.image = self.candidate?.detailPhoto
         
         // Get candidate bio
         bioText.text = self.candidate!.bio
         
-        // Votes
-        ref = ref.childByAppendingPath(candidate!.name)
-        ref.observeEventType(.Value, withBlock: { snapshot in
-            let votes = (snapshot.value.objectForKey("votes") as? Int)!
-            self.candidate!.votes = votes
-            }, withCancelBlock: { error in
-                print(error.description)
-        })
+        
     }
 
     override func didReceiveMemoryWarning() {

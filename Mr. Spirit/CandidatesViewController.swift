@@ -19,8 +19,8 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
     var ref = Firebase(url:"httvar//mrspirit2016.firebaseio.com/candidates")
     
     var candidatesList = [Candidate]()
-    var candidateNames = ["Ryan Howell", "Erik Solorzano", "Patrick Golden", "Steven Aviles", "Marc Castaneda", "Alec Garcia", "Andy Wallace", "Jonathan Stevenson", "Caleb Young"]
-    var candidateOrgs = ["Camp Texas","Texas THON", "Texas Blazers", "Camp Kesem", "Texas 4000", "Alpha Sigma Pi", "Delta Sigma Pi", "Beta Upsilon Chi", "Student African American Brotherhood"]
+    var candidateNames = ["Alec Garcia", "Andy Wallace", "Caleb Young","Erik Solorzano", "Jonathan Stevenson", "Marc Castaneda", "Patrick Golden", "Ryan Howell", "Steven Aviles"]
+    var candidateOrgs = ["Alpha Sigma Pi", "Delta Sigma Pi", "Student African American Brotherhood", "Texas THON", "Beta Upsilon Chi", "Texas 4000", "Texas Blazers", "Camp Texas","Camp Kesem"]
     // Need array of bios, photos
     
     
@@ -40,16 +40,15 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         var candidate = Candidate()
         var candidateDict:AnyObject
         var votes:Int = 0
-        let photo1 = UIImage(named: "default")!
-        
         // Get number of current votes
         ref.observeEventType(.ChildChanged, withBlock: { snapshot in
             votes = (snapshot.value.objectForKey("votes") as? Int)!
         })
         
         for index in 0...8 {
-            let pic = UIImage(named: candidateNames[index])!
-            candidate = Candidate(name: candidateNames[index], organization:candidateOrgs[index], bio:"Hi, my name is \(candidateNames[index])", votes: votes, headshot: pic, detailPhoto: photo1)
+            let detailPic = UIImage(named: candidateNames[index])!
+            let pic = UIImage(named: "sq-\(candidateNames[index])")!
+            candidate = Candidate(name: candidateNames[index], organization:candidateOrgs[index], bio:"Hi, my name is \(candidateNames[index])", votes: votes, headshot: pic, detailPhoto: detailPic)
            
             // Add to candidate list
             candidatesList+=[candidate]
