@@ -16,11 +16,11 @@ class AboutUsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let image = UIImage(named: "grouppic")!
+        let image = UIImage(named: "group")!
         aboutUsImage.layer.cornerRadius = 10.0
         aboutUsImage.clipsToBounds = true
         aboutUsImage.image = image
-        aboutUsText.text = "The Pageant:\n\tThe Mr. Spirit Pageant Show began as an initiative to raise money for Texas Spirits’ two philanthropies: Make-A-Wish Foundation and Saint Louise House. This April, Texas Spirits is hosting its third annual Mr. Spirit, showcasing ten contestants from all over the UT Community!"
+        aboutUsText.text = "The Mr. Spirit Pageant Show began as an initiative to raise money for Texas Spirits’ two philanthropies: Make-A-Wish Foundation and Saint Louise House. This April, Texas Spirits is hosting its third annual Mr. Spirit, showcasing ten contestants from all over the UT Community!"
     }
 
     override func didReceiveMemoryWarning() {
