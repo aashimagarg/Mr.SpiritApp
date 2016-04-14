@@ -71,7 +71,7 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     

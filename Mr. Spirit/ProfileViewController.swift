@@ -26,6 +26,11 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        voteButton.layer.cornerRadius = 3
+        voteButton.clipsToBounds = true
+        
+        donateButton.layer.cornerRadius = 3
+        donateButton.clipsToBounds = true
         
         // Disable vote button if user has voted
         let defaults = NSUserDefaults.standardUserDefaults()

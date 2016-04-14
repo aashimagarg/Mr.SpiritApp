@@ -19,7 +19,7 @@ class TweetCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        profileAvatar.layer.cornerRadius = 3
+        profileAvatar.layer.cornerRadius = 5
         profileAvatar.clipsToBounds = true
         
         // Initialization code
