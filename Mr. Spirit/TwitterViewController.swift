@@ -128,6 +128,21 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
         refreshControl.endRefreshing()
     }
     
+    @IBAction func onOpen(sender: AnyObject) {
+        
+        let appURL = NSURL(string: "twitter://earch?q=%23MrSpirit2016&src=typd")
+        let webURL = NSURL(string: "https://twitter.com/search?q=%23MrSpirit2016&src=typd")
+        
+        let application = UIApplication.sharedApplication()
+       
+        
+        if application.canOpenURL(appURL!) {
+            application.openURL(appURL!)
+        } else {
+            application.openURL(webURL!)
+        }
+        
+    }
     /*
      // MARK: - Navigation
      
