@@ -14,6 +14,7 @@ import SwiftyJSON
 class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
     var braintreeClient: BTAPIClient?
 
+    @IBOutlet weak var orgName: UILabel!
     @IBOutlet weak var bioHeader: UILabel!
     @IBOutlet weak var modelImage: UIImageView!
     @IBOutlet weak var bioText: UILabel!
@@ -76,6 +77,9 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
         
         // Get candidate bio header
         bioHeader.text = self.candidate!.name
+        
+        //Get candidate org
+        orgName.text = self.candidate!.organization
         
         // Candidate bio, justfied
         let paragraphStyle = NSMutableParagraphStyle()
