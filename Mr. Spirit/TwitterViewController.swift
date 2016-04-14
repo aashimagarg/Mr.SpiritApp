@@ -114,10 +114,10 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         TwitterClient.sharedInstance.trendingTimeline({ (tweets: [Tweet]) -> () in
             self.tweets = tweets
-            self.tableView.reloadData()
             UIView.animateWithDuration(1.0, animations: {
                 self.warningView.alpha = 0
                 }, completion: nil)
+            self.tableView.reloadData()
             print("refreshed")
         }) { (error: NSError) -> () in
             print("error: \(error.localizedDescription)")
