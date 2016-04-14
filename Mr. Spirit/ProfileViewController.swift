@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Braintree
+import SwiftyJSON
 
 class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
     var braintreeClient: BTAPIClient?
@@ -149,6 +150,13 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
         dropInViewController.delegate = self
         
         // This is where you might want to customize your view controller (see below)
+        let paymentRequest = BTPaymentRequest()
+        paymentRequest.summaryTitle = "Support \(self.candidate!.name)"
+        paymentRequest.summaryDescription = "Benefiting Make-A-Wish and Saint Louise House"
+        paymentRequest.displayAmount = "$3"
+        paymentRequest.callToActionText = "Donate"
+        
+        dropInViewController.paymentRequest = paymentRequest
         
         // The way you present your BTDropInViewController instance is up to you.
         // In this example, we wrap it in a new, modally-presented navigation controller:
@@ -167,21 +175,39 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
     func postNonceToServer(paymentMethodNonce: String) {
         let paymentURL = NSURL(string: "https://gatnaofft8.execute-api.us-east-1.amazonaws.com/sandbox/checkout")
         let request = NSMutableURLRequest(URL: paymentURL!)
+        let params = ["nonce": paymentMethodNonce, "amount":"3.00"] as Dictionary<String, String>
+        request.HTTPMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        // Dictionary of things to pass in body
-        let body_dict: [String: String] = ["nonce": paymentMethodNonce, "amount": "11.11"]
         do {
-            let jsonData = try NSJSONSerialization.dataWithJSONObject(body_dict, options: NSJSONWritingOptions.PrettyPrinted)
+            let jsonData = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted)
             request.HTTPBody = jsonData
-            request.HTTPMethod = "POST"
         } catch let error as NSError {
             print(error)
         }
         
         NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
-            // TODO: Handle success or failure
-            print(response)
-            }.resume()
+            dispatch_async(dispatch_get_main_queue(), {
+                let json = JSON(data: data!)
+                print(json["success"].stringValue)
+                
+                var alert_title = "Oops!"
+                var alert_message = "There was an issue processing your donation. Please try again"
+                
+                if json["success"].stringValue == "true" {
+                    alert_title = "Thank You!"
+                    alert_message = "Your donation was successfully processed."
+                }
+                
+                let alert = UIAlertController(title: alert_title, message: alert_message, preferredStyle: .Alert)
+                let action = UIAlertAction(title: "OK", style: .Default) { _ in }
+                alert.addAction(action)
+                
+                let rootVC = UIApplication.sharedApplication().keyWindow?.rootViewController
+                rootVC?.presentViewController(alert, animated: true){}
+            })
+        }.resume()
     }
 
 

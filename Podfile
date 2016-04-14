@@ -10,6 +10,7 @@ pod 'SwiftHEXColors'
 pod 'Braintree'
 pod 'Firebase', '>=2.5.1'
 pod ‘BDBOAuth1Manager’
+pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 
 end
 

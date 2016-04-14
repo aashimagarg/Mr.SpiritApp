@@ -90,6 +90,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Mr. Spirit/Firebase.framework"
   install_framework "Pods-Mr. Spirit/MBProgressHUD.framework"
   install_framework "Pods-Mr. Spirit/SwiftHEXColors.framework"
+  install_framework "Pods-Mr. Spirit/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Mr. Spirit/AFNetworking.framework"
@@ -98,4 +99,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Mr. Spirit/Firebase.framework"
   install_framework "Pods-Mr. Spirit/MBProgressHUD.framework"
   install_framework "Pods-Mr. Spirit/SwiftHEXColors.framework"
+  install_framework "Pods-Mr. Spirit/SwiftyJSON.framework"
 fi
