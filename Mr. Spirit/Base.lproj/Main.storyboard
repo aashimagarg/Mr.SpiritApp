@@ -243,11 +243,11 @@
             </objects>
             <point key="canvasLocation" x="561" y="310"/>
         </scene>
-        <!--Candidates-->
+        <!--Contestants-->
         <scene sceneID="qha-Bt-bB4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SiW-ig-tb7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Candidates" image="Bowtie Icon" id="YTS-JS-hkV"/>
+                    <tabBarItem key="tabBarItem" title="Contestants" image="Bowtie Icon" selectedImage="Bowtie Icon" id="YTS-JS-hkV"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1q2-kj-0El">
