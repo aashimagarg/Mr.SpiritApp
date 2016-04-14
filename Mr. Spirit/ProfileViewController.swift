@@ -86,32 +86,54 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
     
     @IBAction func voteBttnClicked(sender: AnyObject) {
         // Display UIAlertView
-            // Call UIAlertView func
+        let alert_title = "Are you sure you want to vote for \(candidate!.getFirstName())?"
+        let alert_message = "You can only vote for one candidate and you cannot change your vote."
+        
+        
+        let alertController = UIAlertController(title: alert_title, message: alert_message, preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+            // ...
+        }
+        alertController.addAction(cancelAction)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            let upvotesRef = Firebase(url: "httvar//mrspirit2016.firebaseio.com/candidates/\(self.candidate!.name)/votes")
+            upvotesRef.runTransactionBlock({
+                (currentData:FMutableData!) in
+                var value = currentData.value as? Int
+                if (value == nil) {
+                    value = 0
+                }
+                currentData.value = value! + 1
+                print(currentData)
+                print(currentData.value)
+                return FTransactionResult.successWithValue(currentData)
+            })
+            
+            // Update button
+            self.voteButton.setTitle("Voted", forState: .Normal)
+            self.voteButton.backgroundColor = UIColor(hexString: "#9E9EA5")
+            self.voteButton.enabled = false
+            
+            // Disable all others voting
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setBool(true, forKey: "hasVoted")
+            // ...
+        }
+        alertController.addAction(OKAction)
+        
+        self.presentViewController(alertController, animated: true) {
+            // ...
+        }
+        
+//        let alert = UIAlertController(title: alert_title, message: alert_message, preferredStyle: .Alert)
+//        let action = UIAlertAction(title: "OK", style: .Default) { _ in }
+//        alert.addAction(action)
         
         
         ////// Run in UIAlertView if click "continue"
         // Run vote as transaction to update vote count
-        let upvotesRef = Firebase(url: "httvar//mrspirit2016.firebaseio.com/candidates/\(candidate!.name)/votes")
-        upvotesRef.runTransactionBlock({
-            (currentData:FMutableData!) in
-            var value = currentData.value as? Int
-            if (value == nil) {
-                value = 0
-            }
-            currentData.value = value! + 1
-            print(currentData)
-            print(currentData.value)
-            return FTransactionResult.successWithValue(currentData)
-        })
-        
-        // Update button
-        voteButton.setTitle("Voted", forState: .Normal)
-        voteButton.backgroundColor = UIColor(hexString: "#9E9EA5")
-        voteButton.enabled = false
-        
-        // Disable all others voting
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setBool(true, forKey: "hasVoted")
 
     }
     
@@ -119,7 +141,14 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
         if (braintreeClient != nil){
             tappedMyPayButton()
         }
-        // TODO: else (UIAlertView) "Please check your internet connection and try again"
+        else {
+            let alert_title = "Oops!"
+            let alert_message = "Connection failed. Please try again."
+            
+            let alert = UIAlertController(title: alert_title, message: alert_message, preferredStyle: .Alert)
+            let action = UIAlertAction(title: "OK", style: .Default) { _ in }
+            alert.addAction(action)
+        }
     }
     
     func getVoteCount(){
