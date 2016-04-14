@@ -34,6 +34,7 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         
         self.view.addSubview(self.tableView)
     }
+  
     
     func loadCandidates(){
         var candidate = Candidate()
@@ -62,31 +63,13 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         }
         
     }
-    
-    func getVoteCount(name:String) -> Int {
-        let childRef = ref.childByAppendingPath(name)
-        var votes:Int = 0
-        
-        childRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
-            votes = (snapshot.value.objectForKey("votes") as? Int)!
-        })
-        return votes
-    }
-    
-    func getAmountRaised(name:String) -> Double {
-        let childRef = ref.childByAppendingPath(name)
-        var amountRaised:Double = 0.0
-        
-        childRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
-            amountRaised = (snapshot.value.objectForKey("amountRaised") as? Double)!
-        })
-        return amountRaised
-    }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -108,17 +91,11 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         cell.orgLabel.text = candidate.organization
         cell.headshotImage.image = candidate.headshot
         
-        
-        
         return cell
     }
     
-
-
   
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "profileSegue" {
             let indexPath:NSIndexPath? = self.tableView!.indexPathForSelectedRow

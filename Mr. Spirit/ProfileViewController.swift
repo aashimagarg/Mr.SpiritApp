@@ -21,19 +21,13 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
     var candidate:Candidate? = Candidate()
     var ref = Firebase(url:"httvar//mrspirit2016.firebaseio.com/candidates/")
     
-    @IBAction func donateButtonClicked(sender: AnyObject) {
-        if (braintreeClient != nil){
-            tappedMyPayButton()
-        }
-        // TODO: else (UIAlertView) "Please check your internet connection and try again"
-    }
+    
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
-//        voteButton.layer.cornerRadius = 5.0;
-//        donateButton.layer.cornerRadius = 5.0;
         
+        // Disable vote button if user has voted
         let defaults = NSUserDefaults.standardUserDefaults()
         if (defaults.boolForKey("hasVoted")) {
             voteButton.setTitle("Voted", forState: .Normal)
@@ -85,9 +79,13 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
     }
     
     @IBAction func voteBttnClicked(sender: AnyObject) {
-        // Update vote count
-        let upvotesRef = Firebase(url: "httvar//mrspirit2016.firebaseio.com/candidates/\(candidate!.name)/votes")
+        // Display UIAlertView
+            // Call UIAlertView func
         
+        
+        ////// Run in UIAlertView if click "continue"
+        // Run vote as transaction to update vote count
+        let upvotesRef = Firebase(url: "httvar//mrspirit2016.firebaseio.com/candidates/\(candidate!.name)/votes")
         upvotesRef.runTransactionBlock({
             (currentData:FMutableData!) in
             var value = currentData.value as? Int
@@ -100,10 +98,6 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
             return FTransactionResult.successWithValue(currentData)
         })
         
-//        candidate!.votes = candidate!.getVoteCount(candidate!.name, ref: ref) + 1
-//        let votesDict = ["votes":self.candidate!.votes]
-//        ref.updateChildValues(votesDict)
-        
         // Update button
         voteButton.setTitle("Voted", forState: .Normal)
         voteButton.backgroundColor = UIColor(hexString: "#9E9EA5")
@@ -113,6 +107,13 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setBool(true, forKey: "hasVoted")
 
+    }
+    
+    @IBAction func donateButtonClicked(sender: AnyObject) {
+        if (braintreeClient != nil){
+            tappedMyPayButton()
+        }
+        // TODO: else (UIAlertView) "Please check your internet connection and try again"
     }
     
     func getVoteCount(){
