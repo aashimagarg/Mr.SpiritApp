@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '54B442D47B5210E9061355C3'
-               BlueprintName = 'Braintree-Braintree-Drop-In-Localization'
+               BlueprintIdentifier = '3BEA49AA586F1CE0390610F6'
+               BlueprintName = 'SwiftyJSON'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Braintree-Drop-In-Localization.bundle'>
+               BuildableName = 'SwiftyJSON.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
