@@ -10,6 +10,7 @@ import UIKit
 
 class AboutUsViewController: UIViewController {
     
+    @IBOutlet weak var urlText: UIButton!
     @IBOutlet weak var aboutUsImage: UIImageView!
     @IBOutlet weak var pageantText: UILabel!
     @IBOutlet weak var haydenKorsmo: UIImageView!
@@ -22,6 +23,12 @@ class AboutUsViewController: UIViewController {
     @IBOutlet weak var philanthropyText: UILabel!
 //    @IBOutlet weak var infoView: UIView!
     
+    @IBAction func butttonClicked(sender: AnyObject) {
+        let url = NSURL(string: "https://www.mrspiritpageantshow.splashthat.com")
+        UIApplication.sharedApplication().openURL(url!)
+        
+    }
+    @IBOutlet weak var buttonText: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,13 +46,18 @@ class AboutUsViewController: UIViewController {
         let aboutText = "Texas Spirits is an honorary spirit, service, and social organization at the University of Texas at Austin. The Mr. Spirit Pageant Show began three years ago as an initiative to raise money for Texas Spirits’ two philanthropies: Make-A-Wish Foundation and Saint Louise House."
         let philText = "The Make-A-Wish Foundation grants wishes to children with life-threatening medical conditions. Since its founding in 1980, the Make-A-Wish foundation has granted over 180,000 wishes and currently grants a wish every 40 minutes.\n\nSaint Louise House provides housing and services to homeless women and children in Austin, in an effort to help families stay together and encourage self-sufficiency. Saint Louise House has housed 130 families since 2012."
         
+        
+        
+        buyTicketsLabel.text = "Purchase tickets at:"
+        urlText.setTitle("www.mrspiritpageantshow.splashthat.com", forState: .Normal)
+        
+        
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.Justified
         pageantText.attributedText = NSAttributedString(string: aboutText, attributes: [NSParagraphStyleAttributeName: paragraphStyle, NSBaselineOffsetAttributeName: NSNumber(float: 0)])
 
         philanthropyText.attributedText = NSAttributedString(string: philText, attributes: [NSParagraphStyleAttributeName: paragraphStyle, NSBaselineOffsetAttributeName: NSNumber(float: 0)])
         
-        buyTicketsLabel.attributedText = NSAttributedString(string: philText, attributes: [NSParagraphStyleAttributeName: paragraphStyle, NSBaselineOffsetAttributeName: NSNumber(float: 0)])
 
     }
 
