@@ -43,15 +43,13 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
         
         getCandidateInfo()
 
-        // Do any additional setup after loading the view.
-        
+        // Braintree set-up
         let clientTokenURL = NSURL(string: "https://gatnaofft8.execute-api.us-east-1.amazonaws.com/sandbox/token")!
         let clientTokenRequest = NSMutableURLRequest(URL: clientTokenURL)
         clientTokenRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
         NSURLSession.sharedSession().dataTaskWithRequest(clientTokenRequest) { (data, response, error) -> Void in
             print(error)
-
             // Handle reiturned JSON
             var clientToken:String?
             getData: do {
@@ -70,22 +68,48 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
             }
         }.resume()
         
-        
-
     }
+    
+    func getCandidateInfo(){
+        // Get candidate image
+        modelImage.image = self.candidate?.detailPhoto
+        
+        // Get candidate bio header
+        bioHeader.text = self.candidate!.name
+        
+        // Candidate bio, justfied
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.Justified
+        let attributedString = NSAttributedString(string: self.candidate!.bio, attributes: [NSParagraphStyleAttributeName: paragraphStyle, NSBaselineOffsetAttributeName: NSNumber(float: 0)])
+        bioText.attributedText = attributedString
+    }
+    
     @IBAction func voteBttnClicked(sender: AnyObject) {
         // Update vote count
-        getVoteCount()
-        candidate!.votes += 1
-        let votesDict = ["votes":self.candidate!.votes]
-        ref.updateChildValues(votesDict)
+        let upvotesRef = Firebase(url: "httvar//mrspirit2016.firebaseio.com/candidates/\(candidate!.name)/votes")
+        
+        upvotesRef.runTransactionBlock({
+            (currentData:FMutableData!) in
+            var value = currentData.value as? Int
+            if (value == nil) {
+                value = 0
+            }
+            currentData.value = value! + 1
+            print(currentData)
+            print(currentData.value)
+            return FTransactionResult.successWithValue(currentData)
+        })
+        
+//        candidate!.votes = candidate!.getVoteCount(candidate!.name, ref: ref) + 1
+//        let votesDict = ["votes":self.candidate!.votes]
+//        ref.updateChildValues(votesDict)
         
         // Update button
         voteButton.setTitle("Voted", forState: .Normal)
         voteButton.backgroundColor = UIColor(hexString: "#9E9EA5")
         voteButton.enabled = false
         
-        //TO-DO: disable all others voting
+        // Disable all others voting
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setBool(true, forKey: "hasVoted")
 
@@ -94,13 +118,15 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
     func getVoteCount(){
         // Votes
         ref = ref.childByAppendingPath(candidate!.name)
-        ref.observeEventType(.Value, withBlock: { snapshot in
+        ref.observeSingleEventOfType(.Value, withBlock: { snapshot in
             let votes = (snapshot.value.objectForKey("votes") as? Int)!
             self.candidate!.votes = votes
             }, withCancelBlock: { error in
                 print(error.description)
         })
     }
+    
+    
     
     func dropInViewController(viewController: BTDropInViewController, didSucceedWithTokenization paymentMethod: BTPaymentMethodNonce) {
         // send payment
@@ -152,25 +178,6 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
             }.resume()
     }
 
-    
-    func getCandidateInfo(){
-        // Get candidate image
-//        modelImage.layer.cornerRadius = 10.0
-//        modelImage.clipsToBounds = true
-        modelImage.image = self.candidate?.detailPhoto
-        
-        // Get candidate bio
-        bioHeader.text = self.candidate!.name
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = NSTextAlignment.Justified
-        let attributedString = NSAttributedString(string: self.candidate!.bio, attributes: [NSParagraphStyleAttributeName: paragraphStyle, NSBaselineOffsetAttributeName: NSNumber(float: 0)])
-        bioText.attributedText = attributedString
-        
-//        bioText.text = self.candidate!.bio
-        
-        
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

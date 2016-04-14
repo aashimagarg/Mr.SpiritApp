@@ -43,7 +43,8 @@ class Candidate {
             "name": name,
             "organization": organization,
             "bio": bio,
-            "votes":votes
+            "votes":votes,
+            "amountRaised":amountRaised
         ]
     }
     
@@ -51,7 +52,27 @@ class Candidate {
         return name.componentsSeparatedByString(" ").first!
     }
     
-    func saveData(name:String, dict:AnyObject, ref:Firebase) {
+    func getVoteCount(name:String, ref:Firebase) -> Int {
+        let childRef = ref.childByAppendingPath(name)
+        var votes:Int = 0
+        
+        childRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            votes = (snapshot.value.objectForKey("votes") as? Int)!
+        })
+        return votes
+    }
+    
+    func getAmountRaised(name:String, ref:Firebase) -> Double {
+        let childRef = ref.childByAppendingPath(name)
+        var amountRaised:Double = 0.0
+        
+        childRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            amountRaised = (snapshot.value.objectForKey("amountRaised") as? Double)!
+        })
+        return amountRaised
+    }
+    
+    func saveRef(name:String, dict:AnyObject, ref:Firebase) {
         self.candidateRef = ref.childByAppendingPath(self.name)
     }
 }

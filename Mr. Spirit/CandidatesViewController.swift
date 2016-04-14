@@ -39,25 +39,48 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         var candidate = Candidate()
         var candidateDict:AnyObject
         var votes:Int = 0
+        var amountRaised:Double = 0
         
-        // Get number of current votes
-        ref.observeEventType(.ChildChanged, withBlock: { snapshot in
-            votes = (snapshot.value.objectForKey("votes") as? Int)!
-        })
-        
+    
         for index in 0...10 {
             let detailPic = UIImage(named: candidateNames[index])!
             let pic = UIImage(named: "sq-\(candidateNames[index])")!
-            candidate = Candidate(name: candidateNames[index], organization:candidateOrgs[index], bio:bioText[index], votes: votes, amountRaised:0, headshot: pic, detailPhoto: detailPic)
+            
+            // Get number of current votes
+            votes = candidate.getVoteCount(candidateNames[index], ref: ref)
+            amountRaised = candidate.getAmountRaised(candidateNames[index], ref: ref)
+            
+            // Create candidate object
+            candidate = Candidate(name: candidateNames[index], organization:candidateOrgs[index], bio:bioText[index], votes: votes, amountRaised:amountRaised, headshot: pic, detailPhoto: detailPic)
            
             // Add to candidate list
             candidatesList+=[candidate]
             
-            // Save to database
+            // Save candidate ref
             candidateDict = candidate.toDict()
-            candidate.saveData(candidate.name, dict: candidateDict, ref: ref)
+            candidate.saveRef(candidate.name, dict: candidateDict, ref: ref)
         }
         
+    }
+    
+    func getVoteCount(name:String) -> Int {
+        let childRef = ref.childByAppendingPath(name)
+        var votes:Int = 0
+        
+        childRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            votes = (snapshot.value.objectForKey("votes") as? Int)!
+        })
+        return votes
+    }
+    
+    func getAmountRaised(name:String) -> Double {
+        let childRef = ref.childByAppendingPath(name)
+        var amountRaised:Double = 0.0
+        
+        childRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            amountRaised = (snapshot.value.objectForKey("amountRaised") as? Double)!
+        })
+        return amountRaised
     }
 
     override func didReceiveMemoryWarning() {
