@@ -49,6 +49,11 @@
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -62,7 +67,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>3B794A9BF0F882030C7690BF8981BFDC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>445B3D47256376A8FB06D383FDBEA0C4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4B240A42839B35C3E143B4EFD77FCCF5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -73,6 +88,11 @@
 			<true/>
 		</dict>
 		<key>A225984AD6AB285A981903776ECCD867</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AEA612D070654B54888AB833D48681F3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
