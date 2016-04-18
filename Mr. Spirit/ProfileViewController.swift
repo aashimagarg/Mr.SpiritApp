@@ -45,7 +45,7 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
         getCandidateInfo()
 
         // Braintree set-up
-        let clientTokenURL = NSURL(string: "https://gatnaofft8.execute-api.us-east-1.amazonaws.com/sandbox/token")!
+        let clientTokenURL = NSURL(string: "https://gatnaofft8.execute-api.us-east-1.amazonaws.com/v1/token")!
         let clientTokenRequest = NSMutableURLRequest(URL: clientTokenURL)
         clientTokenRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
@@ -77,9 +77,6 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
         
         // Get candidate bio header
         bioHeader.text = self.candidate!.name
-        
-        //Get candidate org
-        orgName.text = self.candidate!.organization
         
         // Candidate bio, justfied
         let paragraphStyle = NSMutableParagraphStyle()
@@ -201,12 +198,23 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
         presentViewController(navigationController, animated: true, completion: nil)
     }
     
+    
+    func getAmountRaised() {
+        ref = ref.childByAppendingPath(candidate!.name)
+        ref.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            let votes = (snapshot.value.objectForKey("amountRaised") as? Int)!
+            self.candidate!.votes = votes
+            }, withCancelBlock: { error in
+                print(error.description)
+        })
+    }
+    
     func userDidCancelPayment(){
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     func postNonceToServer(paymentMethodNonce: String) {
-        let paymentURL = NSURL(string: "https://gatnaofft8.execute-api.us-east-1.amazonaws.com/sandbox/checkout")
+        let paymentURL = NSURL(string: "https://gatnaofft8.execute-api.us-east-1.amazonaws.com/v1/checkout")
         let request = NSMutableURLRequest(URL: paymentURL!)
         let params = ["nonce": paymentMethodNonce, "amount":"3.00"] as Dictionary<String, String>
         request.HTTPMethod = "POST"
@@ -231,6 +239,19 @@ class ProfileViewController: UIViewController, BTDropInViewControllerDelegate {
                 if json["success"].stringValue == "true" {
                     alert_title = "Thank You!"
                     alert_message = "Your donation was successfully processed."
+                    let amountRaisedref = Firebase(url: "httvar//mrspirit2016.firebaseio.com/candidates/\(self.candidate!.name)/amountRaised")
+                    amountRaisedref.runTransactionBlock({
+                        (currentData:FMutableData!) in
+                        var value = currentData.value as? Double
+                        if (value == nil) {
+                            value = 0
+                        }
+                        currentData.value = value! + 3
+                        print(currentData)
+                        print(currentData.value)
+                        return FTransactionResult.successWithValue(currentData)
+                    })
+                    
                 }
                 
                 let alert = UIAlertController(title: alert_title, message: alert_message, preferredStyle: .Alert)
