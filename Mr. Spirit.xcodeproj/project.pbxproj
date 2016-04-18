@@ -546,9 +546,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Mr. Spirit/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.MrSpirit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MrSpirit2016;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "875130f2-45f3-44a1-b6b5-a2d9a79db692";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -562,9 +562,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Mr. Spirit/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.MrSpirit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MrSpirit2016;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "875130f2-45f3-44a1-b6b5-a2d9a79db692";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
