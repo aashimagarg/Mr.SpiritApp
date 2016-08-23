@@ -2,6 +2,8 @@
 
 Mr. Spirit App uses the [BrainTree API] (https://developers.braintreepayments.com/guides/braintree-auth/overview) and [Twitter Search API] (https://dev.twitter.com/rest/public/search).
 
+167 downloads in the App Store.
+
 Time spent: 30 hours
 
 ## User Stories
