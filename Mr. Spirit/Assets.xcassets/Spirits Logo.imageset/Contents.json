@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Spirits Logo.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Spirits Logo-1.png",
       "scale" : "2x"
     },
     {

@@ -10,6 +10,7 @@ import UIKit
 
 class CandidateCell: UITableViewCell {
 
+    // MARK: Properties
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var orgLabel: UILabel!
     @IBOutlet weak var headshotImage: UIImageView!
@@ -17,12 +18,15 @@ class CandidateCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        headshotImage.layer.cornerRadius = headshotImage.frame.size.width / 2
+        headshotImage.clipsToBounds = true
     }
 
 }

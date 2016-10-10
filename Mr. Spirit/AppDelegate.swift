@@ -8,23 +8,65 @@
 
 import UIKit
 import SwiftHEXColors
+import Firebase
+import Braintree
+import BDBOAuth1Manager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let FirebaseURL = Firebase(url:"https://mrspirit2016.firebaseio.com/")
 
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        UINavigationBar.appearance().barTintColor = UIColor(hexString: "#000000")
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor(hexString: "CECEAD")!]
+        UINavigationBar.appearance().barTintColor = UIColor(hexString: "#f9A643")
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor(hexString: "FFFFFF")!]
         
-        UITabBar.appearance().barTintColor = UIColor(hexString: "#000000")
-        UITabBar.appearance().tintColor = UIColor(hexString: "#CECEAD")
-
+        UITabBar.appearance().barTintColor = UIColor(hexString: "#FBF9F9")
+        UITabBar.appearance().tintColor = UIColor(hexString: "#f9A643")
+        
+        BTAppSwitch.setReturnURLScheme("com.codepath.Mr--Spirit.payments")
         
         return true
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        if url.scheme.localizedCaseInsensitiveCompare("com.codepath.Mr--Spirit.payments") == .OrderedSame {
+            return BTAppSwitch.handleOpenURL(url, sourceApplication:sourceApplication)
+        }
+        
+        
+        print(url.description)
+        
+        let requestToken = BDBOAuth1Credential(queryString: url.query)
+        
+        let twitterClient = BDBOAuth1SessionManager(baseURL: NSURL(string: "https://api.twitter.com"), consumerKey: "NeIGiqZAMIBB7jbFtt3cEZFPS", consumerSecret: "WLBuJPNXbjUvrBJOepNelGDvYoQn8Dni1jLWIcwajuYreq2lbT")
+        
+        twitterClient.fetchAccessTokenWithPath("oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential!) -> Void in
+            print("access token received")
+            
+            //fetching relevant tweets (#MrSpirit2016)
+            let params = ["result_type" : "recent" , "count" : "100"]
+            
+            twitterClient.GET("1.1/search/tweets.json?f=tweets&q=%23MrSpirit2016&src=typd", parameters: params, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
+                let tweets = response as! NSDictionary
+                
+                print(tweets)
+                
+                /* for tweet in tweets {
+                 print(\(tweet["text"]))
+                 } */
+                
+                }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
+                    print("error: \(error.localizedDescription)")
+            })
+        }) { (error: NSError!) -> Void in
+            print("error: \(error.localizedDescription)")
+        }
+        
+        return false
     }
 
     func applicationWillResignActive(application: UIApplication) {

@@ -7,15 +7,161 @@
 //
 
 import UIKit
+import Firebase
+import Braintree
+import SwiftyJSON
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var orgName: UILabel!
+    @IBOutlet weak var bioHeader: UILabel!
     @IBOutlet weak var modelImage: UIImageView!
+    @IBOutlet weak var bioText: UILabel!
+    @IBOutlet weak var voteButton: UIButton!
+    @IBOutlet weak var donateButton: UIButton!
+    var candidate:Candidate? = Candidate()
+    var ref = Firebase(url:"httvar//mrspirit2016.firebaseio.com/candidates/")
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        voteButton.layer.cornerRadius = 3
+        voteButton.clipsToBounds = true
+        
+        donateButton.layer.cornerRadius = 3
+        donateButton.clipsToBounds = true
+        
+        // Disable vote button if user has voted
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if (defaults.boolForKey("hasVoted")) {
+            voteButton.setTitle("Voted", forState: .Normal)
+            voteButton.backgroundColor = UIColor(hexString: "#9E9EA5")
+            voteButton.enabled = false
+        }
+        
+        getCandidateInfo()
 
-        // Do any additional setup after loading the view.
+//        // Braintree set-up
+//        let clientTokenURL = NSURL(string: "https://gatnaofft8.execute-api.us-east-1.amazonaws.com/v1/token")!
+//        let clientTokenRequest = NSMutableURLRequest(URL: clientTokenURL)
+//        clientTokenRequest.setValue("application/json", forHTTPHeaderField: "Accept")
+//        
+//        NSURLSession.sharedSession().dataTaskWithRequest(clientTokenRequest) { (data, response, error) -> Void in
+//            print(error)
+//            // Handle reiturned JSON
+//            var clientToken:String?
+//            getData: do {
+//                if (data == nil){
+//                    break getData
+//                }
+//                let jsonData = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
+//                let jsonDataDict = jsonData as? [String:String]
+//                clientToken = jsonDataDict!["client_token"]
+//            } catch let error as NSError {
+//                print(error)
+//            }
+//            
+//            if clientToken != nil {
+//                self.braintreeClient = BTAPIClient(authorization: clientToken!)
+//            }
+//        }.resume()
+    }
+    
+    func getCandidateInfo(){
+        // Get candidate image
+        modelImage.image = self.candidate?.detailPhoto
+        
+        // Get candidate bio header
+        bioHeader.text = self.candidate!.name
+        
+        // Candidate bio, justfied
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.Justified
+        let attributedString = NSAttributedString(string: self.candidate!.bio, attributes: [NSParagraphStyleAttributeName: paragraphStyle, NSBaselineOffsetAttributeName: NSNumber(float: 0)])
+        bioText.attributedText = attributedString
+    }
+    
+    @IBAction func voteBttnClicked(sender: AnyObject) {
+        // Display UIAlertView
+        let alert_title = "Are you sure you want to vote for \(candidate!.getFirstName())?"
+        let alert_message = "You can only vote for one candidate and you cannot change your vote."
+        
+        
+        let alertController = UIAlertController(title: alert_title, message: alert_message, preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+            // ...
+        }
+        alertController.addAction(cancelAction)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            let upvotesRef = Firebase(url: "httvar//mrspirit2016.firebaseio.com/candidates/\(self.candidate!.name)/votes")
+            upvotesRef.runTransactionBlock({
+                (currentData:FMutableData!) in
+                var value = currentData.value as? Int
+                if (value == nil) {
+                    value = 0
+                }
+                currentData.value = value! + 1
+                print(currentData)
+                print(currentData.value)
+                return FTransactionResult.successWithValue(currentData)
+            })
+            
+            // Update button
+            self.voteButton.setTitle("Voted", forState: .Normal)
+            self.voteButton.backgroundColor = UIColor(hexString: "#9E9EA5")
+            self.voteButton.enabled = false
+            
+            // Disable all others voting
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setBool(true, forKey: "hasVoted")
+            // ...
+        }
+        alertController.addAction(OKAction)
+        
+        self.presentViewController(alertController, animated: true) {
+            // ...
+        }
+        
+//        let alert = UIAlertController(title: alert_title, message: alert_message, preferredStyle: .Alert)
+//        let action = UIAlertAction(title: "OK", style: .Default) { _ in }
+//        alert.addAction(action)
+        
+        
+        ////// Run in UIAlertView if click "continue"
+        // Run vote as transaction to update vote count
+
+    }
+    
+    @IBAction func donateButtonClicked(sender: AnyObject) {
+        let place = "https://mrspirit.site/donate/?name=\(candidate!.getFirstName().lowercaseString)"
+        print(place)
+        let url = NSURL(string: place)
+        UIApplication.sharedApplication().openURL(url!)
+    }
+    
+    func getVoteCount(){
+        // Votes
+        ref = ref.childByAppendingPath(candidate!.name)
+        ref.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            let votes = (snapshot.value.objectForKey("votes") as? Int)!
+            self.candidate!.votes = votes
+            }, withCancelBlock: { error in
+                print(error.description)
+        })
+    }
+    
+    func getAmountRaised() {
+        ref = ref.childByAppendingPath(candidate!.name)
+        ref.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            let votes = (snapshot.value.objectForKey("amountRaised") as? Int)!
+            self.candidate!.votes = votes
+            }, withCancelBlock: { error in
+                print(error.description)
+        })
     }
 
     override func didReceiveMemoryWarning() {

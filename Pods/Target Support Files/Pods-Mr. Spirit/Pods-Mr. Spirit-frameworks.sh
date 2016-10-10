@@ -85,13 +85,19 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Mr. Spirit/AFNetworking.framework"
+  install_framework "Pods-Mr. Spirit/BDBOAuth1Manager.framework"
   install_framework "Pods-Mr. Spirit/Braintree.framework"
+  install_framework "Pods-Mr. Spirit/Firebase.framework"
   install_framework "Pods-Mr. Spirit/MBProgressHUD.framework"
   install_framework "Pods-Mr. Spirit/SwiftHEXColors.framework"
+  install_framework "Pods-Mr. Spirit/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Mr. Spirit/AFNetworking.framework"
+  install_framework "Pods-Mr. Spirit/BDBOAuth1Manager.framework"
   install_framework "Pods-Mr. Spirit/Braintree.framework"
+  install_framework "Pods-Mr. Spirit/Firebase.framework"
   install_framework "Pods-Mr. Spirit/MBProgressHUD.framework"
   install_framework "Pods-Mr. Spirit/SwiftHEXColors.framework"
+  install_framework "Pods-Mr. Spirit/SwiftyJSON.framework"
 fi
