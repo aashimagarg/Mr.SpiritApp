@@ -8,7 +8,7 @@
 
 import UIKit
 import Foundation
-import Firebase
+import FirebaseDatabase
 
 class CandidatesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -36,7 +36,6 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         
         self.view.addSubview(self.tableView)
     }
-  
     
     func loadCandidates(){
         var candidate = Candidate()
@@ -65,7 +64,6 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         }
         
     }
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -95,7 +93,6 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         
         return cell
     }
-    
   
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -112,5 +109,4 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
 
         }
     }
-
 }

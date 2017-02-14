@@ -12,8 +12,6 @@
 		5914FC2C1CA48B2100A0EEA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5914FC2A1CA48B2100A0EEA6 /* Main.storyboard */; };
 		5914FC2E1CA48B2100A0EEA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5914FC2D1CA48B2100A0EEA6 /* Assets.xcassets */; };
 		5914FC311CA48B2100A0EEA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5914FC2F1CA48B2100A0EEA6 /* LaunchScreen.storyboard */; };
-		5914FC3C1CA48B2100A0EEA6 /* Mr__SpiritTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC3B1CA48B2100A0EEA6 /* Mr__SpiritTests.swift */; };
-		5914FC471CA48B2100A0EEA6 /* Mr__SpiritUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC461CA48B2100A0EEA6 /* Mr__SpiritUITests.swift */; };
 		5914FC561CA4921500A0EEA6 /* CandidatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC551CA4921500A0EEA6 /* CandidatesViewController.swift */; };
 		5914FC581CA4921D00A0EEA6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC571CA4921D00A0EEA6 /* ProfileViewController.swift */; };
 		5914FC5A1CA4922400A0EEA6 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC591CA4922400A0EEA6 /* AboutUsViewController.swift */; };
@@ -24,6 +22,8 @@
 		9C97A9041D4C3AA88BCADE8D /* Pods_Mr__SpiritUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE87C464D8355DA00797C02 /* Pods_Mr__SpiritUITests.framework */; };
 		D307548B1CA4F6250089DA44 /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D307548A1CA4F6250089DA44 /* Candidate.swift */; };
 		D31173751E52BDBE00222E5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D31173741E52BDBE00222E5C /* GoogleService-Info.plist */; };
+		D33956241E52C76B00E7FDF9 /* Mr. SpiritTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = 5914FC371CA48B2100A0EEA6 /* Mr. SpiritTests.xctest */; };
+		D33956251E52C77000E7FDF9 /* Mr. SpiritUITests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = 5914FC421CA48B2100A0EEA6 /* Mr. SpiritUITests.xctest */; };
 		D3D16EF71CBD489B0042F916 /* Braintree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D16EF61CBD489B0042F916 /* Braintree.framework */; };
 		D3DF95EE1CBF101C007D32CE /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DF95ED1CBF101C007D32CE /* TwitterClient.swift */; };
 		D3DF95F01CBF109E007D32CE /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DF95EF1CBF109E007D32CE /* Tweet.swift */; };
@@ -56,11 +56,7 @@
 		5914FC301CA48B2100A0EEA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5914FC321CA48B2100A0EEA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5914FC371CA48B2100A0EEA6 /* Mr. SpiritTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mr. SpiritTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5914FC3B1CA48B2100A0EEA6 /* Mr__SpiritTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mr__SpiritTests.swift; sourceTree = "<group>"; };
-		5914FC3D1CA48B2100A0EEA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5914FC421CA48B2100A0EEA6 /* Mr. SpiritUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mr. SpiritUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5914FC461CA48B2100A0EEA6 /* Mr__SpiritUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mr__SpiritUITests.swift; sourceTree = "<group>"; };
-		5914FC481CA48B2100A0EEA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5914FC551CA4921500A0EEA6 /* CandidatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidatesViewController.swift; sourceTree = "<group>"; };
 		5914FC571CA4921D00A0EEA6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		5914FC591CA4922400A0EEA6 /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
@@ -127,8 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				5914FC251CA48B2100A0EEA6 /* Mr. Spirit */,
-				5914FC3A1CA48B2100A0EEA6 /* Mr. SpiritTests */,
-				5914FC451CA48B2100A0EEA6 /* Mr. SpiritUITests */,
 				5914FC241CA48B2100A0EEA6 /* Products */,
 				FB3C08D7D2A8A9016F075526 /* Frameworks */,
 				3C9E8AC43BA85C190CC48154 /* Pods */,
@@ -157,24 +151,6 @@
 				5914FC321CA48B2100A0EEA6 /* Info.plist */,
 			);
 			path = "Mr. Spirit";
-			sourceTree = "<group>";
-		};
-		5914FC3A1CA48B2100A0EEA6 /* Mr. SpiritTests */ = {
-			isa = PBXGroup;
-			children = (
-				5914FC3B1CA48B2100A0EEA6 /* Mr__SpiritTests.swift */,
-				5914FC3D1CA48B2100A0EEA6 /* Info.plist */,
-			);
-			path = "Mr. SpiritTests";
-			sourceTree = "<group>";
-		};
-		5914FC451CA48B2100A0EEA6 /* Mr. SpiritUITests */ = {
-			isa = PBXGroup;
-			children = (
-				5914FC461CA48B2100A0EEA6 /* Mr__SpiritUITests.swift */,
-				5914FC481CA48B2100A0EEA6 /* Info.plist */,
-			);
-			path = "Mr. SpiritUITests";
 			sourceTree = "<group>";
 		};
 		5914FC541CA4920B00A0EEA6 /* View Controllers */ = {
@@ -299,6 +275,7 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = WUW558DRD5;
 						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
 					};
 					5914FC361CA48B2100A0EEA6 = {
 						CreatedOnToolsVersion = 7.2;
@@ -350,6 +327,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D33956241E52C76B00E7FDF9 /* Mr. SpiritTests.xctest in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +335,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D33956251E52C77000E7FDF9 /* Mr. SpiritUITests.xctest in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,7 +501,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5914FC3C1CA48B2100A0EEA6 /* Mr__SpiritTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,7 +508,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5914FC471CA48B2100A0EEA6 /* Mr__SpiritUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -665,11 +642,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Mr. Spirit/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MrSpirit2016;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "875130f2-45f3-44a1-b6b5-a2d9a79db692";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -683,11 +662,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Mr. Spirit/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MrSpirit2016;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "875130f2-45f3-44a1-b6b5-a2d9a79db692";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

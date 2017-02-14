@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseDatabase
 import Braintree
 import SwiftyJSON
 
@@ -72,9 +72,9 @@ class ProfileViewController: UIViewController {
         
         let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
 //            let upvotesRef = Firebase(url: "httvar//mrspirit2016.firebaseio.com/candidates/\(self.candidate!.name)/votes")
-            let upvotesRef = self.ref.child("candidates/(candidate.name)/votes").setValue(candidate)
+            let upvotesRef = self.ref.child("candidates/(candidate.name)/votes").setValue(self.candidate!.name)
             upvotesRef.runTransactionBlock({
-                (currentData:FMutableData!) in
+                (currentData:FIRMutableData!) in
                 var value = currentData.value as? Int
                 if (value == nil) {
                     value = 0
@@ -120,7 +120,7 @@ class ProfileViewController: UIViewController {
     
     func getVoteCount(){
         // Votes
-        ref = ref.child(byAppendingPath: candidate!.name)
+        ref = ref.child(candidate!.name)
         ref.observeSingleEvent(of: .value, with: { snapshot in
             let votes = (snapshot.value.object(forKey: "votes") as? Int)!
             self.candidate!.votes = votes
@@ -130,7 +130,7 @@ class ProfileViewController: UIViewController {
     }
     
     func getAmountRaised() {
-        ref = ref?.child(byAppendingPath: candidate!.name)
+        ref = ref.child(byAppendingPath: candidate!.name)
         ref.observeSingleEvent(of: .value, with: { snapshot in
             let votes = (snapshot.value.object(forKey: "amountRaised") as? Int)!
             self.candidate!.votes = votes

@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import Firebase
+import FirebaseDatabase
 
 class Candidate {
     var candidateRef:FIRDatabaseReference!
@@ -40,7 +40,7 @@ class Candidate {
     }
     
     // Formats candidate data as dictionary for DB use excluding year
-    func toDict()-> AnyObject {
+    func toDict()-> NSDictionary {
         return [
             "name": name,
             "organization": organization,
