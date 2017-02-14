@@ -59,7 +59,8 @@ class Candidate {
         var votes:Int = 0
         
         childRef.observeSingleEvent(of: .value, with: { snapshot in
-            votes = (snapshot.value.object(forKey: "votes") as? Int)!
+            let value = snapshot.value as? NSDictionary
+            votes = value?["votes"] as? Int ?? 0
         })
         return votes
     }
@@ -69,8 +70,9 @@ class Candidate {
         var amountRaised:Double = 0.0
         
         childRef.observeSingleEvent(of: .value, with: { snapshot in
-            amountRaised = (snapshot.value.object(forKey: "amountRaised") as? Double)!
-        })
+            let value = snapshot.value as? NSDictionary
+            amountRaised = value?["amountRaised"] as? Double ?? 0
+         })
         return amountRaised
     }
     

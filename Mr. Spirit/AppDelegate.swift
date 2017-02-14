@@ -42,26 +42,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let twitterClient = BDBOAuth1SessionManager(baseURL: URL(string: "https://api.twitter.com"), consumerKey: "NeIGiqZAMIBB7jbFtt3cEZFPS", consumerSecret: "WLBuJPNXbjUvrBJOepNelGDvYoQn8Dni1jLWIcwajuYreq2lbT")
         
-        twitterClient?.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential!) -> Void in
+        twitterClient?.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential?) -> Void in
             print("access token received")
             
             //fetching relevant tweets (#MrSpirit2016)
             let params = ["result_type" : "recent" , "count" : "100"]
             
-            twitterClient.get("1.1/search/tweets.json?f=tweets&q=%23MrSpirit2016&src=typd", parameters: params, progress: nil, success: { (task: URLSessionDataTask, response: AnyObject?) -> Void in
+            twitterClient?.get("1.1/search/tweets.json?f=tweets&q=%23MrSpirit2016&src=typd", parameters: params, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
                 let tweets = response as! NSDictionary
                 
                 print(tweets)
                 
-                /* for tweet in tweets {
-                 print(\(tweet["text"]))
-                 } */
-                
-                }, failure: { (task: URLSessionDataTask?, error: NSError) -> Void in
+                }, failure: { (task: URLSessionDataTask?, error: Error) -> Void in
                     print("error: \(error.localizedDescription)")
             })
-        }) { (error: NSError!) -> Void in
-            print("error: \(error.localizedDescription)")
+        }) { (error: Error?) -> Void in
+            print("error: \(error?.localizedDescription)")
         }
         
         return false

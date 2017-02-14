@@ -40,7 +40,7 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
             UIView.animate(withDuration: 1.0, animations: {
                 self.warningView.alpha = 0
                 }, completion: nil)
-        }) { (error: NSError) -> () in
+        }) { (error: Error) -> () in
             print("error: \(error.localizedDescription)")
             UIView.animate(withDuration: 1.0, animations: {
                 self.warningView.alpha = 1
@@ -59,7 +59,7 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
         TwitterClient.sharedInstance.trendingTimeline({ (tweets: [Tweet]) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
-        }) { (error: NSError) -> () in
+        }) { (error: Error) -> () in
             print("error: \(error.localizedDescription)")
         }
         
@@ -119,7 +119,7 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }, completion: nil)
             self.tableView.reloadData()
             print("refreshed")
-        }) { (error: NSError) -> () in
+        }) { (error: Error) -> () in
             print("error: \(error.localizedDescription)")
             UIView.animate(withDuration: 1.0, animations: {
                 self.warningView.alpha = 1

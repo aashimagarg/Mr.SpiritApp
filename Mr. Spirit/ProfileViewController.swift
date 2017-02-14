@@ -74,7 +74,7 @@ class ProfileViewController: UIViewController {
 //            let upvotesRef = Firebase(url: "httvar//mrspirit2016.firebaseio.com/candidates/\(self.candidate!.name)/votes")
             let upvotesRef = self.ref.child("candidates/(candidate.name)/votes").setValue(self.candidate!.name)
             upvotesRef.runTransactionBlock({
-                (currentData:FIRMutableData!) in
+                (currentData: FIRMutableData) -> FIRTransactionResult in
                 var value = currentData.value as? Int
                 if (value == nil) {
                     value = 0
@@ -100,15 +100,6 @@ class ProfileViewController: UIViewController {
         self.present(alertController, animated: true) {
             // ...
         }
-        
-//        let alert = UIAlertController(title: alert_title, message: alert_message, preferredStyle: .Alert)
-//        let action = UIAlertAction(title: "OK", style: .Default) { _ in }
-//        alert.addAction(action)
-        
-        
-        ////// Run in UIAlertView if click "continue"
-        // Run vote as transaction to update vote count
-
     }
     
     @IBAction func donateButtonClicked(_ sender: AnyObject) {
@@ -122,21 +113,23 @@ class ProfileViewController: UIViewController {
         // Votes
         ref = ref.child(candidate!.name)
         ref.observeSingleEvent(of: .value, with: { snapshot in
-            let votes = (snapshot.value.object(forKey: "votes") as? Int)!
+            let value = snapshot.value as? NSDictionary
+            let votes = value?["votes"] as? Int ?? 0
             self.candidate!.votes = votes
-            }, withCancel: { error in
-                print(error.description)
-        })
+            }) { (error) in
+                print(error.localizedDescription)
+        }
     }
     
     func getAmountRaised() {
-        ref = ref.child(byAppendingPath: candidate!.name)
+        ref = ref.child(candidate!.name)
         ref.observeSingleEvent(of: .value, with: { snapshot in
-            let votes = (snapshot.value.object(forKey: "amountRaised") as? Int)!
-            self.candidate!.votes = votes
-            }, withCancel: { error in
-                print(error.description)
-        })
+            let value = snapshot.value as? NSDictionary
+            let amountRaised = value?["amountRaised"] as? Double ?? 0
+            self.candidate!.amountRaised = amountRaised
+            }) { error in
+                print(error.localizedDescription)
+        }
     }
 
     override func didReceiveMemoryWarning() {

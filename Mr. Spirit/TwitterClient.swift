@@ -24,7 +24,7 @@ class TwitterClient: BDBOAuth1SessionManager {
         return Static.instance!
     }
     
-    func trendingTimeline(_ success: @escaping ([Tweet]) -> (), failure: @escaping (NSError) -> ()) {
+    func trendingTimeline(_ success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
         
         let params = ["result_type" : "recent" , "count" : "100"]
         
@@ -46,7 +46,7 @@ class TwitterClient: BDBOAuth1SessionManager {
             let tweets = Tweet.tweetsWithArray(dictionaries)
             
             success(tweets)
-            }, failure: { (task: URLSessionDataTask?, error: NSError) -> Void in
+            }, failure: { (task: URLSessionDataTask?, error: Error) -> Void in
                 failure(error)
         })
         
