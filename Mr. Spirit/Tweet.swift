@@ -11,14 +11,14 @@ import UIKit
 class Tweet: NSObject {
     
     var text: String?
-    var timestamp: NSDate?
+    var timestamp: Date?
     var retweetCount: Int = 0
     var favoritesCount: Int = 0
     var retweeted: Bool?
     var favorited: Bool?
     var nameLabel: String?
     var screenLabel: String?
-    var profileUrl: NSURL?
+    var profileUrl: URL?
     
     init(dictionary: NSDictionary){
         
@@ -31,22 +31,22 @@ class Tweet: NSObject {
         favoritesCount = (dictionary["favorite_count"] as? Int) ?? 0
         let profileUrlString = (dictionary["user"]!["profile_image_url_https"] as? String)
         if let profileUrlString = profileUrlString {
-            profileUrl = NSURL(string: profileUrlString)
+            profileUrl = URL(string: profileUrlString)
         }
         
         
         //formatting a timestamp in a readable manner
         let timestampString = dictionary["created_at"] as? String
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         
         if let timestampString = timestampString {
             formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
-            timestamp = formatter.dateFromString(timestampString)
+            timestamp = formatter.date(from: timestampString)
         }
     }
     
-    class func tweetsWithArray(dictionaries: [NSDictionary]) -> [Tweet]{
+    class func tweetsWithArray(_ dictionaries: [NSDictionary]) -> [Tweet]{
         var tweets = [Tweet]()
         
         //iterate through all dictionaries to create tweet and add to array of tweets

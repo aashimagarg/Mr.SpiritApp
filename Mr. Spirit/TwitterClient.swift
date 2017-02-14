@@ -11,7 +11,7 @@ import BDBOAuth1Manager
 
 let twitterConsumerKey = "NeIGiqZAMIBB7jbFtt3cEZFPS"
 let twitterConsumerSecret = "WLBuJPNXbjUvrBJOepNelGDvYoQn8Dni1jLWIcwajuYreq2lbT"
-let twitterBaseURL = NSURL(string: "https://api.twitter.com")
+let twitterBaseURL = URL(string: "https://api.twitter.com")
 
 
 class TwitterClient: BDBOAuth1SessionManager {
@@ -21,14 +21,14 @@ class TwitterClient: BDBOAuth1SessionManager {
             static let instance = TwitterClient(baseURL: twitterBaseURL, consumerKey: twitterConsumerKey, consumerSecret: twitterConsumerSecret)
         }
         
-        return Static.instance
+        return Static.instance!
     }
     
-    func trendingTimeline(success: ([Tweet]) -> (), failure: (NSError) -> ()) {
+    func trendingTimeline(_ success: @escaping ([Tweet]) -> (), failure: @escaping (NSError) -> ()) {
         
         let params = ["result_type" : "recent" , "count" : "100"]
         
-        GET("1.1/search/tweets.json?f=tweets&q=%23MrSpirit2016&src=typd", parameters: params, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
+        get("1.1/search/tweets.json?f=tweets&q=%23MrSpirit2016&src=typd", parameters: params, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
             
             //setting initial index for dictionary
             let dictionaries = response!["statuses"] as! [NSDictionary]
@@ -46,7 +46,7 @@ class TwitterClient: BDBOAuth1SessionManager {
             let tweets = Tweet.tweetsWithArray(dictionaries)
             
             success(tweets)
-            }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
+            }, failure: { (task: URLSessionDataTask?, error: NSError) -> Void in
                 failure(error)
         })
         

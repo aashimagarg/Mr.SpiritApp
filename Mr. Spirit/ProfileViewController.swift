@@ -20,9 +20,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var voteButton: UIButton!
     @IBOutlet weak var donateButton: UIButton!
     var candidate:Candidate? = Candidate()
-    var ref = Firebase(url:"httvar//mrspirit2016.firebaseio.com/candidates/")
-    
-    
+    var ref = FIRDatabase.database().reference()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,39 +33,14 @@ class ProfileViewController: UIViewController {
         donateButton.clipsToBounds = true
         
         // Disable vote button if user has voted
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if (defaults.boolForKey("hasVoted")) {
-            voteButton.setTitle("Voted", forState: .Normal)
+        let defaults = UserDefaults.standard
+        if (defaults.bool(forKey: "hasVoted")) {
+            voteButton.setTitle("Voted", for: UIControlState())
             voteButton.backgroundColor = UIColor(hexString: "#9E9EA5")
-            voteButton.enabled = false
+            voteButton.isEnabled = false
         }
         
         getCandidateInfo()
-
-//        // Braintree set-up
-//        let clientTokenURL = NSURL(string: "https://gatnaofft8.execute-api.us-east-1.amazonaws.com/v1/token")!
-//        let clientTokenRequest = NSMutableURLRequest(URL: clientTokenURL)
-//        clientTokenRequest.setValue("application/json", forHTTPHeaderField: "Accept")
-//        
-//        NSURLSession.sharedSession().dataTaskWithRequest(clientTokenRequest) { (data, response, error) -> Void in
-//            print(error)
-//            // Handle reiturned JSON
-//            var clientToken:String?
-//            getData: do {
-//                if (data == nil){
-//                    break getData
-//                }
-//                let jsonData = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
-//                let jsonDataDict = jsonData as? [String:String]
-//                clientToken = jsonDataDict!["client_token"]
-//            } catch let error as NSError {
-//                print(error)
-//            }
-//            
-//            if clientToken != nil {
-//                self.braintreeClient = BTAPIClient(authorization: clientToken!)
-//            }
-//        }.resume()
     }
     
     func getCandidateInfo(){
@@ -78,26 +52,27 @@ class ProfileViewController: UIViewController {
         
         // Candidate bio, justfied
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = NSTextAlignment.Justified
-        let attributedString = NSAttributedString(string: self.candidate!.bio, attributes: [NSParagraphStyleAttributeName: paragraphStyle, NSBaselineOffsetAttributeName: NSNumber(float: 0)])
+        paragraphStyle.alignment = NSTextAlignment.justified
+        let attributedString = NSAttributedString(string: self.candidate!.bio, attributes: [NSParagraphStyleAttributeName: paragraphStyle, NSBaselineOffsetAttributeName: NSNumber(value: 0 as Float)])
         bioText.attributedText = attributedString
     }
     
-    @IBAction func voteBttnClicked(sender: AnyObject) {
+    @IBAction func voteBttnClicked(_ sender: AnyObject) {
         // Display UIAlertView
         let alert_title = "Are you sure you want to vote for \(candidate!.getFirstName())?"
         let alert_message = "You can only vote for one candidate and you cannot change your vote."
         
         
-        let alertController = UIAlertController(title: alert_title, message: alert_message, preferredStyle: .Alert)
+        let alertController = UIAlertController(title: alert_title, message: alert_message, preferredStyle: .alert)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
             // ...
         }
         alertController.addAction(cancelAction)
         
-        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-            let upvotesRef = Firebase(url: "httvar//mrspirit2016.firebaseio.com/candidates/\(self.candidate!.name)/votes")
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+//            let upvotesRef = Firebase(url: "httvar//mrspirit2016.firebaseio.com/candidates/\(self.candidate!.name)/votes")
+            let upvotesRef = self.ref.child("candidates/(candidate.name)/votes").setValue(candidate)
             upvotesRef.runTransactionBlock({
                 (currentData:FMutableData!) in
                 var value = currentData.value as? Int
@@ -107,22 +82,22 @@ class ProfileViewController: UIViewController {
                 currentData.value = value! + 1
                 print(currentData)
                 print(currentData.value)
-                return FTransactionResult.successWithValue(currentData)
+                return FTransactionResult.success(withValue: currentData)
             })
             
             // Update button
-            self.voteButton.setTitle("Voted", forState: .Normal)
+            self.voteButton.setTitle("Voted", for: UIControlState())
             self.voteButton.backgroundColor = UIColor(hexString: "#9E9EA5")
-            self.voteButton.enabled = false
+            self.voteButton.isEnabled = false
             
             // Disable all others voting
-            let defaults = NSUserDefaults.standardUserDefaults()
-            defaults.setBool(true, forKey: "hasVoted")
+            let defaults = UserDefaults.standard
+            defaults.set(true, forKey: "hasVoted")
             // ...
         }
         alertController.addAction(OKAction)
         
-        self.presentViewController(alertController, animated: true) {
+        self.present(alertController, animated: true) {
             // ...
         }
         
@@ -136,30 +111,30 @@ class ProfileViewController: UIViewController {
 
     }
     
-    @IBAction func donateButtonClicked(sender: AnyObject) {
-        let place = "https://mrspirit.site/donate/?name=\(candidate!.getFirstName().lowercaseString)"
+    @IBAction func donateButtonClicked(_ sender: AnyObject) {
+        let place = "https://mrspirit.site/donate/?name=\(candidate!.getFirstName().lowercased())"
         print(place)
-        let url = NSURL(string: place)
-        UIApplication.sharedApplication().openURL(url!)
+        let url = URL(string: place)
+        UIApplication.shared.openURL(url!)
     }
     
     func getVoteCount(){
         // Votes
-        ref = ref.childByAppendingPath(candidate!.name)
-        ref.observeSingleEventOfType(.Value, withBlock: { snapshot in
-            let votes = (snapshot.value.objectForKey("votes") as? Int)!
+        ref = ref.child(byAppendingPath: candidate!.name)
+        ref.observeSingleEvent(of: .value, with: { snapshot in
+            let votes = (snapshot.value.object(forKey: "votes") as? Int)!
             self.candidate!.votes = votes
-            }, withCancelBlock: { error in
+            }, withCancel: { error in
                 print(error.description)
         })
     }
     
     func getAmountRaised() {
-        ref = ref.childByAppendingPath(candidate!.name)
-        ref.observeSingleEventOfType(.Value, withBlock: { snapshot in
-            let votes = (snapshot.value.objectForKey("amountRaised") as? Int)!
+        ref = ref?.child(byAppendingPath: candidate!.name)
+        ref.observeSingleEvent(of: .value, with: { snapshot in
+            let votes = (snapshot.value.object(forKey: "amountRaised") as? Int)!
             self.candidate!.votes = votes
-            }, withCancelBlock: { error in
+            }, withCancel: { error in
                 print(error.description)
         })
     }
@@ -168,16 +143,4 @@ class ProfileViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

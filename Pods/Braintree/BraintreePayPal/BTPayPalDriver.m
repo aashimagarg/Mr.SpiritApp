@@ -190,6 +190,7 @@ typedef NS_ENUM(NSUInteger, BTPayPalPaymentType) {
         NSMutableDictionary *experienceProfile = [NSMutableDictionary dictionary];
         
         if (!isBillingAgreement) {
+            parameters[@"intent"] = [self.class intentTypeToString:request.intent];
             if (request.amount != nil) {
                 parameters[@"amount"] = request.amount;
             }
@@ -249,6 +250,8 @@ typedef NS_ENUM(NSUInteger, BTPayPalPaymentType) {
         
         parameters[@"experience_profile"] = experienceProfile;
         
+        self.payPalRequest = request;
+        
         NSString *url = isBillingAgreement ? @"setup_billing_agreement" : @"create_payment_resource";
         
         [self.apiClient POST:[NSString stringWithFormat:@"v1/paypal_hermes/%@",url]
@@ -283,7 +286,9 @@ typedef NS_ENUM(NSUInteger, BTPayPalPaymentType) {
                       if (approvalUrl == nil) {
                           approvalUrl = [body[@"agreementSetup"][@"approvalUrl"] asURL];
                       }
-                      
+
+                      approvalUrl = [self decorateApprovalURL:approvalUrl forRequest:request];
+
                       PPOTCheckoutRequest *request = nil;
                       if (isBillingAgreement) {
                           request = [self.requestFactory billingAgreementRequestWithApprovalURL:approvalUrl
@@ -357,10 +362,14 @@ typedef NS_ENUM(NSUInteger, BTPayPalPaymentType) {
                     
                     if (paymentType == BTPayPalPaymentTypeCheckout) {
                         parameters[@"paypal_account"][@"options"] = @{ @"validate": @NO };
+                        if (self.payPalRequest) {
+                            parameters[@"paypal_account"][@"intent"] = [self.class intentTypeToString:self.payPalRequest.intent];
+                        }
                     }
                     if (self.clientMetadataId) {
                         parameters[@"correlation_id"] = self.clientMetadataId;
                     }
+                    
                     BTClientMetadata *metadata = [self clientMetadata];
                     parameters[@"_meta"] = @{
                                              @"source" : metadata.sourceString,
@@ -428,7 +437,22 @@ typedef NS_ENUM(NSUInteger, BTPayPalPaymentType) {
     if ([SFSafariViewController class]) {
         [self informDelegatePresentingViewControllerRequestPresent:appSwitchURL];
     } else {
-        [[UIApplication sharedApplication] openURL:appSwitchURL];
+        UIApplication *application = [UIApplication sharedApplication];
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000
+        if ([application respondsToSelector:@selector(openURL:options:completionHandler:)]) {
+            [application openURL:appSwitchURL options:[NSDictionary dictionary] completionHandler:nil];
+        } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+            [application openURL:appSwitchURL];
+#pragma clang diagnostic pop
+        }
+#else
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        [application openURL:appSwitchURL];
+#pragma clang diagnostic pop
+#endif
     }
 }
 
@@ -520,6 +544,7 @@ typedef NS_ENUM(NSUInteger, BTPayPalPaymentType) {
     NSString *lastName = [details[@"payerInfo"][@"lastName"] asString];
     NSString *phone = [details[@"payerInfo"][@"phone"] asString];
     NSString *payerId = [details[@"payerInfo"][@"payerId"] asString];
+    BOOL isDefault = [payPalAccount[@"default"] isTrue];
     
     BTPostalAddress *shippingAddress = [self.class shippingOrBillingAddressFromJSON:details[@"payerInfo"][@"shippingAddress"]];
     BTPostalAddress *billingAddress = [self.class shippingOrBillingAddressFromJSON:details[@"payerInfo"][@"billingAddress"]];
@@ -536,9 +561,30 @@ typedef NS_ENUM(NSUInteger, BTPayPalPaymentType) {
         description = email;
     }
     
-    BTPayPalAccountNonce *tokenizedPayPalAccount = [[BTPayPalAccountNonce alloc] initWithNonce:nonce description:description email:email firstName:firstName lastName:lastName phone:phone billingAddress:billingAddress shippingAddress:shippingAddress clientMetadataId:clientMetadataId payerId:payerId];
+    BTPayPalAccountNonce *tokenizedPayPalAccount = [[BTPayPalAccountNonce alloc] initWithNonce:nonce description:description email:email firstName:firstName lastName:lastName phone:phone billingAddress:billingAddress shippingAddress:shippingAddress clientMetadataId:clientMetadataId payerId:payerId isDefault:isDefault];
     
     return tokenizedPayPalAccount;
+}
+
++ (NSString *)intentTypeToString:(BTPayPalRequestIntent)intentType {
+    NSString *result = nil;
+
+    switch(intentType) {
+        case BTPayPalRequestIntentAuthorize:
+            result = @"authorize";
+            break;
+        case BTPayPalRequestIntentSale:
+            result = @"sale";
+            break;
+        case BTPayPalRequestIntentOrder:
+            result = @"order";
+            break;
+        default:
+            result = @"authorize";
+            break;
+    }
+
+    return result;
 }
 
 #pragma mark - Delegate Informers
@@ -756,6 +802,38 @@ static NSString * const SFSafariViewControllerFinishedURL = @"sfsafariviewcontro
 }
 
 #pragma mark - Internal
+
+- (NSURL *)decorateApprovalURL:(NSURL*)approvalURL forRequest:(BTPayPalRequest *)paypalRequest {
+    if (approvalURL != nil && paypalRequest.userAction != BTPayPalRequestUserActionDefault) {
+        NSURLComponents* approvalURLComponents = [[NSURLComponents alloc] initWithURL:approvalURL resolvingAgainstBaseURL:NO];
+        if (approvalURLComponents != nil) {
+            NSString *userActionValue = [BTPayPalDriver userActionTypeToString:paypalRequest.userAction];
+            if ([userActionValue length] > 0) {
+                NSString *query = [approvalURLComponents query];
+                NSString *delimiter = [query length] == 0 ? @"" : @"&";
+                query = [NSString stringWithFormat:@"%@%@useraction=%@", query, delimiter, userActionValue];
+                approvalURLComponents.query = query;
+            }
+            return [approvalURLComponents URL];
+        }
+    }
+    return approvalURL;
+}
+
++ (NSString *)userActionTypeToString:(BTPayPalRequestUserAction)userActionType {
+    NSString *result = nil;
+
+    switch(userActionType) {
+        case BTPayPalRequestUserActionCommit:
+            result = @"commit";
+            break;
+        default:
+            result = @"";
+            break;
+    }
+
+    return result;
+}
 
 - (BTPayPalRequestFactory *)requestFactory {
     if (!_requestFactory) {

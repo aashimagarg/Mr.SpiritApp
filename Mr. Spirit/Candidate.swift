@@ -11,7 +11,7 @@ import UIKit
 import Firebase
 
 class Candidate {
-    var candidateRef:Firebase!
+    var candidateRef:FIRDatabaseReference!
     var name:String=""
     var organization:String=""
     var bio:String=""
@@ -51,30 +51,30 @@ class Candidate {
     }
     
     func getFirstName() -> String {
-        return name.componentsSeparatedByString(" ").first!
+        return name.components(separatedBy: " ").first!
     }
     
-    func getVoteCount(name:String, ref:Firebase) -> Int {
-        let childRef = ref.childByAppendingPath(name)
+    func getVoteCount(_ name:String, ref:FIRDatabaseReference) -> Int {
+        let childRef = ref.child(name)
         var votes:Int = 0
         
-        childRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
-            votes = (snapshot.value.objectForKey("votes") as? Int)!
+        childRef.observeSingleEvent(of: .value, with: { snapshot in
+            votes = (snapshot.value.object(forKey: "votes") as? Int)!
         })
         return votes
     }
     
-    func getAmountRaised(name:String, ref:Firebase) -> Double {
-        let childRef = ref.childByAppendingPath(name)
+    func getAmountRaised(_ name:String, ref:FIRDatabaseReference) -> Double {
+        let childRef = ref.child(name)
         var amountRaised:Double = 0.0
         
-        childRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
-            amountRaised = (snapshot.value.objectForKey("amountRaised") as? Double)!
+        childRef.observeSingleEvent(of: .value, with: { snapshot in
+            amountRaised = (snapshot.value.object(forKey: "amountRaised") as? Double)!
         })
         return amountRaised
     }
     
-    func saveRef(name:String, dict:AnyObject, ref:Firebase) {
-        self.candidateRef = ref.childByAppendingPath(self.name)
+    func saveRef(_ name:String, dict:AnyObject, ref:FIRDatabaseReference) {
+        self.candidateRef = ref.child(self.name)
     }
 }

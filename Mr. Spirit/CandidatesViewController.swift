@@ -16,7 +16,8 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
     let cellId:String = "CandidateCell"
     
     // Load database
-    var ref = Firebase(url:"httvar//mrspirit2016.firebaseio.com/candidates")
+//    var ref = Firebase(url:"httvar//mrspirit2016.firebaseio.com/candidates")
+    var ref = FIRDatabase.database().reference()
     
     var candidatesList = [Candidate]()
     var candidateNames = ["Alec Garcia", "Andy Wallace", "Erik Solorzano", "Jonathan Stevenson", "Marc Castaneda", "Patrick Golden", "Payne Keinarth", "Ryan Howell", "Steven Aviles"]
@@ -72,19 +73,19 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     
-   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+   func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return candidatesList.count
         
     }
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(self.cellId, forIndexPath: indexPath) as! CandidateCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellId, for: indexPath) as! CandidateCell
         let candidate = candidatesList[indexPath.row]
         
         // Configure cell
@@ -97,14 +98,14 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
     
   
     // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "profileSegue" {
-            let indexPath:NSIndexPath? = self.tableView!.indexPathForSelectedRow
+            let indexPath:IndexPath? = self.tableView!.indexPathForSelectedRow
             
             // Get the destination view controller
-            let detailVC:ProfileViewController = segue.destinationViewController as! ProfileViewController
+            let detailVC:ProfileViewController = segue.destination as! ProfileViewController
             
-            self.tableView.deselectRowAtIndexPath(indexPath!, animated: false)
+            self.tableView.deselectRow(at: indexPath!, animated: false)
             // Pass in the selected object to the new view controller
             let candidate:Candidate = candidatesList[indexPath!.row]
             detailVC.candidate = candidate

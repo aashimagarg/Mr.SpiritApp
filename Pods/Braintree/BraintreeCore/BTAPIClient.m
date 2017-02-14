@@ -1,13 +1,15 @@
 #import "BTAnalyticsMetadata.h"
+#import "BTAnalyticsService.h"
 #import "BTAPIClient_Internal.h"
-#import "BTLogger_Internal.h"
 #import "BTClientToken.h"
+#import "BTLogger_Internal.h"
+#import "BTPaymentMethodNonce.h"
+#import "BTPaymentMethodNonceParser.h"
 
 NSString *const BTAPIClientErrorDomain = @"com.braintreepayments.BTAPIClientErrorDomain";
 
 @interface BTAPIClient ()
 @property (nonatomic, strong) dispatch_queue_t configurationQueue;
-@property (nonatomic, strong) BTJSON *cachedRemoteConfiguration;
 @end
 
 @implementation BTAPIClient
@@ -32,7 +34,8 @@ NSString *const BTAPIClientErrorDomain = @"com.braintreepayments.BTAPIClientErro
             _tokenizationKey = authorization;
 
             _http = [[BTHTTP alloc] initWithBaseURL:baseURL tokenizationKey:authorization];
-
+            _configurationHTTP = [[BTHTTP alloc] initWithBaseURL:baseURL tokenizationKey:authorization];
+            
             if (sendAnalyticsEvent) {
                 [self sendAnalyticsEvent:@"ios.started.client-key"];
             }
@@ -48,12 +51,25 @@ NSString *const BTAPIClientErrorDomain = @"com.braintreepayments.BTAPIClientErro
 
             NSURL *baseURL = [self.clientToken.json[@"clientApiUrl"] asURL];
             _http = [[BTHTTP alloc] initWithBaseURL:baseURL authorizationFingerprint:self.clientToken.authorizationFingerprint];
+            _configurationHTTP = [[BTHTTP alloc] initWithBaseURL:baseURL authorizationFingerprint:self.clientToken.authorizationFingerprint];
 
             if (sendAnalyticsEvent) {
                 [self sendAnalyticsEvent:@"ios.started.client-token"];
             }
         }
+        
+        // BTHTTP's default NSURLSession does not cache responses, but we want the BTHTTP instance that fetches configuration to cache aggressively
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        static NSURLCache *configurationCache;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            configurationCache = [[NSURLCache alloc] initWithMemoryCapacity:1 * 1024 * 1024 diskCapacity:0 diskPath:nil];
+        });
+        configuration.URLCache = configurationCache;
+        configuration.requestCachePolicy = NSURLRequestReturnCacheDataElseLoad;
+        _configurationHTTP.session = [NSURLSession sessionWithConfiguration:configuration];
     }
+    
     return self;
 }
 
@@ -70,8 +86,8 @@ NSString *const BTAPIClientErrorDomain = @"com.braintreepayments.BTAPIClientErro
         NSAssert(NO, @"Cannot copy an API client that does not specify a client token or tokenization key");
     }
 
-    copiedClient.http = [self.http copy];
-    copiedClient.cachedRemoteConfiguration = self.cachedRemoteConfiguration;
+    copiedClient.http = self.http;
+    copiedClient.configurationHTTP = self.configurationHTTP;
 
     if (copiedClient) {
         BTMutableClientMetadata *mutableMetadata = [self.metadata mutableCopy];
@@ -145,6 +161,45 @@ NSString *const BTAPIClientErrorDomain = @"com.braintreepayments.BTAPIClientErro
     return [NSString stringWithFormat:@"/merchants/%@/client_api", merchantID];
 }
 
+# pragma mark - Payment Methods
+
+- (void)fetchPaymentMethodNonces:(void (^)(NSArray <BTPaymentMethodNonce *> *, NSError *))completion {
+    [self fetchPaymentMethodNonces:NO completion:completion];
+}
+
+- (void)fetchPaymentMethodNonces:(BOOL)defaultFirst completion:(void (^)(NSArray <BTPaymentMethodNonce *> *, NSError *))completion {
+    if (!self.clientToken) {
+        NSError *error = [NSError errorWithDomain:BTAPIClientErrorDomain code:BTAPIClientErrorTypeNotAuthorized userInfo:@{ NSLocalizedDescriptionKey : @"Cannot fetch payment method nonces with a tokenization key", NSLocalizedRecoverySuggestionErrorKey : @"This endpoint requires a client token for authorization"}];
+        if (completion) {
+            completion(nil, error);
+        }
+        return;
+    }
+
+    [self GET:@"v1/payment_methods"
+             parameters:@{@"default_first": @(defaultFirst),
+                          @"session_id": self.metadata.sessionId}
+             completion:^(BTJSON * _Nullable body, __unused NSHTTPURLResponse * _Nullable response, NSError * _Nullable error) {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     if (completion) {
+                         if (error) {
+                             completion(nil, error);
+                         } else {
+                             NSMutableArray *paymentMethodNonces = [NSMutableArray array];
+                             for (NSDictionary *paymentInfo in [body[@"paymentMethods"] asArray]) {
+                                 BTJSON *paymentInfoJSON = [[BTJSON alloc] initWithValue:paymentInfo];
+                                 BTPaymentMethodNonce *paymentMethodNonce = [[BTPaymentMethodNonceParser sharedParser] parseJSON:paymentInfoJSON withParsingBlockForType:[paymentInfoJSON[@"type"] asString]];
+                                 if (paymentMethodNonce) {
+                                     [paymentMethodNonces addObject:paymentMethodNonce];
+                                 }
+                             }
+                             completion(paymentMethodNonces, nil);
+                         }
+                     }
+                 });
+    }];
+}
+
 #pragma mark - Remote Configuration
 
 - (void)fetchOrReturnRemoteConfiguration:(void (^)(BTConfiguration *, NSError *))completionBlock {
@@ -164,36 +219,31 @@ NSString *const BTAPIClientErrorDomain = @"com.braintreepayments.BTAPIClientErro
     //       queue is a background queue to guarantee atomic access to the remote configuration resource.
     dispatch_async(self.configurationQueue, ^{
         __block NSError *fetchError;
-
-        if (self.cachedRemoteConfiguration == nil) {
-            dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-            [self.http GET:@"v1/configuration" completion:^(BTJSON *body, NSHTTPURLResponse *response, NSError *error) {
-                if (error) {
-                    fetchError = error;
-                } else if (response.statusCode != 200) {
-                    NSError *configurationDomainError =
-                    [NSError errorWithDomain:BTAPIClientErrorDomain
-                                        code:BTAPIClientErrorTypeConfigurationUnavailable
-                                    userInfo:@{
-                                               NSLocalizedFailureReasonErrorKey: @"Unable to fetch remote configuration from Braintree API at this time."
-                                               }];
-                    fetchError = configurationDomainError;
-                } else {
-                    self.cachedRemoteConfiguration = body;
-                }
-
-                // Important: Unlock semaphore in all cases
-                dispatch_semaphore_signal(semaphore);
-            }];
-
-            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-        }
+        
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+        __block BTConfiguration *configuration;
+        [self.configurationHTTP GET:@"v1/configuration" parameters:@{ @"configVersion": @"3" } completion:^(BTJSON * _Nullable body, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error) {
+            if (error) {
+                fetchError = error;
+            } else if (response.statusCode != 200) {
+                NSError *configurationDomainError =
+                [NSError errorWithDomain:BTAPIClientErrorDomain
+                                    code:BTAPIClientErrorTypeConfigurationUnavailable
+                                userInfo:@{
+                                           NSLocalizedFailureReasonErrorKey: @"Unable to fetch remote configuration from Braintree API at this time."
+                                           }];
+                fetchError = configurationDomainError;
+            } else {
+                configuration = [[BTConfiguration alloc] initWithJSON:body];
+            }
+            
+            // Important: Unlock semaphore in all cases
+            dispatch_semaphore_signal(semaphore);
+        }];
+        
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
 
         dispatch_async(dispatch_get_main_queue(), ^{
-            BTConfiguration *configuration;
-            if (self.cachedRemoteConfiguration) {
-                configuration = [[BTConfiguration alloc] initWithJSON:self.cachedRemoteConfiguration];
-            }
             completionBlock(configuration, fetchError);
         });
     });
@@ -201,70 +251,29 @@ NSString *const BTAPIClientErrorDomain = @"com.braintreepayments.BTAPIClientErro
 
 #pragma mark - Analytics
 
-- (void)sendAnalyticsEvent:(NSString *)eventKind {
-    [self sendAnalyticsEvent:eventKind completion:nil];
+/// By default, the `BTAnalyticsService` instance is static/shared so that only one queue of events exists.
+/// The "singleton" is managed here because the analytics service depends on `BTAPIClient`.
+- (BTAnalyticsService *)analyticsService {
+    static BTAnalyticsService *analyticsService;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        analyticsService = [[BTAnalyticsService alloc] initWithAPIClient:self];
+        analyticsService.flushThreshold = 5;
+    });
+    
+    // The analytics service may be overridden by unit tests. In that case, return the ivar and not the singleton
+    if (_analyticsService) return _analyticsService;
+    
+    return analyticsService;
 }
 
-- (void)sendAnalyticsEvent:(NSString *)eventKind completion:(void(^)(NSError *error))completionBlock {
-    long timestampInSeconds = round([[NSDate date] timeIntervalSince1970]);
-
-    [self fetchOrReturnRemoteConfiguration:^(BTConfiguration *configuration, NSError *error){
-        if (error) {
-            [[BTLogger sharedLogger] warning:[NSString stringWithFormat:@"Failed to send analytics event. Remote configuration fetch failed. %@", error.localizedDescription]];
-            if (completionBlock) completionBlock(error);
-            return;
-        }
-
-        NSURL *analyticsURL = [configuration.json[@"analytics"][@"url"] asURL];
-        if (analyticsURL) {
-            if (!self.analyticsHttp) {
-                if (self.clientToken) {
-                    self.analyticsHttp = [[BTHTTP alloc] initWithBaseURL:analyticsURL authorizationFingerprint:self.clientToken.authorizationFingerprint];
-                } else if (self.tokenizationKey) {
-                    self.analyticsHttp = [[BTHTTP alloc] initWithBaseURL:analyticsURL tokenizationKey:self.tokenizationKey];
-                }
-                NSAssert(self.analyticsHttp != nil, @"Must have clientToken or tokenizationKey");
-                self.analyticsHttp.dispatchQueue = dispatch_get_main_queue();
-            }
-            // A special value passed in by unit tests to prevent BTHTTP from actually posting
-            if ([self.analyticsHttp.baseURL isEqual:[NSURL URLWithString:@"test://do-not-send.url"]]) {
-                if (completionBlock) completionBlock(nil);
-                return;
-            }
-
-            NSMutableDictionary *parameters = [@{ @"analytics": @[@{ @"kind": eventKind,
-                                                                     @"timestamp": @(timestampInSeconds)}],
-                                                  @"_meta": self.metaParameters } mutableCopy];
-            if (self.clientToken.authorizationFingerprint) {
-                parameters[@"authorization_fingerprint"] = self.clientToken.authorizationFingerprint;
-            }
-            if (self.tokenizationKey) {
-                parameters[@"tokenization_key"] = self.tokenizationKey;
-            }
-            [self.analyticsHttp POST:@"/"
-                          parameters:parameters
-                          completion:^(__unused BTJSON *body, __unused NSHTTPURLResponse *response, NSError *error) {
-                              if (completionBlock) completionBlock(error);
-                          }];
-        } else {
-            [[BTLogger sharedLogger] debug:@"Skipping sending analytics event - analytics is disabled in remote configuration"];
-            if (completionBlock) completionBlock(nil);
-        }
-    }];
+- (void)sendAnalyticsEvent:(NSString *)eventKind {
+    [self.analyticsService sendAnalyticsEvent:eventKind];
 }
 
 - (NSDictionary *)metaParameters {
-    BTClientMetadata *clientMetadata = self.metadata;
-    NSMutableDictionary *clientMetadataParameters = [NSMutableDictionary dictionary];
-    clientMetadataParameters[@"integration"] = clientMetadata.integrationString;
-    clientMetadataParameters[@"source"] = clientMetadata.sourceString;
-    clientMetadataParameters[@"sessionId"] = clientMetadata.sessionId;
-
-    NSDictionary *analyticsMetadata = [BTAnalyticsMetadata metadata];
-
-    NSMutableDictionary *metaParameters = [NSMutableDictionary dictionary];
-    [metaParameters addEntriesFromDictionary:analyticsMetadata];
-    [metaParameters addEntriesFromDictionary:clientMetadataParameters];
+    NSMutableDictionary *metaParameters = [NSMutableDictionary dictionaryWithDictionary:self.metadata.parameters];
+    [metaParameters addEntriesFromDictionary:[BTAnalyticsMetadata metadata]];
 
     return [metaParameters copy];
 }

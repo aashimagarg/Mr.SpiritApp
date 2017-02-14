@@ -1,5 +1,7 @@
 #import "BTAPIClient_Internal.h"
 #import "BTCard.h"
+#import "BTCardClient.h"
+#import "BTCardRequest.h"
 #import "BTDropInViewController_Internal.h"
 #import "BTLogger_Internal.h"
 #import "BTDropInErrorAlert.h"
@@ -33,6 +35,9 @@
 
 @property (nonatomic, assign) BOOL originalCoinbaseStoreInVault;
 
+/// Used to strongly retain any BTDropInErrorAlert instances in case UIViewAlert is used
+@property (nonatomic, strong, nonnull) NSMutableSet *errorAlerts;
+
 @end
 
 @implementation BTDropInViewController
@@ -56,6 +61,8 @@
         self.selectedPaymentMethodNonceIndex = NSNotFound;
         self.dropInContentView.state = BTDropInContentViewStateActivity;
         self.fullForm = YES;
+
+        self.errorAlerts = [NSMutableSet set];
     }
     return self;
 }
@@ -106,17 +113,20 @@
         if (error) {
             BTDropInErrorAlert *errorAlert = [[BTDropInErrorAlert alloc] initWithPresentingViewController:self];
             errorAlert.title = error.localizedDescription ?: BTDropInLocalizedString(ERROR_ALERT_CONNECTION_ERROR);
-            [errorAlert show];
+            [self.errorAlerts addObject:errorAlert];
+            [errorAlert showWithDismissalHandler:^{
+                [self.errorAlerts removeObject:errorAlert];
+            }];
         }
 
-        NSArray *challenges = [configuration.json[@"challenges"] asArray];
+        NSArray <NSString *> *challenges = [configuration.json[@"challenges"] asStringArray];
 
         static NSString *cvvChallenge = @"cvv";
         static NSString *postalCodeChallenge = @"postal_code";
 
         BTUICardFormOptionalFields optionalFields;
         if ([challenges containsObject:cvvChallenge] && [challenges containsObject:postalCodeChallenge]) {
-            optionalFields = BTUICardFormOptionalFieldsAll;
+            optionalFields = BTUICardFormOptionalFieldsCvv | BTUICardFormFieldPostalCode;
         } else if ([challenges containsObject:cvvChallenge]) {
             optionalFields = BTUICardFormOptionalFieldsCvv;
         } else if ([challenges containsObject:postalCodeChallenge]) {
@@ -313,27 +323,21 @@
     } else if (!self.dropInContentView.cardForm.hidden) {
         BTUICardFormView *cardForm = self.dropInContentView.cardForm;
 
-        BTAPIClient *client = [self.apiClient copyWithSource:BTClientMetadataSourceForm integration:BTClientMetadataIntegrationDropIn];
-
         if (cardForm.valid) {
             [self informDelegateWillComplete];
 
-            NSMutableDictionary *options = [NSMutableDictionary dictionary];
-            options[@"number"] = cardForm.number;
-            options[@"expiration_date"] = [NSString stringWithFormat:@"%@/%@", cardForm.expirationMonth, cardForm.expirationYear];
-            if (cardForm.cvv) {
-                options[@"cvv"] = cardForm.cvv;
-            }
-            if (cardForm.postalCode) {
-                options[@"billing_address"] = @{ @"postal_code": cardForm.postalCode };
-            }
-            options[@"options"] = @{ @"validate" : @(self.apiClient.tokenizationKey ? NO : YES) };
-
-            [[BTTokenizationService sharedService] tokenizeType:@"Card" options:options withAPIClient:client completion:^(BTPaymentMethodNonce *paymentMethodNonce, NSError *error) {
+            BTCard *card = [[BTCard alloc] initWithNumber:cardForm.number expirationMonth:cardForm.expirationMonth expirationYear:cardForm.expirationYear cvv:cardForm.cvv];
+            card.postalCode = cardForm.postalCode;
+            card.shouldValidate = self.apiClient.tokenizationKey ? NO : YES;
+            BTCardRequest *request = [[BTCardRequest alloc] initWithCard:card];
+            BTAPIClient *copiedAPIClient = [self.apiClient copyWithSource:BTClientMetadataSourceForm integration:BTClientMetadataIntegrationDropIn];
+            BTCardClient *cardClient = [[BTCardClient alloc] initWithAPIClient:copiedAPIClient];
+            
+            [cardClient tokenizeCard:request options:nil completion:^(BTCardNonce * _Nullable tokenizedCard, NSError * _Nullable error) {
                 [self showLoadingState:NO];
 
                 if (error) {
-                    if ([error.domain isEqualToString:@"com.braintreepayments.BTCardClientErrorDomain"] && error.code == BTErrorCustomerInputInvalid) {
+                    if ([error.domain isEqualToString:@"com.braintreepayments.BTCardClientErrorDomain"] && error.code == BTCardClientErrorTypeCustomerInputInvalid) {
                         [self informUserDidFailWithError:error];
                     } else {
                         BTDropInErrorAlert *errorAlert = [[BTDropInErrorAlert alloc] initWithPresentingViewController:self];
@@ -344,18 +348,24 @@
                             // Use the paymentMethodNonces setter to update state
                             weakSelf.paymentMethodNonces = weakSelf.paymentMethodNonces;
                         };
-                        [errorAlert show];
+                        [self.errorAlerts addObject:errorAlert];
+                        [errorAlert showWithDismissalHandler:^{
+                            [self.errorAlerts removeObject:errorAlert];
+                        }];
                     }
                     return;
                 }
 
-                [self informDelegateDidAddPaymentInfo:paymentMethodNonce];
+                [self informDelegateDidAddPaymentInfo:tokenizedCard];
             }];
         } else {
-            BTDropInErrorAlert *alert = [[BTDropInErrorAlert alloc] initWithPresentingViewController:self];
-            alert.title = BTDropInLocalizedString(ERROR_SAVING_CARD_ALERT_TITLE);
-            alert.message = BTDropInLocalizedString(ERROR_SAVING_CARD_MESSAGE);
-            [alert show];
+            BTDropInErrorAlert *errorAlert = [[BTDropInErrorAlert alloc] initWithPresentingViewController:self];
+            errorAlert.title = BTDropInLocalizedString(ERROR_SAVING_CARD_ALERT_TITLE);
+            errorAlert.message = BTDropInLocalizedString(ERROR_SAVING_CARD_MESSAGE);
+            [self.errorAlerts addObject:errorAlert];
+            [errorAlert showWithDismissalHandler:^{
+                [self.errorAlerts removeObject:errorAlert];
+            }];
         }
     }
 }
@@ -577,48 +587,42 @@
 }
 
 - (void)fetchPaymentMethodsOnCompletion:(void(^)())completionBlock {
-    if (self.apiClient.tokenizationKey) {
-        // Necessary to stop loading indicator
+    // Check for proper authorization before fetching payment methods to suppress errors when using tokenization key
+    if (!self.apiClient.clientToken) {
         self.paymentMethodNonces = @[];
-        if (completionBlock) completionBlock();
+        if (completionBlock) {
+            completionBlock();
+        }
         return;
     }
-    
-    BOOL networkActivityIndicatorState = [[UIApplication sharedApplication] isNetworkActivityIndicatorVisible];
+
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    
-    [self.apiClient GET:@"v1/payment_methods"
-             parameters:nil
-             completion:^(BTJSON * _Nullable body, __unused NSHTTPURLResponse * _Nullable response, NSError * _Nullable error) {
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:networkActivityIndicatorState];
 
-                     if (error) {
-                         BTDropInErrorAlert *errorAlert = [[BTDropInErrorAlert alloc] initWithPresentingViewController:self];
-                         errorAlert.title = error.localizedDescription;
-                         BTJSON *errorBody = error.userInfo[BTHTTPJSONResponseBodyKey];
-                         errorAlert.message = [errorBody[@"error"][@"message"] asString];
-                         errorAlert.cancelBlock = ^{
-                             [self informDelegateDidCancel];
-                             if (completionBlock) completionBlock();
-                         };
-                         errorAlert.retryBlock = ^{
-                             [self fetchPaymentMethodsOnCompletion:completionBlock];
-                         };
-                         [errorAlert show];
+    [self.apiClient fetchPaymentMethodNonces:self.paymentRequest.showDefaultPaymentMethodNonceFirst completion:^(NSArray<BTPaymentMethodNonce *> *paymentMethodNonces, NSError *error) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 
-                         return;
-                     }
-
-                     NSMutableArray *paymentMethodNonces = [NSMutableArray array];
-                     for (NSDictionary *paymentInfo in [body[@"paymentMethods"] asArray]) {
-                         BTJSON *paymentInfoJSON = [[BTJSON alloc] initWithValue:paymentInfo];
-                         BTPaymentMethodNonce *paymentMethodNonce = [[BTPaymentMethodNonceParser sharedParser] parseJSON:paymentInfoJSON withParsingBlockForType:[paymentInfoJSON[@"type"] asString]];
-                         if (paymentMethodNonce) [paymentMethodNonces addObject:paymentMethodNonce];
-                     }
-                     self.paymentMethodNonces = [paymentMethodNonces copy];
-                     if (completionBlock) completionBlock();
-                 });
+        if (error) {
+            BTDropInErrorAlert *errorAlert = [[BTDropInErrorAlert alloc] initWithPresentingViewController:self];
+            errorAlert.title = error.localizedDescription;
+            BTJSON *errorBody = error.userInfo[BTHTTPJSONResponseBodyKey];
+            errorAlert.message = [errorBody[@"error"][@"message"] asString];
+            errorAlert.cancelBlock = ^{
+                [self informDelegateDidCancel];
+                if (completionBlock) completionBlock();
+            };
+            errorAlert.retryBlock = ^{
+                [self fetchPaymentMethodsOnCompletion:completionBlock];
+            };
+            [self.errorAlerts addObject:errorAlert];
+            [errorAlert showWithDismissalHandler:^{
+                [self.errorAlerts removeObject:errorAlert];
+            }];
+        } else {
+            self.paymentMethodNonces = [paymentMethodNonces copy];
+            if (completionBlock) {
+                completionBlock();
+            }
+        }
     }];
 }
 
@@ -678,12 +682,16 @@
         
         BTDropInErrorAlert *errorAlert = [[BTDropInErrorAlert alloc] initWithPresentingViewController:viewController];
         errorAlert.title = savePaymentMethodErrorAlertTitle;
+        errorAlert.message = error.localizedFailureReason;
         errorAlert.cancelBlock = ^{
             // Use the paymentMethodNonces setter to update state
             self.paymentMethodNonces = self.paymentMethodNonces;
         };
-        
-        [errorAlert show];
+
+        [self.errorAlerts addObject:errorAlert];
+        [errorAlert showWithDismissalHandler:^{
+            [self.errorAlerts removeObject:errorAlert];
+        }];
     } else if (paymentMethodNonce) {
         NSMutableArray *newPaymentMethods = [NSMutableArray arrayWithArray:self.paymentMethodNonces];
         [newPaymentMethods insertObject:paymentMethodNonce atIndex:0];
@@ -702,7 +710,8 @@
 #pragma mark - BTViewControllerPresentingDelegate
 
 - (void)paymentDriver:(__unused id)driver requestsPresentationOfViewController:(UIViewController *)viewController {
-    [self presentViewController:viewController animated:YES completion:nil];
+    UIViewController *presentingViewController = self.paymentRequest.presentViewControllersFromTop? [BTDropInUtil topViewController] : self;
+    [presentingViewController presentViewController:viewController animated:YES completion:nil];
 }
 
 - (void)paymentDriver:(__unused id)driver requestsDismissalOfViewController:(__unused UIViewController *)viewController {

@@ -37,12 +37,12 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
         TwitterClient.sharedInstance.trendingTimeline({ (tweets: [Tweet]) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
-            UIView.animateWithDuration(1.0, animations: {
+            UIView.animate(withDuration: 1.0, animations: {
                 self.warningView.alpha = 0
                 }, completion: nil)
         }) { (error: NSError) -> () in
             print("error: \(error.localizedDescription)")
-            UIView.animateWithDuration(1.0, animations: {
+            UIView.animate(withDuration: 1.0, animations: {
                 self.warningView.alpha = 1
                 }, completion: nil)
         }
@@ -50,11 +50,11 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
         //allowing slide to refresh
         let refreshControl = UIRefreshControl()
         tableView.addSubview(refreshControl)
-        refreshControl.addTarget(self, action: #selector(TwitterViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(TwitterViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
         TwitterClient.sharedInstance.trendingTimeline({ (tweets: [Tweet]) -> () in
             self.tweets = tweets
@@ -71,11 +71,11 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onCreate(sender: AnyObject) {
+    @IBAction func onCreate(_ sender: AnyObject) {
     }
     
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let tweets = tweets {
             
             return tweets.count
@@ -85,10 +85,10 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //constructing cell
-        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
         
         
         let tweet = tweets[indexPath.row]
@@ -96,44 +96,44 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
         //data is visible in cell
         cell.tweetMessage.text = tweet.text
         cell.screenLabel.text = "@\(tweet.screenLabel!)"
-        cell.profileAvatar.setImageWithURL(tweet.profileUrl!)
+        cell.profileAvatar.setImageWith(tweet.profileUrl! as URL)
         cell.nameLabel.text = tweet.nameLabel
         
         
         //formatting time stamp
-        let formatter = NSDateFormatter()
-        formatter.timeStyle = .ShortStyle
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
         
-        cell.timeStamp.text = formatter.stringFromDate(tweet.timestamp!)
+        cell.timeStamp.text = formatter.string(from: tweet.timestamp! as Date)
         
         return cell
     }
     
     //function to execute refresh
-    func handleRefresh(refreshControl: UIRefreshControl) {
+    func handleRefresh(_ refreshControl: UIRefreshControl) {
         
         TwitterClient.sharedInstance.trendingTimeline({ (tweets: [Tweet]) -> () in
             self.tweets = tweets
-            UIView.animateWithDuration(1.0, animations: {
+            UIView.animate(withDuration: 1.0, animations: {
                 self.warningView.alpha = 0
                 }, completion: nil)
             self.tableView.reloadData()
             print("refreshed")
         }) { (error: NSError) -> () in
             print("error: \(error.localizedDescription)")
-            UIView.animateWithDuration(1.0, animations: {
+            UIView.animate(withDuration: 1.0, animations: {
                 self.warningView.alpha = 1
                 }, completion: nil)
         }
         refreshControl.endRefreshing()
     }
     
-    @IBAction func onOpen(sender: AnyObject) {
+    @IBAction func onOpen(_ sender: AnyObject) {
         
-        let appURL = NSURL(string: "twitter://earch?q=%23MrSpirit2016&src=typd")
-        let webURL = NSURL(string: "https://twitter.com/search?q=%23MrSpirit2016&src=typd")
+        let appURL = URL(string: "twitter://earch?q=%23MrSpirit2016&src=typd")
+        let webURL = URL(string: "https://twitter.com/search?q=%23MrSpirit2016&src=typd")
         
-        let application = UIApplication.sharedApplication()
+        let application = UIApplication.shared
        
         
         if application.canOpenURL(appURL!) {

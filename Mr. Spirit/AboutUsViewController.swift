@@ -21,11 +21,10 @@ class AboutUsViewController: UIViewController {
     @IBOutlet weak var alexaGould: UIImageView!
     @IBOutlet weak var buyTicketsLabel: UILabel!
     @IBOutlet weak var philanthropyText: UILabel!
-//    @IBOutlet weak var infoView: UIView!
     
-    @IBAction func butttonClicked(sender: AnyObject) {
-        let url = NSURL(string: "https://www.mrspiritpageantshow.splashthat.com")
-        UIApplication.sharedApplication().openURL(url!)
+    @IBAction func butttonClicked(_ sender: AnyObject) {
+        let url = URL(string: "https://www.mrspiritpageantshow.splashthat.com")
+        UIApplication.shared.openURL(url!)
         
     }
     @IBOutlet weak var buttonText: UIButton!
@@ -33,8 +32,6 @@ class AboutUsViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-//        aboutUsImage.layer.cornerRadius = 10.0
-//        aboutUsImage.clipsToBounds = true
         aboutUsImage.image = UIImage(named: "group")
         haydenKorsmo.image = UIImage(named: "host1")
         mariaBenson.image = UIImage(named: "host2")
@@ -46,35 +43,18 @@ class AboutUsViewController: UIViewController {
         let aboutText = "Texas Spirits is an honorary spirit, service, and social organization at the University of Texas at Austin. The Mr. Spirit Pageant Show began three years ago as an initiative to raise money for Texas Spirits’ two philanthropies: Make-A-Wish Foundation and Saint Louise House."
         let philText = "The Make-A-Wish Foundation grants wishes to children with life-threatening medical conditions. Since its founding in 1980, the Make-A-Wish foundation has granted over 180,000 wishes and currently grants a wish every 40 minutes.\n\nSaint Louise House provides housing and services to homeless women and children in Austin, in an effort to help families stay together and encourage self-sufficiency. Saint Louise House has housed 130 families since 2012."
         
-        
-        
         buyTicketsLabel.text = "Purchase tickets at:"
-        urlText.setTitle("www.mrspiritpageantshow.splashthat.com", forState: .Normal)
-        
+        urlText.setTitle("www.mrspiritpageantshow.splashthat.com", for: UIControlState())
         
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = NSTextAlignment.Justified
-        pageantText.attributedText = NSAttributedString(string: aboutText, attributes: [NSParagraphStyleAttributeName: paragraphStyle, NSBaselineOffsetAttributeName: NSNumber(float: 0)])
+        paragraphStyle.alignment = NSTextAlignment.justified
+        pageantText.attributedText = NSAttributedString(string: aboutText, attributes: [NSParagraphStyleAttributeName: paragraphStyle, NSBaselineOffsetAttributeName: NSNumber(value: 0 as Float)])
 
-        philanthropyText.attributedText = NSAttributedString(string: philText, attributes: [NSParagraphStyleAttributeName: paragraphStyle, NSBaselineOffsetAttributeName: NSNumber(float: 0)])
-        
-
+        philanthropyText.attributedText = NSAttributedString(string: philText, attributes: [NSParagraphStyleAttributeName: paragraphStyle, NSBaselineOffsetAttributeName: NSNumber(value: 0 as Float)])
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -7,6 +7,8 @@
     self = [super init];
     if (self) {
         _shippingAddressRequired = NO;
+        _intent = BTPayPalRequestIntentAuthorize;
+        _userAction = BTPayPalRequestUserActionDefault;
     }
     return self;
 }
