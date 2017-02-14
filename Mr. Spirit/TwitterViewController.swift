@@ -90,7 +90,6 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
         //constructing cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
         
-        
         let tweet = tweets[indexPath.row]
         
         //data is visible in cell
@@ -98,7 +97,6 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.screenLabel.text = "@\(tweet.screenLabel!)"
         cell.profileAvatar.setImageWith(tweet.profileUrl! as URL)
         cell.nameLabel.text = tweet.nameLabel
-        
         
         //formatting time stamp
         let formatter = DateFormatter()
@@ -111,7 +109,6 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     //function to execute refresh
     func handleRefresh(_ refreshControl: UIRefreshControl) {
-        
         TwitterClient.sharedInstance.trendingTimeline({ (tweets: [Tweet]) -> () in
             self.tweets = tweets
             UIView.animate(withDuration: 1.0, animations: {
@@ -142,15 +139,5 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
             application.openURL(webURL!)
         }
         
-    }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    }   
 }

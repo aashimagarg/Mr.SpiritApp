@@ -21,13 +21,13 @@ class AboutUsViewController: UIViewController {
     @IBOutlet weak var alexaGould: UIImageView!
     @IBOutlet weak var buyTicketsLabel: UILabel!
     @IBOutlet weak var philanthropyText: UILabel!
+    @IBOutlet weak var buttonText: UIButton!
     
     @IBAction func butttonClicked(_ sender: AnyObject) {
         let url = URL(string: "https://www.mrspiritpageantshow.splashthat.com")
         UIApplication.shared.openURL(url!)
-        
     }
-    @IBOutlet weak var buttonText: UIButton!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         

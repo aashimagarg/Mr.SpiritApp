@@ -42,7 +42,6 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         var candidateDict:AnyObject
         var votes:Int = 0
         var amountRaised:Double = 0
-        
     
         for index in 0...8 {
             let detailPic = UIImage(named: candidateNames[index])!
@@ -62,7 +61,6 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
             candidateDict = candidate.toDict()
             candidate.saveRef(candidate.name, dict: candidateDict, ref: ref)
         }
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -80,7 +78,6 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         return candidatesList.count
         
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.cellId, for: indexPath) as! CandidateCell
@@ -106,7 +103,6 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
             // Pass in the selected object to the new view controller
             let candidate:Candidate = candidatesList[indexPath!.row]
             detailVC.candidate = candidate
-
         }
     }
 }

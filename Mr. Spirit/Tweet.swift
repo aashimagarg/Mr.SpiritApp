@@ -54,7 +54,6 @@ class Tweet: NSObject {
         for dictionary in dictionaries {
             let tweet = Tweet(dictionary: dictionary)
             tweets.append(tweet)
-            
         }
         
         return tweets
