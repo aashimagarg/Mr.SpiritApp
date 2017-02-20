@@ -1,6 +1,6 @@
 # Mr. Spirit App 
 
-Mr. Spirit App uses the [BrainTree API] (https://developers.braintreepayments.com/guides/braintree-auth/overview) and [Twitter Search API] (https://dev.twitter.com/rest/public/search).
+Mr. Spirit App uses the [Firebase API] (https://firebase.google.com/), [BrainTree API] (https://developers.braintreepayments.com/guides/braintree-auth/overview), and [Twitter Search API] (https://dev.twitter.com/rest/public/search).
 
 167 downloads in the App Store.
 
@@ -30,10 +30,6 @@ Here's a walkthrough of implemented user stories:
 <img src='http://i.imgur.com/Rf2IFE5.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
-
-## Notes
-
-Describe any challenges encountered while building the app.
 
 ## License
 
