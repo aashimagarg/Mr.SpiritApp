@@ -20,26 +20,26 @@ class Tweet: NSObject {
     var screenLabel: String?
     var profileUrl: URL?
     
-    init(dictionary: NSDictionary){
-        
+    init(dictionary: NSDictionary) {
+      let userDictionary = dictionary["user"] as? [String: Any]
         text = dictionary["text"] as? String
-        nameLabel = dictionary["user"]!["name"] as? String
-        screenLabel = dictionary["user"]!["screen_name"] as? String
+        nameLabel = userDictionary?["name"] as? String
+        screenLabel = userDictionary?["screen_name"] as? String
         retweeted = dictionary["retweeted"] as? Bool
         favorited = dictionary["favorited"] as? Bool
         retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
         favoritesCount = (dictionary["favorite_count"] as? Int) ?? 0
-        let profileUrlString = (dictionary["user"]!["profile_image_url_https"] as? String)
+        let profileUrlString = (userDictionary?["profile_image_url_https"] as? String)
         if let profileUrlString = profileUrlString {
             profileUrl = URL(string: profileUrlString)
         }
-        
-        
+
+
         //formatting a timestamp in a readable manner
         let timestampString = dictionary["created_at"] as? String
-        
+
         let formatter = DateFormatter()
-        
+
         if let timestampString = timestampString {
             formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
             timestamp = formatter.date(from: timestampString)

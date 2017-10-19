@@ -17,7 +17,7 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
     
     // Load database
 //    var ref = Firebase(url:"httvar//mrspirit2016.firebaseio.com/candidates")
-    var ref = FIRDatabase.database().reference()
+  var ref: DatabaseReference?
     
     var candidatesList = [Candidate]()
     var candidateNames = ["Alec Garcia", "Andy Wallace", "Erik Solorzano", "Jonathan Stevenson", "Marc Castaneda", "Patrick Golden", "Payne Keinarth", "Ryan Howell", "Steven Aviles"]
@@ -27,6 +27,7 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      ref = Database.database().reference()
         // Load candidate data
         loadCandidates()
 
@@ -42,6 +43,9 @@ class CandidatesViewController: UIViewController, UITableViewDataSource, UITable
         var candidateDict:AnyObject
         var votes:Int = 0
         var amountRaised:Double = 0
+      guard let ref = ref else {
+        return
+      }
     
         for index in 0...8 {
             let detailPic = UIImage(named: candidateNames[index])!

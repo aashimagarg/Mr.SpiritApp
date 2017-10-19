@@ -9,22 +9,22 @@
 import UIKit
 
 class TweetCell: UITableViewCell {
-    
-    @IBOutlet weak var profileAvatar: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var screenLabel: UILabel!
-    @IBOutlet weak var tweetMessage: UILabel!
-    @IBOutlet weak var timeStamp: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        profileAvatar.layer.cornerRadius = 5
-        profileAvatar.clipsToBounds = true
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
+
+  @IBOutlet weak var profileAvatar: UIImageView!
+  @IBOutlet weak var nameLabel: UILabel!
+  @IBOutlet weak var screenLabel: UILabel!
+  @IBOutlet weak var tweetMessage: UILabel!
+  @IBOutlet weak var timeStamp: UILabel!
+
+  override func awakeFromNib() {
+    super.awakeFromNib()
+
+    profileAvatar.layer.cornerRadius = 5
+    profileAvatar.clipsToBounds = true
+  }
+
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+  }
+
 }

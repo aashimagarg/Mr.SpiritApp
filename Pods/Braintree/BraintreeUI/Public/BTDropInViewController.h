@@ -81,7 +81,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @param completionBlock A block that gets called on completion.
 */
-- (void)fetchPaymentMethodsOnCompletion:(void(^)())completionBlock;
+- (void)fetchPaymentMethodsOnCompletion:(void(^)(void))completionBlock;
 
 /*!
  @brief Sets the card number in the card form.
@@ -111,7 +111,7 @@ NS_ASSUME_NONNULL_BEGIN
  @discussion Upon receiving this message, you should dismiss Drop In.
 
  @param viewController The Drop In view controller informing its delegate of success
- @param tokenization The selected (and possibly newly created) tokenized payment information.
+ @param paymentMethodNonce The selected (and possibly newly created) tokenized payment information.
 */
 - (void)dropInViewController:(BTDropInViewController *)viewController didSucceedWithTokenization:(BTPaymentMethodNonce *)paymentMethodNonce;
 

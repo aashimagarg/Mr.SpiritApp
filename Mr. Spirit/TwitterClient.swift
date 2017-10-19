@@ -27,23 +27,28 @@ class TwitterClient: BDBOAuth1SessionManager {
         
         let params = ["result_type" : "recent" , "count" : "100"]
         
-        get("1.1/search/tweets.json?f=tweets&q=%23MrSpirit2016&src=typd", parameters: params, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+//      get("1.1/search/tweets.json?f=tweets&q=%23MrSpirit2016&src=typd", parameters: params, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+      // Changed URL so we can actually see some tweets
+        get("1.1/search/tweets.json?f=tweets&q=%23pug&src=typd", parameters: params, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
             
             //setting initial index for dictionary
-            let dictionaries = response!["statuses"] as! [NSDictionary]
+        guard let response = response as? [String: Any] else {
+          return
+        }
+            let dictionaries = response["statuses"] as! [NSDictionary]
             
             //print information from each tweet
-            for dict in dictionaries {
-                print("\(dict["user"]!["name"]!)")
-                print("\(dict["user"]!["screen_name"]!)")
-                print("\(dict["user"]!["profile_image_url_https"]!)")
-                print("\(dict["text"]!)")
-                print("\(dict["retweet_count"]!)")
-                print("\(dict["favorite_count"]!)")
-                
-            }
+//            for dict in dictionaries {
+//                print("\(dict["user"]!["name"]!)")
+//                print("\(dict["user"]!["screen_name"]!)")
+//                print("\(dict["user"]!["profile_image_url_https"]!)")
+//                print("\(dict["text"]!)")
+//                print("\(dict["retweet_count"]!)")
+//                print("\(dict["favorite_count"]!)")
+//
+//            }
             let tweets = Tweet.tweetsWithArray(dictionaries)
-            
+
             success(tweets)
             }, failure: { (task: URLSessionDataTask?, error: Error) -> Void in
                 failure(error)
