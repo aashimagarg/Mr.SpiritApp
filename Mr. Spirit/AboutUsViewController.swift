@@ -44,7 +44,7 @@ class AboutUsViewController: UIViewController {
         let philText = "The Make-A-Wish Foundation grants wishes to children with life-threatening medical conditions. Since its founding in 1980, the Make-A-Wish foundation has granted over 180,000 wishes and currently grants a wish every 40 minutes.\n\nSaint Louise House provides housing and services to homeless women and children in Austin, in an effort to help families stay together and encourage self-sufficiency. Saint Louise House has housed 130 families since 2012."
         
         buyTicketsLabel.text = "Purchase tickets at:"
-        urlText.setTitle("www.mrspiritpageantshow.splashthat.com", for: UIControlState())
+        urlText.setTitle("www.mrspiritpageantshow.splashthat.com", for: .normal)
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.justified
