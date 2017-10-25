@@ -74,7 +74,7 @@ typedef NS_ENUM(NSInteger, BTPaymentMethodViewState) {
     [self.detailDescriptionLabel setTextColor:[self.theme detailColor]];
 
     // Activity Indicators
-    self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.activityIndicatorView = [[UIActivityIndicatorView alloc] init];
     self.activityIndicatorView.hidden = YES;
     [self.activityIndicatorView setTranslatesAutoresizingMaskIntoConstraints:NO];
 
@@ -174,9 +174,7 @@ typedef NS_ENUM(NSInteger, BTPaymentMethodViewState) {
     switch (self.contentState) {
         case BTPaymentMethodViewStateNormal:
             self.typeLabel.text = [BTUIViewUtil nameForPaymentMethodType:self.type];
-
             self.detailDescriptionLabel.text = self.detailDescription;
-
             [self.iconView removeFromSuperview];
             self.iconView = [self.theme vectorArtViewForPaymentOptionType:self.type];
             [self.iconView setTranslatesAutoresizingMaskIntoConstraints:NO];

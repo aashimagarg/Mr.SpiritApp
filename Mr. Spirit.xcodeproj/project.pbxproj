@@ -7,21 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C33365CA262B46A06B03A38 /* Pods_Mr__Spirit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDBF313A6D6483C6C75FC349 /* Pods_Mr__Spirit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		43049262BBD12BCB996462CD /* Pods_Mr__SpiritTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B652BFC3C6810014FB0329B3 /* Pods_Mr__SpiritTests.framework */; };
 		5914FC271CA48B2100A0EEA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC261CA48B2100A0EEA6 /* AppDelegate.swift */; };
-		5914FC291CA48B2100A0EEA6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC281CA48B2100A0EEA6 /* ViewController.swift */; };
 		5914FC2C1CA48B2100A0EEA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5914FC2A1CA48B2100A0EEA6 /* Main.storyboard */; };
 		5914FC2E1CA48B2100A0EEA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5914FC2D1CA48B2100A0EEA6 /* Assets.xcassets */; };
 		5914FC311CA48B2100A0EEA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5914FC2F1CA48B2100A0EEA6 /* LaunchScreen.storyboard */; };
-		5914FC3C1CA48B2100A0EEA6 /* Mr__SpiritTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC3B1CA48B2100A0EEA6 /* Mr__SpiritTests.swift */; };
-		5914FC471CA48B2100A0EEA6 /* Mr__SpiritUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC461CA48B2100A0EEA6 /* Mr__SpiritUITests.swift */; };
 		5914FC561CA4921500A0EEA6 /* CandidatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC551CA4921500A0EEA6 /* CandidatesViewController.swift */; };
 		5914FC581CA4921D00A0EEA6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC571CA4921D00A0EEA6 /* ProfileViewController.swift */; };
 		5914FC5A1CA4922400A0EEA6 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC591CA4922400A0EEA6 /* AboutUsViewController.swift */; };
 		5914FC5D1CA4922F00A0EEA6 /* TwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC5C1CA4922F00A0EEA6 /* TwitterViewController.swift */; };
 		5914FC631CA4928000A0EEA6 /* CandidateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC621CA4928000A0EEA6 /* CandidateCell.swift */; };
 		5914FC651CA4929700A0EEA6 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914FC641CA4929700A0EEA6 /* TweetCell.swift */; };
+		5C587A42E3491D2CD42A269C /* Pods_Mr__Spirit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738B6D33F85E1D81C30392E5 /* Pods_Mr__Spirit.framework */; };
+		9C97A9041D4C3AA88BCADE8D /* Pods_Mr__SpiritUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE87C464D8355DA00797C02 /* Pods_Mr__SpiritUITests.framework */; };
+		D3016AE41F982A840026A967 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3016AE31F982A840026A967 /* GoogleService-Info.plist */; };
 		D307548B1CA4F6250089DA44 /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D307548A1CA4F6250089DA44 /* Candidate.swift */; };
+		D33956241E52C76B00E7FDF9 /* Mr. SpiritTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = 5914FC371CA48B2100A0EEA6 /* Mr. SpiritTests.xctest */; };
+		D33956251E52C77000E7FDF9 /* Mr. SpiritUITests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = 5914FC421CA48B2100A0EEA6 /* Mr. SpiritUITests.xctest */; };
 		D3D16EF71CBD489B0042F916 /* Braintree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D16EF61CBD489B0042F916 /* Braintree.framework */; };
 		D3DF95EE1CBF101C007D32CE /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DF95ED1CBF101C007D32CE /* TwitterClient.swift */; };
 		D3DF95F01CBF109E007D32CE /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DF95EF1CBF109E007D32CE /* Tweet.swift */; };
@@ -45,32 +47,34 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		291255C6031328825F247290 /* Pods-Mr. Spirit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mr. Spirit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mr. Spirit/Pods-Mr. Spirit.debug.xcconfig"; sourceTree = "<group>"; };
-		42CF190BF5634E9DA6BBD878 /* Pods-Mr. Spirit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mr. Spirit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mr. Spirit/Pods-Mr. Spirit.release.xcconfig"; sourceTree = "<group>"; };
+		1159E80B7EA52ACF5BA6F812 /* Pods-Mr. SpiritUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mr. SpiritUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mr. SpiritUITests/Pods-Mr. SpiritUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		1A75DB8B7DBA3B2505D43464 /* Pods-Mr. SpiritTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mr. SpiritTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mr. SpiritTests/Pods-Mr. SpiritTests.release.xcconfig"; sourceTree = "<group>"; };
 		5914FC231CA48B2100A0EEA6 /* Mr. Spirit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mr. Spirit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5914FC261CA48B2100A0EEA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5914FC281CA48B2100A0EEA6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5914FC2B1CA48B2100A0EEA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5914FC2D1CA48B2100A0EEA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5914FC301CA48B2100A0EEA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5914FC321CA48B2100A0EEA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5914FC371CA48B2100A0EEA6 /* Mr. SpiritTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mr. SpiritTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5914FC3B1CA48B2100A0EEA6 /* Mr__SpiritTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mr__SpiritTests.swift; sourceTree = "<group>"; };
-		5914FC3D1CA48B2100A0EEA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5914FC421CA48B2100A0EEA6 /* Mr. SpiritUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mr. SpiritUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5914FC461CA48B2100A0EEA6 /* Mr__SpiritUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mr__SpiritUITests.swift; sourceTree = "<group>"; };
-		5914FC481CA48B2100A0EEA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5914FC551CA4921500A0EEA6 /* CandidatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidatesViewController.swift; sourceTree = "<group>"; };
 		5914FC571CA4921D00A0EEA6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		5914FC591CA4922400A0EEA6 /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		5914FC5C1CA4922F00A0EEA6 /* TwitterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterViewController.swift; sourceTree = "<group>"; };
 		5914FC621CA4928000A0EEA6 /* CandidateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateCell.swift; sourceTree = "<group>"; };
 		5914FC641CA4929700A0EEA6 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
+		738B6D33F85E1D81C30392E5 /* Pods_Mr__Spirit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mr__Spirit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84874D2F7B0624665F3A475C /* Pods-Mr. Spirit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mr. Spirit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mr. Spirit/Pods-Mr. Spirit.debug.xcconfig"; sourceTree = "<group>"; };
+		8EE87C464D8355DA00797C02 /* Pods_Mr__SpiritUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mr__SpiritUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		97EAAB466833B8B7925B49B7 /* Pods-Mr. SpiritTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mr. SpiritTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mr. SpiritTests/Pods-Mr. SpiritTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B652BFC3C6810014FB0329B3 /* Pods_Mr__SpiritTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mr__SpiritTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3016AE31F982A840026A967 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D307548A1CA4F6250089DA44 /* Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
 		D3D16EF61CBD489B0042F916 /* Braintree.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Braintree.framework; path = "../../Library/Developer/Xcode/DerivedData/Mr._Spirit-afzmbjamaawjknbtrjukfosutvam/Build/Products/Debug-iphonesimulator/Braintree.framework"; sourceTree = "<group>"; };
 		D3DF95ED1CBF101C007D32CE /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
 		D3DF95EF1CBF109E007D32CE /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
-		DDBF313A6D6483C6C75FC349 /* Pods_Mr__Spirit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mr__Spirit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77F0198EB12F87BA7531E48 /* Pods-Mr. Spirit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mr. Spirit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mr. Spirit/Pods-Mr. Spirit.release.xcconfig"; sourceTree = "<group>"; };
+		FDD0A038874CE49DC8DC54A9 /* Pods-Mr. SpiritUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mr. SpiritUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mr. SpiritUITests/Pods-Mr. SpiritUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +83,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3D16EF71CBD489B0042F916 /* Braintree.framework in Frameworks */,
-				0C33365CA262B46A06B03A38 /* Pods_Mr__Spirit.framework in Frameworks */,
+				5C587A42E3491D2CD42A269C /* Pods_Mr__Spirit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43049262BBD12BCB996462CD /* Pods_Mr__SpiritTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,21 +99,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C97A9041D4C3AA88BCADE8D /* Pods_Mr__SpiritUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C9E8AC43BA85C190CC48154 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				84874D2F7B0624665F3A475C /* Pods-Mr. Spirit.debug.xcconfig */,
+				D77F0198EB12F87BA7531E48 /* Pods-Mr. Spirit.release.xcconfig */,
+				97EAAB466833B8B7925B49B7 /* Pods-Mr. SpiritTests.debug.xcconfig */,
+				1A75DB8B7DBA3B2505D43464 /* Pods-Mr. SpiritTests.release.xcconfig */,
+				1159E80B7EA52ACF5BA6F812 /* Pods-Mr. SpiritUITests.debug.xcconfig */,
+				FDD0A038874CE49DC8DC54A9 /* Pods-Mr. SpiritUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		5914FC1A1CA48B2100A0EEA6 = {
 			isa = PBXGroup;
 			children = (
 				5914FC251CA48B2100A0EEA6 /* Mr. Spirit */,
-				5914FC3A1CA48B2100A0EEA6 /* Mr. SpiritTests */,
-				5914FC451CA48B2100A0EEA6 /* Mr. SpiritUITests */,
 				5914FC241CA48B2100A0EEA6 /* Products */,
-				7797DE44DA6972CBB21B46BF /* Pods */,
 				FB3C08D7D2A8A9016F075526 /* Frameworks */,
+				3C9E8AC43BA85C190CC48154 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,33 +142,15 @@
 		5914FC251CA48B2100A0EEA6 /* Mr. Spirit */ = {
 			isa = PBXGroup;
 			children = (
+				D3016AE31F982A840026A967 /* GoogleService-Info.plist */,
 				5914FC541CA4920B00A0EEA6 /* View Controllers */,
 				5914FC261CA48B2100A0EEA6 /* AppDelegate.swift */,
-				5914FC281CA48B2100A0EEA6 /* ViewController.swift */,
 				5914FC2A1CA48B2100A0EEA6 /* Main.storyboard */,
 				5914FC2D1CA48B2100A0EEA6 /* Assets.xcassets */,
 				5914FC2F1CA48B2100A0EEA6 /* LaunchScreen.storyboard */,
 				5914FC321CA48B2100A0EEA6 /* Info.plist */,
 			);
 			path = "Mr. Spirit";
-			sourceTree = "<group>";
-		};
-		5914FC3A1CA48B2100A0EEA6 /* Mr. SpiritTests */ = {
-			isa = PBXGroup;
-			children = (
-				5914FC3B1CA48B2100A0EEA6 /* Mr__SpiritTests.swift */,
-				5914FC3D1CA48B2100A0EEA6 /* Info.plist */,
-			);
-			path = "Mr. SpiritTests";
-			sourceTree = "<group>";
-		};
-		5914FC451CA48B2100A0EEA6 /* Mr. SpiritUITests */ = {
-			isa = PBXGroup;
-			children = (
-				5914FC461CA48B2100A0EEA6 /* Mr__SpiritUITests.swift */,
-				5914FC481CA48B2100A0EEA6 /* Info.plist */,
-			);
-			path = "Mr. SpiritUITests";
 			sourceTree = "<group>";
 		};
 		5914FC541CA4920B00A0EEA6 /* View Controllers */ = {
@@ -186,20 +185,13 @@
 			name = Candidate;
 			sourceTree = "<group>";
 		};
-		7797DE44DA6972CBB21B46BF /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				291255C6031328825F247290 /* Pods-Mr. Spirit.debug.xcconfig */,
-				42CF190BF5634E9DA6BBD878 /* Pods-Mr. Spirit.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		FB3C08D7D2A8A9016F075526 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				D3D16EF61CBD489B0042F916 /* Braintree.framework */,
-				DDBF313A6D6483C6C75FC349 /* Pods_Mr__Spirit.framework */,
+				738B6D33F85E1D81C30392E5 /* Pods_Mr__Spirit.framework */,
+				B652BFC3C6810014FB0329B3 /* Pods_Mr__SpiritTests.framework */,
+				8EE87C464D8355DA00797C02 /* Pods_Mr__SpiritUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -211,12 +203,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5914FC4B1CA48B2100A0EEA6 /* Build configuration list for PBXNativeTarget "Mr. Spirit" */;
 			buildPhases = (
-				B1A13AD9F376503B3CB1A106 /* Check Pods Manifest.lock */,
+				590D6109A16D62A9D2D76622 /* [CP] Check Pods Manifest.lock */,
 				5914FC1F1CA48B2100A0EEA6 /* Sources */,
 				5914FC201CA48B2100A0EEA6 /* Frameworks */,
 				5914FC211CA48B2100A0EEA6 /* Resources */,
-				BABB741098138F94BBBF3E7D /* Embed Pods Frameworks */,
-				CA3C011C773E648747CB3632 /* Copy Pods Resources */,
+				295E822DCDC5F1B778A36F12 /* [CP] Embed Pods Frameworks */,
+				C7925B4ED5F8B047B3FEFFEE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -231,9 +223,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5914FC4E1CA48B2100A0EEA6 /* Build configuration list for PBXNativeTarget "Mr. SpiritTests" */;
 			buildPhases = (
+				B29E2A42F4A79F1CFF9D72E4 /* [CP] Check Pods Manifest.lock */,
 				5914FC331CA48B2100A0EEA6 /* Sources */,
 				5914FC341CA48B2100A0EEA6 /* Frameworks */,
 				5914FC351CA48B2100A0EEA6 /* Resources */,
+				9B2E5BEC1D61DA0FAA91C8B7 /* [CP] Embed Pods Frameworks */,
+				F9E89B80BC49EA87B1365FC6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -249,9 +244,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5914FC511CA48B2100A0EEA6 /* Build configuration list for PBXNativeTarget "Mr. SpiritUITests" */;
 			buildPhases = (
+				296C64E827E6E6F37FFFE86A /* [CP] Check Pods Manifest.lock */,
 				5914FC3E1CA48B2100A0EEA6 /* Sources */,
 				5914FC3F1CA48B2100A0EEA6 /* Frameworks */,
 				5914FC401CA48B2100A0EEA6 /* Resources */,
+				90ABC5418323B4DDA3AA0210 /* [CP] Embed Pods Frameworks */,
+				FC20F7535BA1F387AEADC509 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -270,21 +268,25 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Aashima Garg";
 				TargetAttributes = {
 					5914FC221CA48B2100A0EEA6 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = WUW558DRD5;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
 					};
 					5914FC361CA48B2100A0EEA6 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = J29EQ9363G;
+						LastSwiftMigration = 0820;
 						TestTargetID = 5914FC221CA48B2100A0EEA6;
 					};
 					5914FC411CA48B2100A0EEA6 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = J29EQ9363G;
+						LastSwiftMigration = 0820;
 						TestTargetID = 5914FC221CA48B2100A0EEA6;
 					};
 				};
@@ -317,6 +319,7 @@
 				5914FC311CA48B2100A0EEA6 /* LaunchScreen.storyboard in Resources */,
 				5914FC2E1CA48B2100A0EEA6 /* Assets.xcassets in Resources */,
 				5914FC2C1CA48B2100A0EEA6 /* Main.storyboard in Resources */,
+				D3016AE41F982A840026A967 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +327,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D33956241E52C76B00E7FDF9 /* Mr. SpiritTests.xctest in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,55 +335,174 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D33956251E52C77000E7FDF9 /* Mr. SpiritUITests.xctest in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B1A13AD9F376503B3CB1A106 /* Check Pods Manifest.lock */ = {
+		295E822DCDC5F1B778A36F12 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Mr. Spirit/Pods-Mr. Spirit-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/BDBOAuth1Manager/BDBOAuth1Manager.framework",
+				"${BUILT_PRODUCTS_DIR}/Braintree/Braintree.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftHEXColors/SwiftHEXColors.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		BABB741098138F94BBBF3E7D /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BDBOAuth1Manager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Braintree.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHEXColors.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mr. Spirit/Pods-Mr. Spirit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CA3C011C773E648747CB3632 /* Copy Pods Resources */ = {
+		296C64E827E6E6F37FFFE86A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mr. SpiritUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		590D6109A16D62A9D2D76622 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mr. Spirit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		90ABC5418323B4DDA3AA0210 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mr. SpiritUITests/Pods-Mr. SpiritUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B2E5BEC1D61DA0FAA91C8B7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mr. SpiritTests/Pods-Mr. SpiritTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B29E2A42F4A79F1CFF9D72E4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mr. SpiritTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C7925B4ED5F8B047B3FEFFEE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mr. Spirit/Pods-Mr. Spirit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9E89B80BC49EA87B1365FC6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mr. SpiritTests/Pods-Mr. SpiritTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC20F7535BA1F387AEADC509 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mr. SpiritUITests/Pods-Mr. SpiritUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -392,7 +515,6 @@
 				D3DF95EE1CBF101C007D32CE /* TwitterClient.swift in Sources */,
 				5914FC5D1CA4922F00A0EEA6 /* TwitterViewController.swift in Sources */,
 				5914FC5A1CA4922400A0EEA6 /* AboutUsViewController.swift in Sources */,
-				5914FC291CA48B2100A0EEA6 /* ViewController.swift in Sources */,
 				5914FC561CA4921500A0EEA6 /* CandidatesViewController.swift in Sources */,
 				5914FC631CA4928000A0EEA6 /* CandidateCell.swift in Sources */,
 				5914FC651CA4929700A0EEA6 /* TweetCell.swift in Sources */,
@@ -407,7 +529,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5914FC3C1CA48B2100A0EEA6 /* Mr__SpiritTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,7 +536,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5914FC471CA48B2100A0EEA6 /* Mr__SpiritUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,13 +582,21 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -507,13 +635,21 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -532,6 +668,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -539,67 +676,81 @@
 		};
 		5914FC4C1CA48B2100A0EEA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 291255C6031328825F247290 /* Pods-Mr. Spirit.debug.xcconfig */;
+			baseConfigurationReference = 84874D2F7B0624665F3A475C /* Pods-Mr. Spirit.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Mr. Spirit/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MrSpirit2016;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "875130f2-45f3-44a1-b6b5-a2d9a79db692";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		5914FC4D1CA48B2100A0EEA6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 42CF190BF5634E9DA6BBD878 /* Pods-Mr. Spirit.release.xcconfig */;
+			baseConfigurationReference = D77F0198EB12F87BA7531E48 /* Pods-Mr. Spirit.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Mr. Spirit/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MrSpirit2016;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "875130f2-45f3-44a1-b6b5-a2d9a79db692";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		5914FC4F1CA48B2100A0EEA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97EAAB466833B8B7925B49B7 /* Pods-Mr. SpiritTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "Mr. SpiritTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.Mr--SpiritTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mr. Spirit.app/Mr. Spirit";
 			};
 			name = Debug;
 		};
 		5914FC501CA48B2100A0EEA6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A75DB8B7DBA3B2505D43464 /* Pods-Mr. SpiritTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "Mr. SpiritTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.Mr--SpiritTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mr. Spirit.app/Mr. Spirit";
 			};
 			name = Release;
 		};
 		5914FC521CA48B2100A0EEA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1159E80B7EA52ACF5BA6F812 /* Pods-Mr. SpiritUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "Mr. SpiritUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.Mr--SpiritUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Mr. Spirit";
 				USES_XCTRUNNER = YES;
 			};
@@ -607,11 +758,13 @@
 		};
 		5914FC531CA48B2100A0EEA6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FDD0A038874CE49DC8DC54A9 /* Pods-Mr. SpiritUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "Mr. SpiritUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.Mr--SpiritUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Mr. Spirit";
 				USES_XCTRUNNER = YES;
 			};

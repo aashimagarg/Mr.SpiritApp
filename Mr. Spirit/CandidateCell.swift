@@ -9,24 +9,22 @@
 import UIKit
 
 class CandidateCell: UITableViewCell {
-
-    // MARK: Properties
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var orgLabel: UILabel!
-    @IBOutlet weak var headshotImage: UIImageView!
+  
+  // MARK: Properties
+  @IBOutlet weak var nameLabel: UILabel!
+  @IBOutlet weak var orgLabel: UILabel!
+  @IBOutlet weak var headshotImage: UIImageView!
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()      
+  }
+  
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-        headshotImage.layer.cornerRadius = headshotImage.frame.size.width / 2
-        headshotImage.clipsToBounds = true
-    }
-
+    // Configure the view for the selected state
+    headshotImage.layer.cornerRadius = headshotImage.frame.size.width / 2
+    headshotImage.clipsToBounds = true
+  }
+  
 }

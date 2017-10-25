@@ -8,6 +8,7 @@
     if (self = [super init]) {
         _displayAmount = @""; // Use empty string as default value for this non-nullable property.
         _callToActionText = BTDropInLocalizedString(DEFAULT_CALL_TO_ACTION); // Default value for this non-nullable property.
+        _showDefaultPaymentMethodNonceFirst = NO;
     }
     return self;
 }
@@ -22,7 +23,9 @@
     request.amount = self.amount;
     request.currencyCode = self.currencyCode;
     request.noShipping = self.noShipping;
+    request.presentViewControllersFromTop = self.presentViewControllersFromTop;
     request.shippingAddress = self.shippingAddress;
+    request.showDefaultPaymentMethodNonceFirst = self.showDefaultPaymentMethodNonceFirst;
     return request;
 }
 

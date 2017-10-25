@@ -8,9 +8,11 @@ pod 'AFNetworking'
 pod 'MBProgressHUD'
 pod 'SwiftHEXColors'
 pod 'Braintree'
-pod 'Firebase', '>=2.5.1'
-pod ‘BDBOAuth1Manager’
+pod 'Firebase/Core'
+pod 'Firebase/Database'
+pod 'BDBOAuth1Manager’
 pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+pod 'SwiftLint'
 
 end
 
