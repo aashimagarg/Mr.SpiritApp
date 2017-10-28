@@ -19,11 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     FirebaseApp.configure()
-    UINavigationBar.appearance().barTintColor = UIColor(hexString: "#f9A643")
+    UINavigationBar.appearance().barTintColor = UIColor(hexString: "#D9573F")
     UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor(hexString: "FFFFFF")!]
 
     UITabBar.appearance().barTintColor = UIColor(hexString: "#FBF9F9")
-    UITabBar.appearance().tintColor = UIColor(hexString: "#f9A643")
+    UITabBar.appearance().tintColor = UIColor(hexString: "#6BB0DF")
 
     BTAppSwitch.setReturnURLScheme("com.codepath.Mr--Spirit.payments")
 

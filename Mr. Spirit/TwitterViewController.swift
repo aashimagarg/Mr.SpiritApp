@@ -127,8 +127,8 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
 
   @IBAction func onOpen(_ sender: AnyObject) {
 
-    let appURL = URL(string: "twitter://earch?q=%23MrSpirit2016&src=typd")
-    let webURL = URL(string: "https://twitter.com/search?q=%23MrSpirit2016&src=typd")
+    let appURL = URL(string: "twitter://earch?q=%23MrSpirit2017&src=typd")
+    let webURL = URL(string: "https://twitter.com/search?q=%23MrSpirit2017&src=typd")
 
     let application = UIApplication.shared
 
