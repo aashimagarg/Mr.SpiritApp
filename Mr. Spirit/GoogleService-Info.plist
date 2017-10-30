@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>81273288887-evs6bkg0jhrao3nhlg97fprqm07l5rc6.apps.googleusercontent.com</string>
+	<string>81273288887-f9upqetu40m2ca5dcvt4j4vlj6b7tskv.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.81273288887-evs6bkg0jhrao3nhlg97fprqm07l5rc6</string>
+	<string>com.googleusercontent.apps.81273288887-f9upqetu40m2ca5dcvt4j4vlj6b7tskv</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCnvoCwjghPMXA0nW2y0DsXrDv8z7UYJQ8</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.MrSpirit2016</string>
+	<string>com.MrSpirit2017</string>
 	<key>PROJECT_ID</key>
 	<string>firebase-mrspirit2016</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:81273288887:ios:3b8f3bfc8e23b7a4</string>
+	<string>1:81273288887:ios:d16487f72a723142</string>
 	<key>DATABASE_URL</key>
 	<string>https://mrspirit2016.firebaseio.com</string>
 </dict>
