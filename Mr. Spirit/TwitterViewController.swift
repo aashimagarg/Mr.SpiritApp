@@ -28,7 +28,7 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
     self.tableView.estimatedRowHeight = 100
 
     //setting up warning view
-    warningView.backgroundColor = UIColor(hexString: "#9E9EA5")
+    warningView.backgroundColor = UIColor(string: "#9E9EA5")
     self.warningView.alpha = 0
 
     //loading tweets

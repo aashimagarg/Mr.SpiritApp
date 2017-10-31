@@ -34,7 +34,7 @@ class ProfileViewController: UIViewController {
     let defaults = UserDefaults.standard
     if (defaults.bool(forKey: "hasVoted")) {
       voteButton.setTitle("Voted", for: UIControlState())
-      voteButton.backgroundColor = UIColor(hexString: "#9E9EA5")
+      voteButton.backgroundColor = UIColor(string: "#9E9EA5")
       voteButton.isEnabled = false
     }
 
@@ -88,7 +88,7 @@ class ProfileViewController: UIViewController {
 
       // Update button
       self.voteButton.setTitle("Voted", for: UIControlState())
-      self.voteButton.backgroundColor = UIColor(hexString: "#9E9EA5")
+      self.voteButton.backgroundColor = UIColor(string: "#9E9EA5")
       self.voteButton.isEnabled = false
 
       // Disable all others voting

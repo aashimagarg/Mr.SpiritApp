@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftHEXColors
 import Firebase
 import Braintree
 import BDBOAuth1Manager
@@ -19,11 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     FirebaseApp.configure()
-    UINavigationBar.appearance().barTintColor = UIColor(hexString: "#D9573F")
-    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor(hexString: "FFFFFF")!]
+    UINavigationBar.appearance().barTintColor = UIColor(string: "#D9573F")
+    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor(string: "#FFFFFF")!]
 
-    UITabBar.appearance().barTintColor = UIColor(hexString: "#FBF9F9")
-    UITabBar.appearance().tintColor = UIColor(hexString: "#6BB0DF")
+    UITabBar.appearance().barTintColor = UIColor(string: "#FBF9F9")
+    UITabBar.appearance().tintColor = UIColor(string: "#6BB0DF")
 
     BTAppSwitch.setReturnURLScheme("com.codepath.Mr--Spirit.payments")
 
@@ -56,7 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("error: \(error.localizedDescription)")
       })
     }) { (error: Error?) -> Void in
-      print("error: \(error?.localizedDescription)")
+      if let error = error {
+        print("error: \(error.localizedDescription)")
+      }
     }
 
     return false

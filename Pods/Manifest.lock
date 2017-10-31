@@ -67,7 +67,6 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - SwiftHEXColors (1.1.0)
   - SwiftLint (0.23.1)
   - SwiftyJSON (4.0.0-alpha.1)
 
@@ -78,7 +77,6 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - MBProgressHUD
-  - SwiftHEXColors
   - SwiftLint
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
@@ -104,10 +102,9 @@ SPEC CHECKSUMS:
   leveldb-library: 10fb39c39e243db4af1828441162405bbcec1404
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  SwiftHEXColors: 8f7e364df7929e32cff9f9eeb044bb215167d6be
   SwiftLint: 1b670ce79284c76520f84060e87d645078fd32fa
   SwiftyJSON: c4d27c2ca659d5c91460cd17cc60fd212b26074d
 
-PODFILE CHECKSUM: 35bce902ada963c3a01744ceee58b64009fe8295
+PODFILE CHECKSUM: 66ca0f6a68fdda7a2279a3f5fb1b29e7a78136b5
 
 COCOAPODS: 1.3.1

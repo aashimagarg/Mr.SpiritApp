@@ -25,6 +25,7 @@
 		D33956241E52C76B00E7FDF9 /* Mr. SpiritTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = 5914FC371CA48B2100A0EEA6 /* Mr. SpiritTests.xctest */; };
 		D33956251E52C77000E7FDF9 /* Mr. SpiritUITests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = 5914FC421CA48B2100A0EEA6 /* Mr. SpiritUITests.xctest */; };
 		D3D16EF71CBD489B0042F916 /* Braintree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D16EF61CBD489B0042F916 /* Braintree.framework */; };
+		D3D29DAA1FA80DC800AE7F39 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D29DA91FA80DC800AE7F39 /* UIColor.swift */; };
 		D3DF95EE1CBF101C007D32CE /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DF95ED1CBF101C007D32CE /* TwitterClient.swift */; };
 		D3DF95F01CBF109E007D32CE /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DF95EF1CBF109E007D32CE /* Tweet.swift */; };
 /* End PBXBuildFile section */
@@ -71,6 +72,7 @@
 		B652BFC3C6810014FB0329B3 /* Pods_Mr__SpiritTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mr__SpiritTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D307548A1CA4F6250089DA44 /* Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
 		D3D16EF61CBD489B0042F916 /* Braintree.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Braintree.framework; path = "../../Library/Developer/Xcode/DerivedData/Mr._Spirit-afzmbjamaawjknbtrjukfosutvam/Build/Products/Debug-iphonesimulator/Braintree.framework"; sourceTree = "<group>"; };
+		D3D29DA91FA80DC800AE7F39 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		D3DF95ED1CBF101C007D32CE /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
 		D3DF95EF1CBF109E007D32CE /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		D77F0198EB12F87BA7531E48 /* Pods-Mr. Spirit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mr. Spirit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mr. Spirit/Pods-Mr. Spirit.release.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				5914FC2D1CA48B2100A0EEA6 /* Assets.xcassets */,
 				5914FC2F1CA48B2100A0EEA6 /* LaunchScreen.storyboard */,
 				5914FC321CA48B2100A0EEA6 /* Info.plist */,
+				D3D29DA91FA80DC800AE7F39 /* UIColor.swift */,
 			);
 			path = "Mr. Spirit";
 			sourceTree = "<group>";
@@ -354,7 +357,6 @@
 				"${BUILT_PRODUCTS_DIR}/Braintree/Braintree.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftHEXColors/SwiftHEXColors.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -366,7 +368,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Braintree.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHEXColors.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -519,6 +520,7 @@
 				5914FC631CA4928000A0EEA6 /* CandidateCell.swift in Sources */,
 				5914FC651CA4929700A0EEA6 /* TweetCell.swift in Sources */,
 				5914FC581CA4921D00A0EEA6 /* ProfileViewController.swift in Sources */,
+				D3D29DAA1FA80DC800AE7F39 /* UIColor.swift in Sources */,
 				D307548B1CA4F6250089DA44 /* Candidate.swift in Sources */,
 				5914FC271CA48B2100A0EEA6 /* AppDelegate.swift in Sources */,
 				D3DF95F01CBF109E007D32CE /* Tweet.swift in Sources */,

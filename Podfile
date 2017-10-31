@@ -6,7 +6,6 @@
 target 'Mr. Spirit' do
 pod 'AFNetworking'
 pod 'MBProgressHUD'
-pod 'SwiftHEXColors'
 pod 'Braintree'
 pod 'Firebase/Core'
 pod 'Firebase/Database'
