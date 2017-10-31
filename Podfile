@@ -11,7 +11,6 @@ pod 'Braintree'
 pod 'Firebase/Core'
 pod 'Firebase/Database'
 pod 'BDBOAuth1Manager’
-pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 pod 'SwiftLint'
 
 end
