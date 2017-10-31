@@ -1,2 +1,9 @@
-
+*.xcuserstate
+*.xcuserdata
+*.xcuserdatad
+*.xcscmblueprint
+*xcshareddata*
+*.xccheckout
+*xcbaselines*
+.DS_Store
 .DS_Store
