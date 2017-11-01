@@ -171,7 +171,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="donateButtonClicked:" destination="7QI-Tj-egF" eventType="touchUpInside" id="viE-le-wlQ"/>
-                                                    <action selector="voteBttnClicked:" destination="7QI-Tj-egF" eventType="touchUpInside" id="iFI-Md-Eef"/>
                                                 </connections>
                                             </button>
                                         </subviews>

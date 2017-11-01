@@ -105,7 +105,7 @@ class ProfileViewController: UIViewController {
   }
     
     @IBAction func donateButtonClicked(_ sender: AnyObject) {
-        let place = "https://mrspirit.site/donate/?name=\(candidate!.getFirstName().lowercased())"
+        let place = "http://mrspirit.site/donate/?name=\(candidate!.getFirstName().lowercased())"
         print(place)
         let url = URL(string: place)
         UIApplication.shared.openURL(url!)
