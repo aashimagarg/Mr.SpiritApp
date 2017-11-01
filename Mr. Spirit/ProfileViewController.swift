@@ -19,7 +19,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var modelImage: UIImageView!
     @IBOutlet weak var bioText: UILabel!
   @IBOutlet weak var voteButton: UIButton!
-  var candidate:Candidate? = Candidate()
+    @IBOutlet weak var donateButton: UIButton!
+    var candidate:Candidate? = Candidate()
   var ref: DatabaseReference?
 
 
@@ -102,4 +103,34 @@ class ProfileViewController: UIViewController {
       // ...
     }
   }
+    
+    @IBAction func donateButtonClicked(_ sender: AnyObject) {
+        let place = "https://mrspirit.site/donate/?name=\(candidate!.getFirstName().lowercased())"
+        print(place)
+        let url = URL(string: place)
+        UIApplication.shared.openURL(url!)
+    }
+
+    func getVoteCount(){
+        // Votes
+        ref = ref?.child(candidate!.name)
+        ref?.observeSingleEvent(of: .value, with: { snapshot in
+            let value = snapshot.value as? NSDictionary
+            let votes = value?["votes"] as? Int ?? 0
+            self.candidate!.votes = votes
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+        }
+
+    func getAmountRaised() {
+        ref = ref?.child(candidate!.name)
+        ref?.observeSingleEvent(of: .value, with: { snapshot in
+            let value = snapshot.value as? NSDictionary
+            let amountRaised = value?["amountRaised"] as? Double ?? 0
+            self.candidate!.amountRaised = amountRaised
+            }) { error in
+                print(error.localizedDescription)
+            }
+        }
 }

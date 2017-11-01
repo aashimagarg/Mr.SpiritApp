@@ -136,7 +136,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EaK-wT-Nut">
-                                                <rect key="frame" x="40" y="363" width="295" height="47"/>
+                                                <rect key="frame" x="40" y="363" width="145" height="47"/>
                                                 <color key="backgroundColor" red="0.41960784313725491" green="0.69019607843137254" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="46.5" id="lvM-5z-SXi"/>
@@ -156,6 +156,24 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Me-Vs-Jcr">
+                                                <rect key="frame" x="190" y="363" width="145" height="47"/>
+                                                <color key="backgroundColor" red="0.41960784313725491" green="0.69019607839999997" blue="0.43988523792777773" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="47" id="K6B-VJ-pbf"/>
+                                                    <constraint firstAttribute="height" constant="46.5" id="lD9-sP-cTR"/>
+                                                    <constraint firstAttribute="width" constant="145" id="m4w-0y-Dvm"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                                <size key="titleShadowOffset" width="1" height="1"/>
+                                                <state key="normal" title="Donate">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="donateButtonClicked:" destination="7QI-Tj-egF" eventType="touchUpInside" id="viE-le-wlQ"/>
+                                                    <action selector="voteBttnClicked:" destination="7QI-Tj-egF" eventType="touchUpInside" id="iFI-Md-Eef"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -167,14 +185,17 @@
                                             <constraint firstItem="E5p-Nj-xo5" firstAttribute="leading" secondItem="Nzq-oC-h50" secondAttribute="leading" constant="12" id="JBq-nd-Ni1"/>
                                             <constraint firstItem="X1d-TS-KkL" firstAttribute="top" secondItem="EaK-wT-Nut" secondAttribute="bottom" constant="25" id="KMj-0l-nCP"/>
                                             <constraint firstAttribute="bottom" secondItem="X1d-TS-KkL" secondAttribute="bottom" constant="58" id="KqI-Mk-5sj"/>
+                                            <constraint firstAttribute="trailing" secondItem="3Me-Vs-Jcr" secondAttribute="trailing" constant="40" id="Nan-jD-kNF"/>
                                             <constraint firstItem="jCp-LW-DBz" firstAttribute="leading" secondItem="Nzq-oC-h50" secondAttribute="leading" constant="40" id="NfZ-57-EKV"/>
+                                            <constraint firstItem="X1d-TS-KkL" firstAttribute="top" secondItem="3Me-Vs-Jcr" secondAttribute="bottom" constant="25" id="UcE-cc-JSC"/>
+                                            <constraint firstItem="3Me-Vs-Jcr" firstAttribute="leading" secondItem="EaK-wT-Nut" secondAttribute="trailing" constant="5" id="XAr-mt-n28"/>
                                             <constraint firstItem="3Bs-a1-hlb" firstAttribute="leading" secondItem="Nzq-oC-h50" secondAttribute="leading" id="e7B-Gt-RBS"/>
                                             <constraint firstItem="EaK-wT-Nut" firstAttribute="top" secondItem="jCp-LW-DBz" secondAttribute="bottom" constant="15" id="fhA-go-MBz"/>
-                                            <constraint firstAttribute="trailing" secondItem="EaK-wT-Nut" secondAttribute="trailing" constant="40" id="gze-vA-z9x"/>
                                             <constraint firstItem="jCp-LW-DBz" firstAttribute="top" secondItem="E5p-Nj-xo5" secondAttribute="bottom" constant="4" id="o53-Zx-WfT"/>
                                             <constraint firstItem="3Bs-a1-hlb" firstAttribute="top" secondItem="Nzq-oC-h50" secondAttribute="top" id="tte-6g-wEK"/>
                                             <constraint firstItem="EaK-wT-Nut" firstAttribute="leading" secondItem="Nzq-oC-h50" secondAttribute="leading" constant="40" id="twd-aP-EW9"/>
                                             <constraint firstAttribute="trailing" secondItem="EaK-wT-Nut" secondAttribute="trailing" constant="195" id="uWn-S7-cne"/>
+                                            <constraint firstItem="3Me-Vs-Jcr" firstAttribute="top" secondItem="jCp-LW-DBz" secondAttribute="bottom" constant="15" id="vLx-DD-NhH"/>
                                             <constraint firstItem="E5p-Nj-xo5" firstAttribute="top" secondItem="3Bs-a1-hlb" secondAttribute="bottom" constant="22" id="vrA-5x-K3w"/>
                                             <constraint firstItem="X1d-TS-KkL" firstAttribute="leading" secondItem="Nzq-oC-h50" secondAttribute="leading" constant="40" id="wlr-oJ-p6C"/>
                                         </constraints>
@@ -207,6 +228,7 @@
                     <connections>
                         <outlet property="bioHeader" destination="E5p-Nj-xo5" id="XIk-Xh-aTq"/>
                         <outlet property="bioText" destination="X1d-TS-KkL" id="IVx-We-pVY"/>
+                        <outlet property="donateButton" destination="3Me-Vs-Jcr" id="GWz-IY-vs3"/>
                         <outlet property="modelImage" destination="3Bs-a1-hlb" id="NaS-fb-ogt"/>
                         <outlet property="subtitleText" destination="jCp-LW-DBz" id="Tre-Ke-wFu"/>
                         <outlet property="voteButton" destination="EaK-wT-Nut" id="u8U-7t-zEd"/>
@@ -363,12 +385,12 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAf-xY-h0z">
                                                 <rect key="frame" x="12" y="822" width="351" height="609"/>
-                                                <mutableString key="text">Hello! My name is Daisy Holland and I am the Philanthropy Haunt (Director) for Texas Spirits. As Philanthropy Haunt, I serve as the liaison between Texas Spirits and our two philanthropies: Make-A-Wish and Saint Louise House. Each semester, I create and plan various fundraising events aimed to benefit these two causes. This semester, I was in charge of executing Texas Spirits’ annual male pageant show, Mr. Spirit. 
+                                                <string key="text">Hello! My name is Daisy Holland and I am the Philanthropy Haunt (Director) for Texas Spirits. As Philanthropy Haunt, I serve as the liaison between Texas Spirits and our two philanthropies: Make-A-Wish and Saint Louise House. Each semester, I create and plan various fundraising events aimed to benefit these two causes. This semester, I was in charge of executing Texas Spirits’ annual male pageant show, Mr. Spirit. 
 
 Mr. Spirit is an event close to my heart. Before I was even inducted into Texas Spirits, I performed in the Mr. Spirit 2015 show alongside one of the contestants. When I joined Texas Spirits the following year, I served on the committee for Mr. Spirit 2016 and dreamed of one day running the show. Now, as the Director of the Mr. Spirit 2017 show, I can say that my involvement with this event has truly come full circle—from performer, to committee member, to Director. If you are reading this now, I want you to know how much it means to me that you are considering attending Mr. Spirit. It is a truly unique event that displays the diverse talents and personalities of some of the most hilarious and vivacious men on campus. 
 
 My committee members and I have worked tirelessly to make Mr. Spirit 2017 a success. Our contestants have practiced their talents and performances for hours on end. I am so excited to showcase the talents of some amazing guys and see our hard work benefit the philanthropies we love most. 
-</mutableString>
+</string>
                                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
