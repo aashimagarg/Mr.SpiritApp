@@ -9,7 +9,6 @@
 import UIKit
 import FirebaseDatabase
 import Braintree
-import SwiftyJSON
 
 class ProfileViewController: UIViewController {
 
